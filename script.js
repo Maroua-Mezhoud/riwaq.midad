@@ -195,7 +195,7 @@ var WORKS = [
       ar: "موقع إلكتروني من تصميمي.",
       en: "A website designed by me."
     },
-    logo: "assets/works/tasta-tarz.webp",
+    logo:"assets/works/tasta-tarz-logo.webp",
     link: "https://maroua-mezhoud.github.io/tasta.tarz/",
     domain: "maroua-mezhoud.github.io/tasta.tarz"
   }
