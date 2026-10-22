@@ -184,7 +184,7 @@ var WORKS = [
     logo:"assets/works/sugar-cube-logo.webp",
     link:"https://sugar-cube.netlify.app/",
     domain:"sugar-cube.netlify.app"
-  }
+  },
   {
     cat: "web",
     title: {
