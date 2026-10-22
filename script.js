@@ -4,6 +4,7 @@
 
 /* ---------- إعدادات سهلة التعديل ---------- */
 var CONFIG = {
+  landingPrice: "2000",   // سعر صفحة الهبوط الثابت (أرقام فقط)
   instagram: "https://www.instagram.com/riwaq.midad/",
   instagramUser: "riwaq.midad",
   whatsapp: "",   // رقمك بصيغة دولية بدون + مثل 213550000000 (اتركه فارغًا لإخفاء الزر)
@@ -15,10 +16,11 @@ var CONFIG = {
    cat:    calligraphy (خط عربي) | design (تصميم) | web (مواقع)
    title / desc: ar بالعربية و en بالإنجليزية
    script: نوع الخط (للوحات فقط) بالعربية والإنجليزية
-   price:  السعر بالأرقام فقط، فيظهر زر الطلب
+   price:  السعر (للوحات فقط). صفحات الهبوط سعرها ثابت في CONFIG.landingPrice
    img:    صورة العمل (للوحات)
-   logo:   شعار المشروع (للمواقع)
-   link:   رابط الموقع، و domain النص الظاهر تحت البطاقة
+   logo:   شعار المشروع (لصفحات الهبوط)
+   link:   رابط الصفحة، و domain النص الظاهر تحت البطاقة
+   صفحات الهبوط تحتاج فقط: cat, title, logo, link, domain
    ========================================================== */
 
 /* ملاحظات تظهر مرة واحدة في بداية كل قسم بدل تكرارها على كل بطاقة */
@@ -170,8 +172,6 @@ var WORKS = [
   {
     cat:"web",
     title:{ ar:"Rouqi", en:"Rouqi" },
-    desc:{ ar:"صفحة هبوط بتصميم هادئ.", en:"A landing page with a calm, minimal design." },
-    price:"6000",
     logo:"assets/works/rouqi-logo.webp",
     link:"https://maroua-mezhoud.github.io/rouqi/",
     domain:"maroua-mezhoud.github.io/rouqi"
@@ -179,25 +179,16 @@ var WORKS = [
   {
     cat:"web",
     title:{ ar:"Sugar Cube", en:"Sugar Cube" },
-    desc:{ ar:"صفحة هبوط لمشروع حلويات.", en:"A landing page for a sweets and bakery brand." },
-    price:"6000",
     logo:"assets/works/sugar-cube-logo.webp",
     link:"https://sugar-cube.netlify.app/",
     domain:"sugar-cube.netlify.app"
   },
   {
-    cat: "web",
-    title: {
-      ar: "Tasta Tarz",
-      en: "Tasta Tarz"
-    },
-    desc: {
-      ar: "موقع إلكتروني من تصميمي.",
-      en: "A website designed by me."
-    },
+    cat:"web",
+    title:{ ar:"Tasta Tarz", en:"Tasta Tarz" },
     logo:"assets/works/tasta-tarz-logo.webp",
-    link: "https://maroua-mezhoud.github.io/tasta.tarz/",
-    domain: "maroua-mezhoud.github.io/tasta.tarz"
+    link:"https://maroua-mezhoud.github.io/tasta.tarz/",
+    domain:"maroua-mezhoud.github.io/tasta.tarz"
   }
 
 ];
@@ -205,22 +196,22 @@ var WORKS = [
 /* ---------- نصوص الواجهة الديناميكية ---------- */
 var UI = {
   ar: {
-    all:"الكل",
+    all:"الكل", more:"عرض المزيد", cnt:{ calligraphy:"لوحة", web:"صفحة", print:"منتجًا" },
     cat:{ calligraphy:"خط عربي", design:"تصميم", web:"موقع" },
     catPlural:{ calligraphy:"خط عربي", design:"تصميم", web:"مواقع" },
     order:"اطلب اللوحة", orderWeb:"اطلب موقعًا مماثلًا", visit:"زيارة الموقع", currency:"دج",
     scriptLabel:"نوع الخط: ", orderItem:"اطلب الآن", msgItem:"مرحبًا، أريد طلب: ", from:"من",
     msg:"مرحبًا، أريد طلب: ", msgWeb:"مرحبًا، أريد طلب موقع مماثل لـ: ",
-    wa:"واتساب", ig:"إنستغرام", mail:"البريد"
+    wa:"واتساب", ig:"إنستغرام", mail:"البريد", msgLanding:"مرحبًا، أريد طلب صفحة هبوط لمشروعي"
   },
   en: {
-    all:"All",
+    all:"All", more:"Show more", cnt:{ calligraphy:"paintings", web:"pages", print:"items" },
     cat:{ calligraphy:"Calligraphy", design:"Design", web:"Website" },
     catPlural:{ calligraphy:"Calligraphy", design:"Design", web:"Websites" },
     order:"Order this piece", orderWeb:"Order a similar site", visit:"Visit website", currency:"DZD",
     scriptLabel:"Script: ", orderItem:"Order now", msgItem:"Hello, I would like to order: ", from:"From",
     msg:"Hello, I would like to order: ", msgWeb:"Hello, I would like a website similar to: ",
-    wa:"WhatsApp", ig:"Instagram", mail:"Email"
+    wa:"WhatsApp", ig:"Instagram", mail:"Email", msgLanding:"Hello, I would like to order a landing page for my project"
   }
 };
 
@@ -230,6 +221,17 @@ var UI = {
 var EN = {
   title:"Riwaq Midad | Arabic Calligraphy, Design & Printing",
   desc:"Riwaq Midad: Arabic calligraphy, graphic design, printing and landing pages. Order a custom piece with a handmade touch and an elegant identity.",
+  back:"Back",
+  wi_t:"What is a landing page?",
+  wi_p1:"A landing page is a single, clean web page that introduces your project or product and leads visitors to one clear step: to order or get in touch.",
+  wi_p2:"Instead of a large, complicated website, you get a fast page that presents what you offer clearly, and is ideal to link from your Instagram profile or your ads.",
+  wi_l1:"Designed around your brand", wi_l2:"Mobile friendly", wi_l3:"Light and dark mode", wi_l4:"Unlimited additions for 15 days",
+  wi_pl:"Fixed price for any page", wi_order:"Order a landing page for your project",
+  wl_t:"Our work", wl_p:"Pages we have already built, live and approved.", hub_eyebrow:"Our work", hub_h2:'Browse our <span class="ruq">work</span> and print', hub_p:"Pick a section to see everything inside it, neatly in one place.",
+  hub_cal_t:"Arabic calligraphy paintings", hub_web_t:"Landing pages", hb_cal:"Handwritten paintings in authentic Arabic scripts.", hb_web:"Pages and sites designed for real projects.",
+  cal_h2:'<span class="ruq">Arabic calligraphy</span> paintings', web_h2:'<span class="ruq">Landing</span> pages', hb_open:"Open section",
+  hb_services:"Calligraphy, design, printing and websites.", hb_works:"Paintings and websites we have made.", hb_print:"Cards, bookmarks, giveaways and certificates.",
+  hb_process:"Four steps from idea to delivery.", hb_about:"The story of Riwaq Midad and what we believe in.", hb_contact:"Write to us and start your project.",
   n_services:"Services", n_print:"Print", n_works:"Works", n_process:"Process", n_about:"About", n_contact:"Contact", n_order:"Order now",
   h1:'Where <span class="ruq">Arabic letters</span> meet design',
   lead:"Handwritten Arabic calligraphy, design, printing and web pages, made with care to carry your name and taste.",
@@ -285,102 +287,96 @@ function priceFmt(p){ return String(p).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 /* ---------- معرض الأعمال ---------- */
 var currentFilter = 'all';
 
-function buildWorks(animate){
-  var grid = document.getElementById('works-grid');
-  var bar = document.getElementById('filters');
+/* صيغة العدد: «لوحتان»، «3 لوحات»، «12 لوحة» */
+var CNT_AR = { calligraphy:['لوحة','لوحتان','لوحات','لوحة'], web:['صفحة','صفحتان','صفحات','صفحة'], print:['منتج','منتجان','منتجات','منتجًا'] };
+function countText(n, c){
+  if(LANG === 'en') return n + ' ' + UI.en.cnt[c];
+  var f = CNT_AR[c];
+  if(n === 1) return f[0];
+  if(n === 2) return f[1];
+  return n + ' ' + (n <= 10 ? f[2] : f[3]);
+}
+var PAGE_SIZE = 9;                       /* عدد الأعمال المعروضة في كل دفعة */
+var WSTATE = { calligraphy:{ shown:PAGE_SIZE, f:'all' }, web:{ shown:PAGE_SIZE, f:'all' } };
+
+function buildWorks(){
   var ui = UI[LANG];
   var arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 8V7H8"/></svg>';
-  var inCls = animate ? '' : ' in';
-  grid.innerHTML = '';
 
   function orderLink(w){
-    var name = w.title[LANG];
-    var msg = (w.cat === 'web' ? ui.msgWeb : ui.msg) + name;
-    if(CONFIG.whatsapp){
-      return 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(msg);
-    }
+    var msg = (w.cat === 'web' ? ui.msgWeb : ui.msg) + w.title[LANG];
+    if(CONFIG.whatsapp){ return 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(msg); }
     return 'https://ig.me/m/' + CONFIG.instagramUser;
   }
 
   function card(w){
     var title = w.title[LANG], desc = w.desc && w.desc[LANG];
     var el = document.createElement('article');
-    el.className = 'work reveal' + inCls;
+    el.className = 'work reveal in';
     el.dataset.cat = w.cat;
-
     var thumb = w.logo
       ? '<div class="thumb logo"><img src="'+w.logo+'" alt="'+title+'" loading="lazy"></div>'
       : '<div class="thumb art"><img src="'+w.img+'" alt="'+title+'" loading="lazy"></div>';
-    if(w.link){
-      thumb = '<a class="thumb-link" href="'+w.link+'" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">'+thumb+'</a>';
-    }
-
+    if(w.link){ thumb = '<a class="thumb-link" href="'+w.link+'" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">'+thumb+'</a>'; }
     var script = w.script ? '<ul class="specs"><li>'+ui.scriptLabel+w.script[LANG]+'</li></ul>' : '';
-
-    var visit = '';
-    if(w.link){
-      visit = '<div class="visit"><a class="go" href="'+w.link+'" target="_blank" rel="noopener">'+ui.visit+' '+arrow+'</a>'+
-              (w.domain ? '<div class="domain">'+w.domain+'</div>' : '')+'</div>';
-    }
-
-    var buy = '';
-    if(w.price){
-      buy = '<div class="buy"><div class="price">'+priceFmt(w.price)+'<small>'+ui.currency+'</small></div>'+
-            '<a class="btn btn-primary btn-sm" target="_blank" rel="noopener" href="'+orderLink(w)+'">'+(w.cat === 'web' ? ui.orderWeb : ui.order)+'</a></div>';
-    }
-
-    el.innerHTML = thumb +
-      '<div class="meta"><small>'+ui.cat[w.cat]+'</small><h3>'+title+'</h3>'+
-      (desc ? '<p>'+desc+'</p>' : '') + script + visit + buy + '</div>';
+    var isWeb = (w.cat === 'web');
+    var visit = w.link ? '<div class="visit"><a class="go" href="'+w.link+'" target="_blank" rel="noopener">'+ui.visit+' '+arrow+'</a>'+
+              (w.domain ? '<div class="domain">'+w.domain+'</div>' : '')+'</div>' : '';
+    var buy = (w.price && !isWeb) ? '<div class="buy"><div class="price">'+priceFmt(w.price)+'<small>'+ui.currency+'</small></div>'+
+            '<a class="btn btn-primary btn-sm" target="_blank" rel="noopener" href="'+orderLink(w)+'">'+(w.cat === 'web' ? ui.orderWeb : ui.order)+'</a></div>' : '';
+    el.innerHTML = thumb + '<div class="meta">'+(isWeb ? '' : '<small>'+ui.cat[w.cat]+'</small>')+'<h3>'+title+'</h3>'+(desc && !isWeb ? '<p>'+desc+'</p>' : '')+script+visit+buy+'</div>';
     return el;
   }
 
-  /* الأعمال تُجمع في أقسام، لكل قسم عنوانه وملاحظاته ومسافة تفصله عن غيره */
-  var cats = [];
-  WORKS.forEach(function(w){ if(cats.indexOf(w.cat) === -1) cats.push(w.cat); });
-
-  cats.forEach(function(c){
+  /* كل فئة لها صفحتها: ملاحظات، تصفية (حسب نوع الخط)، شبكة، وزر «عرض المزيد» */
+  ['calligraphy','web'].forEach(function(c){
+    var st = WSTATE[c];
+    var grid = document.getElementById('grid-'+c), bar = document.getElementById('filters-'+c);
+    var more = document.getElementById('more-'+c), notesEl = document.getElementById('notes-'+c);
+    if(!grid) return;
+    var all = WORKS.filter(function(w){ return w.cat === c; });
     var g = GROUPS[c] || {};
-    var sec = document.createElement('div');
-    sec.className = 'group';
-    sec.dataset.cat = c;
-    if(currentFilter !== 'all' && currentFilter !== c) sec.classList.add('hide');
+    if(notesEl) notesEl.innerHTML = ((g.notes && g.notes[LANG]) || []).map(function(n){ return '<li>'+n+'</li>'; }).join('');
 
-    var head = document.createElement('div');
-    head.className = 'group-head reveal' + inCls;
-    var notes = (g.notes && g.notes[LANG]) ? g.notes[LANG] : [];
-    head.innerHTML = '<h3>' + (g.title ? g.title[LANG] : ui.catPlural[c]) + '</h3>' +
-      (notes.length ? '<ul class="notes">' + notes.map(function(n){ return '<li>'+n+'</li>'; }).join('') + '</ul>' : '');
-    sec.appendChild(head);
-
-    var cards = document.createElement('div');
-    cards.className = 'group-grid';
-    WORKS.forEach(function(w){ if(w.cat === c) cards.appendChild(card(w)); });
-    sec.appendChild(cards);
-    grid.appendChild(sec);
-  });
-
-  /* أزرار التصفية تُبنى من الأقسام الموجودة فعلًا */
-  bar.setAttribute('aria-label', ARIA[LANG].filters);
-  if(cats.length < 2){
-    bar.hidden = true;
-    return;
-  }
-  bar.hidden = false;
-  var html = '<button class="filter'+(currentFilter==='all'?' active':'')+'" data-f="all" type="button">'+ui.all+'</button>';
-  cats.forEach(function(c){
-    html += '<button class="filter'+(currentFilter===c?' active':'')+'" data-f="'+c+'" type="button">'+ui.catPlural[c]+'</button>';
-  });
-  bar.innerHTML = html;
-  bar.querySelectorAll('.filter').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      currentFilter = btn.dataset.f;
-      bar.querySelectorAll('.filter').forEach(function(b){ b.classList.toggle('active', b === btn); });
-      grid.querySelectorAll('.group').forEach(function(sec){
-        sec.classList.toggle('hide', currentFilter !== 'all' && sec.dataset.cat !== currentFilter);
+    /* أنواع الخط (أو أي حقل script) الموجودة فعلًا */
+    var kinds = [];
+    all.forEach(function(w){ if(w.script && kinds.indexOf(w.script.ar) === -1) kinds.push(w.script.ar); });
+    if(kinds.length > 1){
+      bar.hidden = false;
+      var html = '<button class="filter'+(st.f==='all'?' active':'')+'" data-f="all" type="button">'+ui.all+'</button>';
+      kinds.forEach(function(k){
+        var lbl = all.filter(function(w){ return w.script && w.script.ar === k; })[0].script[LANG];
+        html += '<button class="filter'+(st.f===k?' active':'')+'" data-f="'+k+'" type="button">'+lbl+'</button>';
       });
-    });
+      bar.innerHTML = html;
+      bar.querySelectorAll('.filter').forEach(function(btn){
+        btn.addEventListener('click', function(){ st.f = btn.dataset.f; st.shown = PAGE_SIZE; buildWorks(); });
+      });
+    } else { bar.hidden = true; }
+
+    var list = all.filter(function(w){ return st.f === 'all' || (w.script && w.script.ar === st.f); });
+    grid.innerHTML = '';
+    list.slice(0, st.shown).forEach(function(w){ grid.appendChild(card(w)); });
+
+    var left = list.length - st.shown;
+    more.hidden = left <= 0;
+    if(left > 0){
+      more.textContent = ui.more + ' (' + left + ')';
+      more.onclick = function(){ st.shown += PAGE_SIZE; buildWorks(); };
+    }
+    var cnt = document.getElementById('count-'+c);
+    if(cnt) cnt.textContent = countText(all.length, c);
   });
+  var wp = document.getElementById('web-price');
+  if(wp){
+    wp.textContent = priceFmt(CONFIG.landingPrice);
+    document.getElementById('web-cur').textContent = ui.currency;
+    document.getElementById('web-order').href = CONFIG.whatsapp
+      ? 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(ui.msgLanding)
+      : 'https://ig.me/m/' + CONFIG.instagramUser;
+  }
+  var pc = document.getElementById('count-print');
+  if(pc) pc.textContent = countText(CATALOG.length, 'print');
 }
 
 
@@ -638,3 +634,26 @@ document.addEventListener('click', function(e){
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();
+
+
+/* ---------- المعارض والمطبوعات كصفحات مستقلة (تنقّل بالرابط #) ---------- */
+(function(){
+  var pages = document.querySelectorAll('.page');
+  var navLinks = document.querySelectorAll('#links a');
+  var parent = { calligraphy:'showcase', websites:'showcase', print:'print' };
+  function route(){
+    var id = decodeURIComponent((location.hash || '').slice(1));
+    var sub = null;
+    if(id.indexOf('g-') === 0){ sub = id; id = 'print'; }
+    var target = null;
+    pages.forEach(function(p){ var on = p.id === id; p.classList.toggle('active', on); if(on) target = p; });
+    document.body.classList.toggle('in-page', !!target);
+    var cur = target ? parent[id] : id;
+    navLinks.forEach(function(a){ a.classList.toggle('current', !!target && a.getAttribute('href') === '#' + cur); });
+    var el = sub ? document.getElementById(sub) : (!target && id && id !== 'top' ? document.getElementById(id) : null);
+    if(el){ el.scrollIntoView({ behavior:'smooth', block:'start' }); }
+    else { window.scrollTo({ top:0, behavior:'instant' }); }
+  }
+  window.addEventListener('hashchange', route);
+  route();
+})();

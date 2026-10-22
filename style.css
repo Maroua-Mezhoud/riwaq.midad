@@ -533,3 +533,65 @@ html[dir="ltr"] .step:not(:last-child)::after{transform-origin:left}
   .pills{margin-bottom:40px}
   .marquee span{font-size:1.15rem}
 }
+
+
+/* ==========================================================
+   الأقسام كصفحات مستقلة
+   ========================================================== */
+.hub{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.hub-card{display:flex;flex-direction:column;gap:6px;cursor:pointer}
+.hub-card h3{font-size:1.5rem}
+.hub-card p{color:var(--ink-soft);flex:1}
+.hub-card .open{margin-top:10px;color:var(--gold);font-weight:700;display:inline-flex;align-items:center;gap:8px}
+.hub-card .open::after{content:"\2190";transition:transform .3s}
+html[dir="ltr"] .hub-card .open::after{content:"\2192"}
+.hub-card:hover .open::after{transform:translateX(-5px)}
+html[dir="ltr"] .hub-card:hover .open::after{transform:translateX(5px)}
+
+.page{display:none;padding-top:28px;min-height:70vh}
+.page.active{display:block;animation:pgIn .5s ease both}
+@keyframes pgIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+body.in-page .home{display:none}
+.page-bar{margin-bottom:28px}
+.back{
+  display:inline-flex;align-items:center;gap:8px;padding:7px 18px 7px 14px;border:1px solid var(--line);
+  border-radius:999px;color:var(--ink-soft);transition:border-color .25s,color .25s,background .25s
+}
+.back:hover{border-color:var(--gold);color:var(--ink);background:color-mix(in srgb,var(--gold) 10%,transparent)}
+.back svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+html[dir="ltr"] .back svg{transform:scaleX(-1)}
+.links a.current{color:var(--ink)}
+.links a.current::after{transform:scaleX(1)}
+@media (max-width:980px){.hub{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.hub{grid-template-columns:1fr}}
+
+.hub-card .count{color:var(--ink-soft);font-size:.95rem;opacity:.85}
+.hub-card .count:empty{display:none}
+.hub{grid-template-columns:repeat(3,1fr)}
+.page .section-head .notes{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;color:var(--ink-soft);margin-top:10px}
+.more-wrap{display:flex;justify-content:center;margin-top:36px}
+.more-wrap[hidden],.more-wrap button[hidden]{display:none}
+
+/* ------- صفحة الهبوط: التعريف والسعر ------- */
+.web-intro{
+  display:grid;grid-template-columns:1.6fr 1fr;gap:28px;align-items:stretch;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:34px 32px;margin-bottom:56px;
+  box-shadow:var(--shadow)
+}
+.wi-text h3{font-size:1.6rem;margin-bottom:6px}
+.wi-text p{color:var(--ink-soft);margin-bottom:8px}
+.wi-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 22px;margin-top:14px}
+.wi-list li{position:relative;padding-inline-start:20px}
+.wi-list li::before{content:"";position:absolute;inset-inline-start:0;top:.9em;width:8px;height:8px;background:var(--gold);transform:rotate(45deg)}
+.wi-price{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;
+  border:1px dashed var(--line);border-radius:calc(var(--r) - 4px);padding:24px 18px;background:color-mix(in srgb,var(--gold) 6%,transparent)
+}
+.wi-price .lbl{color:var(--ink-soft)}
+.wi-price .num{font-family:var(--font-head);font-weight:700;font-size:2.8rem;line-height:1.2;color:var(--gold-strong)}
+.wi-price .num small{font-size:1.05rem;margin-inline-start:6px;color:var(--ink-soft);font-weight:400}
+.works-label{text-align:center;margin-bottom:30px}
+.works-label h3{font-size:1.9rem}
+.works-label h3::after{content:"";display:block;width:60px;height:1px;background:var(--gold);margin:6px auto 0}
+.works-label p{color:var(--ink-soft)}
+@media (max-width:860px){.web-intro{grid-template-columns:1fr;padding:26px 20px}.wi-list{grid-template-columns:1fr}}
