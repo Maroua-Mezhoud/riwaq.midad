@@ -185,6 +185,21 @@ var WORKS = [
     link:"https://sugar-cube.netlify.app/",
     domain:"sugar-cube.netlify.app"
   }
+  {
+    cat: "web",
+    title: {
+      ar: "Tasta Tarz",
+      en: "Tasta Tarz"
+    },
+    desc: {
+      ar: "موقع إلكتروني من تصميمي.",
+      en: "A website designed by me."
+    },
+    logo: "assets/works/tasta-tarz.webp",
+    link: "https://maroua-mezhoud.github.io/tasta.tarz/",
+    domain: "maroua-mezhoud.github.io/tasta.tarz"
+  }
+
 ];
 
 /* ---------- نصوص الواجهة الديناميكية ---------- */
