@@ -921,3 +921,75 @@ document.getElementById('skip').addEventListener('click', function(e){
     if(Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) step((rtl() ? dx > 0 : dx < 0) ? 1 : -1);
   }, { passive:true });
 })();
+
+/* ==========================================================
+   مشروع مميز: Physics Club (محاكاة لورنز حية خلف اللوحة)
+   ========================================================== */
+(function(){
+  var box = document.getElementById('featured');
+  if(!box) return;
+  var SITE = "https://maroua-mezhoud.github.io/physics-club/", DOMAIN = "maroua-mezhoud.github.io/physics-club";
+  var T = {
+    ar:{ tag:"مشروع مميز", sub:"نادي الفيزياء · جامعة محمد البشير الإبراهيمي، برج بوعريريج",
+         text:"موقع علمي تفاعلي صمّمناه وبرمجناه لنادي الفيزياء. يجمع الفيزياء بالبرمجة، وفيه محاكاة حية تعمل داخل المتصفح: نظام لورنز المضطرب، ومدارات كواكب تطلقها بإصبعك.",
+         chips:["محاكاة فيزيائية حية","تفاعل بالسحب واللمس","برمجة مخصّصة"], cta:"زيارة الموقع" },
+    en:{ tag:"Featured project", sub:"Physics Club · University of Mohamed El Bachir El Ibrahimi, Bordj Bou Arreridj",
+         text:"An interactive science website we designed and coded for the university physics club. It blends physics with programming, with live simulations running in the browser: the chaotic Lorenz system and planetary orbits you launch with your finger.",
+         chips:["Live physics simulations","Drag and touch interaction","Custom code"], cta:"Visit the site" }
+  };
+  var arrow = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 8V7H8"/></svg>';
+  box.innerHTML =
+    '<article class="ft" aria-labelledby="ft-title"><canvas class="ft-canvas" aria-hidden="true"></canvas>' +
+    '<div class="ft-body"><span class="ft-tag" data-k="tag"></span><h3 class="ft-title" id="ft-title">Physics Club</h3>' +
+    '<p class="ft-sub" data-k="sub"></p><p class="ft-text" data-k="text"></p><ul class="ft-chips"></ul>' +
+    '<a class="ft-cta" href="'+SITE+'" target="_blank" rel="noopener"><span data-k="cta"></span>'+arrow+'</a>' +
+    '<div class="ft-domain">'+DOMAIN+'</div></div>' +
+    '<a class="ft-visual" href="'+SITE+'" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="assets/works/physics-club-logo-dark.webp" alt="" loading="lazy"></a></article>';
+
+  function render(){
+    var t = T[LANG] || T.ar;
+    box.querySelectorAll('[data-k]').forEach(function(e){ e.textContent = t[e.dataset.k]; });
+    box.querySelector('.ft-chips').innerHTML = t.chips.map(function(c){ return '<li>'+c+'</li>'; }).join('');
+  }
+  var prev = buildFab;                                   /* تُستدعى عند تبديل اللغة */
+  buildFab = function(){ prev(); render(); };
+  render();
+
+  /* محاكاة لورنز: مساران يبدآن بفرق ضئيل جدًا (أثر الفراشة) */
+  var cv = box.querySelector('.ft-canvas'), ctx = cv.getContext('2d'), W = 0, H = 0, raf = 0;
+  var A = { x:.1, y:0, z:0 }, B = { x:.1008, y:0, z:0 };
+  function f(s){ return [10 * (s.y - s.x), s.x * (28 - s.z) - s.y, s.x * s.y - (8 / 3) * s.z]; }
+  function rk4(s, h){
+    var k1 = f(s), a = { x:s.x + h/2*k1[0], y:s.y + h/2*k1[1], z:s.z + h/2*k1[2] },
+        k2 = f(a), b = { x:s.x + h/2*k2[0], y:s.y + h/2*k2[1], z:s.z + h/2*k2[2] },
+        k3 = f(b), c = { x:s.x + h*k3[0],   y:s.y + h*k3[1],   z:s.z + h*k3[2] }, k4 = f(c);
+    s.x += h/6 * (k1[0] + 2*k2[0] + 2*k3[0] + k4[0]);
+    s.y += h/6 * (k1[1] + 2*k2[1] + 2*k3[1] + k4[1]);
+    s.z += h/6 * (k1[2] + 2*k2[2] + 2*k3[2] + k4[2]);
+  }
+  function pt(s){
+    var wide = W > 720, rtl = document.documentElement.dir === 'rtl', k = wide ? H / 62 : W / 50;
+    return [(wide ? (rtl ? W * .27 : W * .73) : W / 2) + s.x * k, H * .52 - (s.z - 25) * k];
+  }
+  function seg(s, col){
+    var p = pt(s); rk4(s, .007); var q = pt(s);
+    ctx.strokeStyle = col; ctx.beginPath(); ctx.moveTo(p[0], p[1]); ctx.lineTo(q[0], q[1]); ctx.stroke();
+  }
+  function size(){
+    var r = box.getBoundingClientRect(), d = Math.min(2, window.devicePixelRatio || 1);
+    W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); ctx.lineWidth = 1.7; ctx.lineCap = 'round';
+  }
+  function frame(){
+    ctx.globalCompositeOperation = 'destination-out'; ctx.fillStyle = 'rgba(0,0,0,.045)'; ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'source-over';
+    for(var i = 0; i < 7; i++){ seg(A, 'rgba(56,189,248,1)'); seg(B, 'rgba(192,132,252,1)'); }
+    raf = requestAnimationFrame(frame);
+  }
+  function stop(){ cancelAnimationFrame(raf); raf = 0; }
+  size();
+  window.addEventListener('resize', size);
+  if(REDUCED){ for(var i = 0; i < 4500; i++){ seg(A, 'rgba(56,189,248,.55)'); seg(B, 'rgba(192,132,252,.5)'); } return; }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(en){ if(en[0].isIntersecting){ if(!raf) frame(); } else stop(); }, { threshold:.05 }).observe(box);
+  } else { frame(); }
+})();
