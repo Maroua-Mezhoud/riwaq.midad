@@ -704,3 +704,11 @@ html[dir="ltr"] .crumb i::before{content:"\203A"}
   .filters{margin-bottom:26px}
   .buy{flex-wrap:wrap}
 }
+
+/* ------- لوحات الخط: بطاقة الطلب الخاص ------- */
+.cal-order{grid-template-columns:1fr;gap:26px}
+.co-sizes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.co-sizes .wi-price .sz{font-family:var(--font-head);font-weight:700;font-size:1.6rem;line-height:1}
+.co-sizes .wi-price .num{font-size:2.4rem}
+.co-note{color:var(--ink-soft);font-size:.95rem;margin-top:16px}
+@media (max-width:640px){.co-sizes{grid-template-columns:1fr}.co-sizes .wi-price .btn{width:100%}}

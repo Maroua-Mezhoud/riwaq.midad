@@ -7,8 +7,14 @@ var CONFIG = {
   landingPrice: "2000",   // سعر صفحة الهبوط الثابت (أرقام فقط)
   instagram: "https://www.instagram.com/riwaq.midad/",
   instagramUser: "riwaq.midad",
-  whatsapp: "",   // رقمك بصيغة دولية بدون + مثل 213550000000 (اتركه فارغًا لإخفاء الزر)
+  whatsapp: "213674026632",   // رقمك بصيغة دولية بدون + مثل 213550000000 (اتركه فارغًا لإخفاء الزر)
   email: ""       // بريدك (اتركه فارغًا لإخفاء الزر)
+};
+
+/* ---------- أسعار اللوحات (أرقام فقط) ---------- */
+var PRICES = {
+  custom: { A5:"2300", A4:"3400" },   // طلب خاص: اسم أو آية أو إهداء (تظهر في بطاقة «اطلب لوحتك»)
+  ready:  { A5:"1800", A4:"2700" }    // لوحة جاهزة: استعملها في اللوحة الجديدة هكذا  price: PRICES.ready.A5
 };
 
 /* ==========================================================
@@ -156,7 +162,6 @@ var WORKS = [
     script: DIWANI,
     size:"A5",
     price:"1650",
-    sold:true,
     img:"assets/works/lawha-4.webp"
   },
   {
@@ -172,7 +177,6 @@ var WORKS = [
     cat:"calligraphy",
     title:{ ar:"وأما بنعمة ربك فحدّث", en:"“And as for the favor of your Lord, proclaim it”" },
     script: DIWANI,
-  
     img:"assets/works/lawha-2.webp"
   },
   {
@@ -217,7 +221,7 @@ var UI = {
     order:"اطلب اللوحة", orderWeb:"اطلب موقعًا مماثلًا", visit:"زيارة الموقع", currency:"دج",
     scriptLabel:"نوع الخط: ", sizeLabel:"المقاس: ", cm:"سم", sold:"تم البيع", fSize:"المقاس", fScript:"نوع الخط", fAvail:"المتاحة فقط", empty:"لا توجد لوحات بهذه المواصفات حاليًا.", reset:"إزالة التصفية", orderItem:"اطلب الآن", msgItem:"مرحبًا، أريد طلب: ", from:"من",
     msg:"مرحبًا، أريد طلب: ", msgWeb:"مرحبًا، أريد طلب موقع مماثل لـ: ",
-    wa:"واتساب", ig:"إنستغرام", mail:"البريد", msgLanding:"مرحبًا، أريد طلب صفحة هبوط لمشروعي"
+    wa:"واتساب", ig:"إنستغرام", mail:"البريد", msgLanding:"مرحبًا، أريد طلب صفحة هبوط لمشروعي", msgCustom:"مرحبًا، أريد طلب لوحة بخط اليد بمقاس ", coOrder:"اطلب مقاس"
   },
   en: {
     all:"All", more:"Show more", cnt:{ calligraphy:"paintings", web:"pages", print:"items" },
@@ -226,7 +230,7 @@ var UI = {
     order:"Order this piece", orderWeb:"Order a similar site", visit:"Visit website", currency:"DZD",
     scriptLabel:"Script: ", sizeLabel:"Size: ", cm:"cm", sold:"Sold", fSize:"Size", fScript:"Script", fAvail:"Available only", empty:"No paintings match these filters right now.", reset:"Clear filters", orderItem:"Order now", msgItem:"Hello, I would like to order: ", from:"From",
     msg:"Hello, I would like to order: ", msgWeb:"Hello, I would like a website similar to: ",
-    wa:"WhatsApp", ig:"Instagram", mail:"Email", msgLanding:"Hello, I would like to order a landing page for my project"
+    wa:"WhatsApp", ig:"Instagram", mail:"Email", msgLanding:"Hello, I would like to order a landing page for my project", msgCustom:"Hello, I would like to order a handwritten calligraphy painting, size ", coOrder:"Order size"
   }
 };
 
@@ -237,6 +241,10 @@ var EN = {
   title:"Riwaq Midad | Arabic Calligraphy, Design & Printing",
   desc:"Riwaq Midad: Arabic calligraphy, graphic design, printing and landing pages. Order a custom piece with a handmade touch and an elegant identity.",
   back:"Back",
+  co_t:"Order your handwritten painting",
+  co_p:"Your painting is written by hand in ink on ornamental paper, with the name, verse or dedication you choose. It is one piece that is never repeated.",
+  co_l1:"Handwritten in ink on ornamental paper", co_l2:"Name, verse or dedication of your choice", co_l3:"Script: Diwani or Thuluth", co_l4:"One unique piece",
+  co_note:"The frame is sold separately and delivery is paid by the customer. A 50% deposit confirms your order.",
   wi_t:"What is a landing page?",
   wi_p1:"A landing page is a single, clean web page that introduces your project or product and leads visitors to one clear step: to order or get in touch.",
   wi_p2:"Instead of a large, complicated website, you get a fast page that presents what you offer clearly, and is ideal to link from your Instagram profile or your ads.",
@@ -421,6 +429,18 @@ function buildWorks(){
     if(cnt) cnt.textContent = countText(all.length, c);
   });
 
+  ['A5','A4'].forEach(function(s){
+    var k = s.toLowerCase(), p = document.getElementById('co-'+k+'-price');
+    if(!p) return;
+    p.textContent = priceFmt(PRICES.custom[s]);
+    document.getElementById('co-'+k+'-cur').textContent = ui.currency;
+    document.getElementById('co-'+k+'-dim').textContent = SIZES[s] + ' ' + ui.cm;
+    var btn = document.getElementById('co-'+k+'-btn');
+    btn.textContent = ui.coOrder + ' ' + s;
+    btn.href = CONFIG.whatsapp
+      ? 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(ui.msgCustom + s)
+      : 'https://ig.me/m/' + CONFIG.instagramUser;
+  });
   var wp = document.getElementById('web-price');
   if(wp){
     wp.textContent = priceFmt(CONFIG.landingPrice);
