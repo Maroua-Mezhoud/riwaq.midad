@@ -222,7 +222,7 @@ var UI = {
     order:"اطلب اللوحة", orderWeb:"اطلب موقعًا مماثلًا", visit:"زيارة الموقع", currency:"دج",
     scriptLabel:"نوع الخط: ", sizeLabel:"المقاس: ", cm:"سم", sold:"تم البيع", fSize:"المقاس", fScript:"نوع الخط", fAvail:"المتاحة فقط", empty:"لا توجد لوحات بهذه المواصفات حاليًا.", reset:"إزالة التصفية", orderItem:"اطلب الآن", msgItem:"مرحبًا، أريد طلب: ", from:"من",
     msg:"مرحبًا، أريد طلب: ", msgWeb:"مرحبًا، أريد طلب موقع مماثل لـ: ",
-    wa:"واتساب", ig:"إنستغرام", mail:"البريد", msgLanding:"مرحبًا، أريد طلب صفحة هبوط لمشروعي", msgCustom:"مرحبًا، أريد طلب لوحة بخط اليد بمقاس ", coOrder:"اطلب مقاس"
+    wa:"واتساب", ig:"إنستغرام", mail:"البريد", msgLanding:"مرحبًا، أريد طلب صفحة هبوط لمشروعي", msgHi:"مرحبًا، أودّ الاستفسار عن خدماتكم", lbClose:"إغلاق", lbPrev:"السابق", lbNext:"التالي", waFab:"تواصل عبر واتساب", msgCustom:"مرحبًا، أريد طلب لوحة بخط اليد بمقاس ", coOrder:"اطلب مقاس"
   },
   en: {
     all:"All", more:"Show more", cnt:{ calligraphy:"paintings", web:"pages", print:"items" },
@@ -231,7 +231,7 @@ var UI = {
     order:"Order this piece", orderWeb:"Order a similar site", visit:"Visit website", currency:"DZD",
     scriptLabel:"Script: ", sizeLabel:"Size: ", cm:"cm", sold:"Sold", fSize:"Size", fScript:"Script", fAvail:"Available only", empty:"No paintings match these filters right now.", reset:"Clear filters", orderItem:"Order now", msgItem:"Hello, I would like to order: ", from:"From",
     msg:"Hello, I would like to order: ", msgWeb:"Hello, I would like a website similar to: ",
-    wa:"WhatsApp", ig:"Instagram", mail:"Email", msgLanding:"Hello, I would like to order a landing page for my project", msgCustom:"Hello, I would like to order a handwritten calligraphy painting, size ", coOrder:"Order size"
+    wa:"WhatsApp", ig:"Instagram", mail:"Email", msgLanding:"Hello, I would like to order a landing page for my project", msgHi:"Hello, I would like to ask about your services", lbClose:"Close", lbPrev:"Previous", lbNext:"Next", waFab:"Chat on WhatsApp", msgCustom:"Hello, I would like to order a handwritten calligraphy painting, size ", coOrder:"Order size"
   }
 };
 
@@ -241,7 +241,7 @@ var UI = {
 var EN = {
   title:"Riwaq Midad | Arabic Calligraphy, Design & Printing",
   desc:"Riwaq Midad: Arabic calligraphy, graphic design, printing and landing pages. Order a custom piece with a handmade touch and an elegant identity.",
-  back:"Back",
+  back:"Back", skip:"Skip to content",
   co_t:"Order your handwritten painting",
   co_p:"Your painting is written by hand in ink on ornamental paper, with the name, verse or dedication you choose. It is one piece that is never repeated.",
   co_l1:"Handwritten in ink on ornamental paper", co_l2:"Name, verse or dedication of your choice", co_l3:"Script: Diwani or Thuluth", co_l4:"One unique piece",
@@ -345,7 +345,7 @@ function buildWorks(){
     el.dataset.cat = w.cat;
     var thumb = w.logo
       ? '<div class="thumb logo"><img src="'+w.logo+'" alt="'+title+'" loading="lazy"></div>'
-      : '<div class="thumb art"><img src="'+w.img+'" alt="'+title+'" loading="lazy"></div>';
+      : '<div class="thumb art" tabindex="0" role="button" aria-label="'+title+'"><img src="'+w.img+'" alt="'+title+'" loading="lazy"></div>';
     if(w.link){ thumb = '<a class="thumb-link" href="'+w.link+'" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">'+thumb+'</a>'; }
 
     var specs = '';
@@ -362,6 +362,8 @@ function buildWorks(){
     el.innerHTML = thumb + '<div class="meta"><h3>'+title+'</h3>'+specs+visit+buy+'</div>';
     return el;
   }
+
+  function rank(w){ return w.sold ? 2 : (w.price ? 0 : 1); }
 
   function chips(group, values, current, label){
     var h = '<button class="filter'+(current==='all'?' active':'')+'" data-g="'+group+'" data-v="all" type="button">'+ui.all+'</button>';
@@ -388,7 +390,7 @@ function buildWorks(){
       if(w.script && !scripts.some(function(v){ return v.key === w.script.ar; })) scripts.push({ key:w.script.ar, label:w.script[LANG] });
     });
     sizes.sort(function(a, b){ return parseInt(b.key.slice(1), 10) - parseInt(a.key.slice(1), 10); });   /* A5 قبل A4 */
-    var canAvail = all.some(function(w){ return w.sold; }) && all.some(function(w){ return !w.sold; });
+    var canAvail = all.some(function(w){ return w.sold; }) && all.some(function(w){ return w.price && !w.sold; });
 
     var html = '';
     if(sizes.length > 1)   html += chips('s', sizes, st.s, ui.fSize);
@@ -407,9 +409,9 @@ function buildWorks(){
     var list = all.filter(function(w){
       return (st.f === 'all' || (w.script && w.script.ar === st.f)) &&
              (st.s === 'all' || w.size === st.s) &&
-             (!st.a || !w.sold);
+             (!st.a || (w.price && !w.sold));
     }).map(function(w, i){ return { w:w, i:i }; })
-      .sort(function(x, y){ return ((x.w.sold ? 1 : 0) - (y.w.sold ? 1 : 0)) || (x.i - y.i); })   /* المتاحة أولًا */
+      .sort(function(x, y){ return (rank(x.w) - rank(y.w)) || (x.i - y.i); })   /* المتاحة أولًا ثم أعمال بلا سعر ثم المباعة */
       .map(function(o){ return o.w; });
 
     grid.innerHTML = '';
@@ -587,7 +589,7 @@ function buildContact(){
     buildWorks(false);
     buildCatalog(false);
     buildMarquee();
-    buildContact();
+    buildContact(); buildFab();
     if(save){ try{ localStorage.setItem('midad-lang', l); }catch(e){} }
   }
 
@@ -596,7 +598,7 @@ function buildContact(){
   var saved = null;
   try{ saved = localStorage.getItem('midad-lang'); }catch(e){}
   if(saved === 'en'){ setLang('en', false); }
-  else { buildWorks(true); buildCatalog(true); buildMarquee(); buildContact(); }
+  else { buildWorks(true); buildCatalog(true); buildMarquee(); buildContact(); buildFab(); }
 })();
 
 /* ---------- الوضع الفاتح / الداكن (مع انتقال دائري) ---------- */
@@ -812,4 +814,110 @@ document.getElementById('year').textContent = new Date().getFullYear();
 /* نص الواجهة يظهر بعد انتهاء كتابة الشعار */
 (function(){
   document.querySelectorAll('.hero .reveal').forEach(function(el, i){ el.style.setProperty('--d', (2.2 + i * .12).toFixed(2) + 's'); });
+})();
+
+
+/* ==========================================================
+   زر واتساب العائم + رابط «انتقل إلى المحتوى»
+   ========================================================== */
+function buildFab(){
+  var ui = UI[LANG], el = document.getElementById('fab-wa');
+  if(!CONFIG.whatsapp){ if(el) el.remove(); return; }
+  if(!el){
+    el = document.createElement('a'); el.id = 'fab-wa'; el.className = 'fab-wa'; el.target = '_blank'; el.rel = 'noopener';
+    el.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.2 8.2 0 1 1 12 20.200zm4.500-6.100c-.2-.1-1.500-.7-1.700-.8s-.4-.1-.6.100-.7.8-.8 1-.3.200-.5.100a6.700 6.700 0 0 1-3.300-2.900c-.3-.4.300-.4.700-1.300.1-.2 0-.3 0-.5l-.8-1.900c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.800 2.800 0 0 0-.9 2 4.800 4.800 0 0 0 1 2.600 10.800 10.800 0 0 0 4.100 3.600c1.500.6 2.200.7 3 .6a2.600 2.600 0 0 0 1.700-1.200 2.100 2.100 0 0 0 .1-1.200c-.1-.1-.2-.2-.5-.3z"/></svg>';
+    document.body.appendChild(el);
+    var c = document.getElementById('contact');
+    if('IntersectionObserver' in window && c){
+      new IntersectionObserver(function(en){ el.classList.toggle('away', en[0].isIntersecting && !document.body.classList.contains('in-page')); }, { threshold:.35 }).observe(c);
+    }
+  }
+  el.href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(ui.msgHi);
+  el.setAttribute('aria-label', ui.waFab);
+}
+document.getElementById('skip').addEventListener('click', function(e){
+  e.preventDefault();
+  var t = document.querySelector('.page.active') || document.getElementById('services');
+  if(!t) return;
+  t.setAttribute('tabindex','-1'); t.focus(); t.scrollIntoView({ block:'start' });
+});
+
+/* ==========================================================
+   عارض اللوحات: تكبير لرؤية تفاصيل الخط، تنقل، سحب، لوحة المفاتيح
+   ========================================================== */
+(function(){
+  var lb = document.createElement('div');
+  lb.className = 'lb'; lb.setAttribute('role','dialog'); lb.setAttribute('aria-modal','true');
+  lb.innerHTML = '<button class="lb-x" type="button"></button><button class="lb-nav lb-prev" type="button"></button><button class="lb-nav lb-next" type="button"></button>' +
+                 '<div class="lb-stage"><img alt=""></div><div class="lb-cap"><strong></strong><span></span></div>';
+  document.body.appendChild(lb);
+  var stage = lb.querySelector('.lb-stage'), img = stage.querySelector('img'), cap = lb.querySelector('.lb-cap');
+  var bx = lb.querySelector('.lb-x'), bp = lb.querySelector('.lb-prev'), bn = lb.querySelector('.lb-next');
+  var items = [], idx = 0, opener = null, isOpen = false;
+
+  function rtl(){ return document.documentElement.dir === 'rtl'; }
+  function labels(){ var ui = UI[LANG]; bx.setAttribute('aria-label', ui.lbClose); bp.setAttribute('aria-label', ui.lbPrev); bn.setAttribute('aria-label', ui.lbNext); }
+  function show(i){
+    idx = (i + items.length) % items.length;
+    var it = items[idx];
+    lb.classList.remove('zoomed'); stage.scrollTop = 0; stage.scrollLeft = 0;
+    img.src = it.src; img.alt = it.title;
+    cap.firstChild.textContent = it.title; cap.lastChild.textContent = it.meta;
+    lb.setAttribute('aria-label', it.title);
+    var many = items.length > 1; bp.hidden = bn.hidden = !many;
+    if(many){ var n = new Image(); n.src = items[(idx + 1) % items.length].src; }
+  }
+  function open(card, from){
+    items = [].slice.call(card.parentNode.querySelectorAll('.work')).map(function(w){
+      var t = w.querySelector('.thumb.art img');
+      return t ? { src:t.getAttribute('src'), title:w.querySelector('h3').textContent,
+        meta:[].slice.call(w.querySelectorAll('.specs li')).map(function(li){ return li.textContent.replace(/\s*\(.*?\)/,'').replace(/\s+/g,' ').trim(); }).join('  ·  ') +
+             (w.classList.contains('is-sold') ? '  ·  ' + UI[LANG].sold : ''), el:w } : null;
+    }).filter(Boolean);
+    var i = 0; items.forEach(function(it, k){ if(it.el === card) i = k; });
+    opener = from; labels(); show(i);
+    lb.classList.add('open'); document.body.classList.add('lb-open'); isOpen = true; bx.focus();
+  }
+  function close(){
+    if(!isOpen) return;
+    lb.classList.remove('open', 'zoomed'); document.body.classList.remove('lb-open'); isOpen = false;
+    if(opener) opener.focus();
+  }
+  function step(d){ show(idx + d); }
+
+  document.addEventListener('click', function(e){
+    var t = e.target.closest && e.target.closest('#grid-calligraphy .thumb.art');
+    if(t) open(t.closest('.work'), t);
+  });
+  document.addEventListener('keydown', function(e){
+    var t = e.target.closest && e.target.closest('#grid-calligraphy .thumb.art');
+    if(!isOpen && t && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); open(t.closest('.work'), t); return; }
+    if(!isOpen) return;
+    if(e.key === 'Escape') close();
+    else if(e.key === 'ArrowLeft') step(rtl() ? 1 : -1);
+    else if(e.key === 'ArrowRight') step(rtl() ? -1 : 1);
+    else if(e.key === 'Tab'){
+      var f = [bx, bp, bn].filter(function(b){ return !b.hidden; }), k = f.indexOf(document.activeElement);
+      e.preventDefault(); f[(k + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+    }
+  });
+  bx.addEventListener('click', close);
+  bp.addEventListener('click', function(){ step(-1); });
+  bn.addEventListener('click', function(){ step(1); });
+  stage.addEventListener('click', function(e){
+    if(e.target !== img){ close(); return; }
+    var r = img.getBoundingClientRect(), fx = (e.clientX - r.left) / r.width, fy = (e.clientY - r.top) / r.height;
+    if(lb.classList.toggle('zoomed')){
+      var ir = img.getBoundingClientRect(), sr = stage.getBoundingClientRect();
+      stage.scrollLeft += (ir.left + ir.width * fx) - (sr.left + sr.width / 2);
+      stage.scrollTop  += (ir.top + ir.height * fy) - (sr.top + sr.height / 2);
+    }
+  });
+  var sx = 0, sy = 0;
+  stage.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive:true });
+  stage.addEventListener('touchend', function(e){
+    if(lb.classList.contains('zoomed')) return;
+    var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    if(Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) step((rtl() ? dx > 0 : dx < 0) ? 1 : -1);
+  }, { passive:true });
 })();
