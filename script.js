@@ -4,6 +4,7 @@
 
 /* ---------- إعدادات سهلة التعديل ---------- */
 var CONFIG = {
+  landingPrice: "2000",   // سعر صفحة الهبوط الثابت (أرقام فقط)
   instagram: "https://www.instagram.com/riwaq.midad/",
   instagramUser: "riwaq.midad",
   whatsapp: "",   // رقمك بصيغة دولية بدون + مثل 213550000000 (اتركه فارغًا لإخفاء الزر)
@@ -15,10 +16,13 @@ var CONFIG = {
    cat:    calligraphy (خط عربي) | design (تصميم) | web (مواقع)
    title / desc: ar بالعربية و en بالإنجليزية
    script: نوع الخط (للوحات فقط) بالعربية والإنجليزية
-   price:  السعر بالأرقام فقط، فيظهر زر الطلب
+   size:   المقاس: "A5" أو "A4" (للوحات، ويُستعمل في التصفية)
+   sold:   true إذا بيعت اللوحة (يظهر زر «تم البيع» الأحمر). احذف السطر إذا كانت متاحة
+   price:  السعر (للوحات فقط). صفحات الهبوط سعرها ثابت في CONFIG.landingPrice
    img:    صورة العمل (للوحات)
-   logo:   شعار المشروع (للمواقع)
-   link:   رابط الموقع، و domain النص الظاهر تحت البطاقة
+   logo:   شعار المشروع (لصفحات الهبوط)
+   link:   رابط الصفحة، و domain النص الظاهر تحت البطاقة
+   صفحات الهبوط تحتاج فقط: cat, title, logo, link, domain
    ========================================================== */
 
 /* ملاحظات تظهر مرة واحدة في بداية كل قسم بدل تكرارها على كل بطاقة */
@@ -148,30 +152,41 @@ var THULUTH = { ar:"الثلث", en:"Thuluth" };
 var WORKS = [
   {
     cat:"calligraphy",
+    title:{ ar:"وظني فيك يا ربي جميل", en:"“My hope in You, my Lord, is beautiful”" },
+    script: DIWANI,
+    size:"A5",
+    price:"1650",
+    sold:true,
+    img:"assets/works/lawha-4.webp"
+  },
+  {
+    cat:"calligraphy",
     title:{ ar:"لوحة بإطار مزخرف ذهبي وأزرق", en:"Painting with a gold-and-blue ornamental border" },
     script: DIWANI,
-    price:"3500",
+    size:"A4",
+    price:"1900",
+    sold:true,
     img:"assets/works/lawha-1.webp"
   },
   {
     cat:"calligraphy",
     title:{ ar:"وأما بنعمة ربك فحدّث", en:"“And as for the favor of your Lord, proclaim it”" },
     script: DIWANI,
-    price:"3000",
+  
     img:"assets/works/lawha-2.webp"
   },
   {
     cat:"calligraphy",
     title:{ ar:"خديجة", en:"Khadija" },
     script: THULUTH,
-    price:"3500",
+    size:"A5",
+    price:"1200",
+    sold:true,
     img:"assets/works/lawha-3.webp"
   },
   {
     cat:"web",
     title:{ ar:"Rouqi", en:"Rouqi" },
-    desc:{ ar:"صفحة هبوط بتصميم هادئ.", en:"A landing page with a calm, minimal design." },
-    price:"6000",
     logo:"assets/works/rouqi-logo.webp",
     link:"https://maroua-mezhoud.github.io/rouqi/",
     domain:"maroua-mezhoud.github.io/rouqi"
@@ -179,25 +194,16 @@ var WORKS = [
   {
     cat:"web",
     title:{ ar:"Sugar Cube", en:"Sugar Cube" },
-    desc:{ ar:"صفحة هبوط لمشروع حلويات.", en:"A landing page for a sweets and bakery brand." },
-    price:"6000",
     logo:"assets/works/sugar-cube-logo.webp",
     link:"https://sugar-cube.netlify.app/",
     domain:"sugar-cube.netlify.app"
   },
   {
-    cat: "web",
-    title: {
-      ar: "Tasta Tarz",
-      en: "Tasta Tarz"
-    },
-    desc: {
-      ar: "موقع إلكتروني من تصميمي.",
-      en: "A website designed by me."
-    },
+    cat:"web",
+    title:{ ar:"Tasta Tarz", en:"Tasta Tarz" },
     logo:"assets/works/tasta-tarz-logo.webp",
-    link: "https://maroua-mezhoud.github.io/tasta.tarz/",
-    domain: "maroua-mezhoud.github.io/tasta.tarz"
+    link:"https://maroua-mezhoud.github.io/tasta.tarz/",
+    domain:"maroua-mezhoud.github.io/tasta.tarz"
   }
 
 ];
@@ -205,22 +211,22 @@ var WORKS = [
 /* ---------- نصوص الواجهة الديناميكية ---------- */
 var UI = {
   ar: {
-    all:"الكل",
+    all:"الكل", more:"عرض المزيد", cnt:{ calligraphy:"لوحة", web:"صفحة", print:"منتجًا" },
     cat:{ calligraphy:"خط عربي", design:"تصميم", web:"موقع" },
     catPlural:{ calligraphy:"خط عربي", design:"تصميم", web:"مواقع" },
     order:"اطلب اللوحة", orderWeb:"اطلب موقعًا مماثلًا", visit:"زيارة الموقع", currency:"دج",
-    scriptLabel:"نوع الخط: ", orderItem:"اطلب الآن", msgItem:"مرحبًا، أريد طلب: ", from:"من",
+    scriptLabel:"نوع الخط: ", sizeLabel:"المقاس: ", cm:"سم", sold:"تم البيع", fSize:"المقاس", fScript:"نوع الخط", fAvail:"المتاحة فقط", empty:"لا توجد لوحات بهذه المواصفات حاليًا.", reset:"إزالة التصفية", orderItem:"اطلب الآن", msgItem:"مرحبًا، أريد طلب: ", from:"من",
     msg:"مرحبًا، أريد طلب: ", msgWeb:"مرحبًا، أريد طلب موقع مماثل لـ: ",
-    wa:"واتساب", ig:"إنستغرام", mail:"البريد"
+    wa:"واتساب", ig:"إنستغرام", mail:"البريد", msgLanding:"مرحبًا، أريد طلب صفحة هبوط لمشروعي"
   },
   en: {
-    all:"All",
+    all:"All", more:"Show more", cnt:{ calligraphy:"paintings", web:"pages", print:"items" },
     cat:{ calligraphy:"Calligraphy", design:"Design", web:"Website" },
     catPlural:{ calligraphy:"Calligraphy", design:"Design", web:"Websites" },
     order:"Order this piece", orderWeb:"Order a similar site", visit:"Visit website", currency:"DZD",
-    scriptLabel:"Script: ", orderItem:"Order now", msgItem:"Hello, I would like to order: ", from:"From",
+    scriptLabel:"Script: ", sizeLabel:"Size: ", cm:"cm", sold:"Sold", fSize:"Size", fScript:"Script", fAvail:"Available only", empty:"No paintings match these filters right now.", reset:"Clear filters", orderItem:"Order now", msgItem:"Hello, I would like to order: ", from:"From",
     msg:"Hello, I would like to order: ", msgWeb:"Hello, I would like a website similar to: ",
-    wa:"WhatsApp", ig:"Instagram", mail:"Email"
+    wa:"WhatsApp", ig:"Instagram", mail:"Email", msgLanding:"Hello, I would like to order a landing page for my project"
   }
 };
 
@@ -230,6 +236,17 @@ var UI = {
 var EN = {
   title:"Riwaq Midad | Arabic Calligraphy, Design & Printing",
   desc:"Riwaq Midad: Arabic calligraphy, graphic design, printing and landing pages. Order a custom piece with a handmade touch and an elegant identity.",
+  back:"Back",
+  wi_t:"What is a landing page?",
+  wi_p1:"A landing page is a single, clean web page that introduces your project or product and leads visitors to one clear step: to order or get in touch.",
+  wi_p2:"Instead of a large, complicated website, you get a fast page that presents what you offer clearly, and is ideal to link from your Instagram profile or your ads.",
+  wi_l1:"Designed around your brand", wi_l2:"Mobile friendly", wi_l3:"Light and dark mode", wi_l4:"Unlimited additions for 15 days",
+  wi_pl:"Fixed price for any page", wi_order:"Order a landing page for your project",
+  wl_t:"Our work", wl_p:"Pages we have already built, live and approved.", hub_eyebrow:"Our work", hub_h2:'Browse our <span class="ruq">work</span> and print', hub_p:"Pick a section to see everything inside it, neatly in one place.",
+  hub_cal_t:"Arabic calligraphy paintings", hub_web_t:"Landing pages", hb_cal:"Handwritten paintings in authentic Arabic scripts.", hb_web:"Pages and sites designed for real projects.",
+  cal_h2:'<span class="ruq">Arabic calligraphy</span> paintings', web_h2:'<span class="ruq">Landing</span> pages', hb_open:"Open section",
+  hb_services:"Calligraphy, design, printing and websites.", hb_works:"Paintings and websites we have made.", hb_print:"Cards, bookmarks, giveaways and certificates.",
+  hb_process:"Four steps from idea to delivery.", hb_about:"The story of Riwaq Midad and what we believe in.", hb_contact:"Write to us and start your project.",
   n_services:"Services", n_print:"Print", n_works:"Works", n_process:"Process", n_about:"About", n_contact:"Contact", n_order:"Order now",
   h1:'Where <span class="ruq">Arabic letters</span> meet design',
   lead:"Handwritten Arabic calligraphy, design, printing and web pages, made with care to carry your name and taste.",
@@ -285,102 +302,135 @@ function priceFmt(p){ return String(p).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 /* ---------- معرض الأعمال ---------- */
 var currentFilter = 'all';
 
-function buildWorks(animate){
-  var grid = document.getElementById('works-grid');
-  var bar = document.getElementById('filters');
+/* صيغة العدد: «لوحتان»، «3 لوحات»، «12 لوحة» */
+var CNT_AR = { calligraphy:['لوحة','لوحتان','لوحات','لوحة'], web:['صفحة','صفحتان','صفحات','صفحة'], print:['منتج','منتجان','منتجات','منتجًا'] };
+function countText(n, c){
+  if(LANG === 'en') return n + ' ' + UI.en.cnt[c];
+  var f = CNT_AR[c];
+  if(n === 1) return f[0];
+  if(n === 2) return f[1];
+  return n + ' ' + (n <= 10 ? f[2] : f[3]);
+}
+var PAGE_SIZE = 9;                       /* عدد الأعمال المعروضة في كل دفعة */
+var WSTATE = {
+  calligraphy:{ shown:PAGE_SIZE, f:'all', s:'all', a:false },   /* f: نوع الخط، s: المقاس، a: المتاحة فقط */
+  web:{ shown:PAGE_SIZE, f:'all', s:'all', a:false }
+};
+var SIZES = { A5:"14.8 × 21", A4:"21 × 29.7" };
+
+function buildWorks(){
   var ui = UI[LANG];
   var arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 8V7H8"/></svg>';
-  var inCls = animate ? '' : ' in';
-  grid.innerHTML = '';
 
   function orderLink(w){
-    var name = w.title[LANG];
-    var msg = (w.cat === 'web' ? ui.msgWeb : ui.msg) + name;
-    if(CONFIG.whatsapp){
-      return 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(msg);
-    }
+    var msg = ui.msg + w.title[LANG];
+    if(CONFIG.whatsapp){ return 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(msg); }
     return 'https://ig.me/m/' + CONFIG.instagramUser;
   }
 
   function card(w){
-    var title = w.title[LANG], desc = w.desc && w.desc[LANG];
+    var title = w.title[LANG];
+    var isWeb = (w.cat === 'web');
     var el = document.createElement('article');
-    el.className = 'work reveal' + inCls;
+    el.className = 'work reveal in' + (w.sold ? ' is-sold' : '');
     el.dataset.cat = w.cat;
-
     var thumb = w.logo
       ? '<div class="thumb logo"><img src="'+w.logo+'" alt="'+title+'" loading="lazy"></div>'
       : '<div class="thumb art"><img src="'+w.img+'" alt="'+title+'" loading="lazy"></div>';
-    if(w.link){
-      thumb = '<a class="thumb-link" href="'+w.link+'" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">'+thumb+'</a>';
-    }
+    if(w.link){ thumb = '<a class="thumb-link" href="'+w.link+'" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">'+thumb+'</a>'; }
 
-    var script = w.script ? '<ul class="specs"><li>'+ui.scriptLabel+w.script[LANG]+'</li></ul>' : '';
+    var specs = '';
+    if(w.script) specs += '<li><span>'+ui.scriptLabel+w.script[LANG]+'</span></li>';
+    if(w.size)   specs += '<li><span>'+ui.sizeLabel+'<bdi dir="ltr">'+w.size+'</bdi>'+(SIZES[w.size] ? ' <span class="dim">(<bdi dir="ltr">'+SIZES[w.size]+'</bdi> '+ui.cm+')</span>' : '')+'</span></li>';
+    specs = specs ? '<ul class="specs">'+specs+'</ul>' : '';
 
-    var visit = '';
-    if(w.link){
-      visit = '<div class="visit"><a class="go" href="'+w.link+'" target="_blank" rel="noopener">'+ui.visit+' '+arrow+'</a>'+
-              (w.domain ? '<div class="domain">'+w.domain+'</div>' : '')+'</div>';
-    }
-
-    var buy = '';
-    if(w.price){
-      buy = '<div class="buy"><div class="price">'+priceFmt(w.price)+'<small>'+ui.currency+'</small></div>'+
-            '<a class="btn btn-primary btn-sm" target="_blank" rel="noopener" href="'+orderLink(w)+'">'+(w.cat === 'web' ? ui.orderWeb : ui.order)+'</a></div>';
-    }
-
-    el.innerHTML = thumb +
-      '<div class="meta"><small>'+ui.cat[w.cat]+'</small><h3>'+title+'</h3>'+
-      (desc ? '<p>'+desc+'</p>' : '') + script + visit + buy + '</div>';
+    var visit = w.link ? '<div class="visit"><a class="go" href="'+w.link+'" target="_blank" rel="noopener">'+ui.visit+' '+arrow+'</a>'+
+              (w.domain ? '<div class="domain">'+w.domain+'</div>' : '')+'</div>' : '';
+    var action = w.sold
+      ? '<span class="btn-sold" role="status">'+ui.sold+'</span>'
+      : '<a class="btn btn-primary btn-sm" target="_blank" rel="noopener" href="'+orderLink(w)+'">'+ui.order+'</a>';
+    var buy = (w.price && !isWeb) ? '<div class="buy"><div class="price">'+priceFmt(w.price)+'<small>'+ui.currency+'</small></div>'+action+'</div>' : '';
+    el.innerHTML = thumb + '<div class="meta"><h3>'+title+'</h3>'+specs+visit+buy+'</div>';
     return el;
   }
 
-  /* الأعمال تُجمع في أقسام، لكل قسم عنوانه وملاحظاته ومسافة تفصله عن غيره */
-  var cats = [];
-  WORKS.forEach(function(w){ if(cats.indexOf(w.cat) === -1) cats.push(w.cat); });
-
-  cats.forEach(function(c){
-    var g = GROUPS[c] || {};
-    var sec = document.createElement('div');
-    sec.className = 'group';
-    sec.dataset.cat = c;
-    if(currentFilter !== 'all' && currentFilter !== c) sec.classList.add('hide');
-
-    var head = document.createElement('div');
-    head.className = 'group-head reveal' + inCls;
-    var notes = (g.notes && g.notes[LANG]) ? g.notes[LANG] : [];
-    head.innerHTML = '<h3>' + (g.title ? g.title[LANG] : ui.catPlural[c]) + '</h3>' +
-      (notes.length ? '<ul class="notes">' + notes.map(function(n){ return '<li>'+n+'</li>'; }).join('') + '</ul>' : '');
-    sec.appendChild(head);
-
-    var cards = document.createElement('div');
-    cards.className = 'group-grid';
-    WORKS.forEach(function(w){ if(w.cat === c) cards.appendChild(card(w)); });
-    sec.appendChild(cards);
-    grid.appendChild(sec);
-  });
-
-  /* أزرار التصفية تُبنى من الأقسام الموجودة فعلًا */
-  bar.setAttribute('aria-label', ARIA[LANG].filters);
-  if(cats.length < 2){
-    bar.hidden = true;
-    return;
+  function chips(group, values, current, label){
+    var h = '<button class="filter'+(current==='all'?' active':'')+'" data-g="'+group+'" data-v="all" type="button">'+ui.all+'</button>';
+    values.forEach(function(v){
+      h += '<button class="filter'+(current===v.key?' active':'')+'" data-g="'+group+'" data-v="'+v.key+'" type="button">'+v.label+'</button>';
+    });
+    return '<div class="fgroup"><span class="flabel">'+label+'</span><div class="fchips">'+h+'</div></div>';
   }
-  bar.hidden = false;
-  var html = '<button class="filter'+(currentFilter==='all'?' active':'')+'" data-f="all" type="button">'+ui.all+'</button>';
-  cats.forEach(function(c){
-    html += '<button class="filter'+(currentFilter===c?' active':'')+'" data-f="'+c+'" type="button">'+ui.catPlural[c]+'</button>';
-  });
-  bar.innerHTML = html;
-  bar.querySelectorAll('.filter').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      currentFilter = btn.dataset.f;
-      bar.querySelectorAll('.filter').forEach(function(b){ b.classList.toggle('active', b === btn); });
-      grid.querySelectorAll('.group').forEach(function(sec){
-        sec.classList.toggle('hide', currentFilter !== 'all' && sec.dataset.cat !== currentFilter);
+
+  /* كل فئة لها صفحتها: ملاحظات، تصفية (المقاس ونوع الخط والمتاحة)، شبكة، وزر «عرض المزيد» */
+  ['calligraphy','web'].forEach(function(c){
+    var st = WSTATE[c];
+    var grid = document.getElementById('grid-'+c), bar = document.getElementById('filters-'+c);
+    var more = document.getElementById('more-'+c), notesEl = document.getElementById('notes-'+c);
+    if(!grid) return;
+    var all = WORKS.filter(function(w){ return w.cat === c; });
+    var g = GROUPS[c] || {};
+    if(notesEl) notesEl.innerHTML = ((g.notes && g.notes[LANG]) || []).map(function(n){ return '<li>'+n+'</li>'; }).join('');
+
+    /* القيم الموجودة فعلًا في الأعمال */
+    var sizes = [], scripts = [];
+    all.forEach(function(w){
+      if(w.size && !sizes.some(function(v){ return v.key === w.size; })) sizes.push({ key:w.size, label:w.size });
+      if(w.script && !scripts.some(function(v){ return v.key === w.script.ar; })) scripts.push({ key:w.script.ar, label:w.script[LANG] });
+    });
+    sizes.sort(function(a, b){ return parseInt(b.key.slice(1), 10) - parseInt(a.key.slice(1), 10); });   /* A5 قبل A4 */
+    var canAvail = all.some(function(w){ return w.sold; }) && all.some(function(w){ return !w.sold; });
+
+    var html = '';
+    if(sizes.length > 1)   html += chips('s', sizes, st.s, ui.fSize);
+    if(scripts.length > 1) html += chips('f', scripts, st.f, ui.fScript);
+    if(canAvail) html += '<div class="fgroup"><button class="filter avail'+(st.a?' active':'')+'" data-g="a" data-v="1" type="button" aria-pressed="'+st.a+'">'+ui.fAvail+'</button></div>';
+    bar.hidden = !html;
+    bar.innerHTML = html;
+    bar.querySelectorAll('.filter').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var gr = btn.dataset.g;
+        if(gr === 'a'){ st.a = !st.a; } else { st[gr] = btn.dataset.v; }
+        st.shown = PAGE_SIZE; buildWorks();
       });
     });
+
+    var list = all.filter(function(w){
+      return (st.f === 'all' || (w.script && w.script.ar === st.f)) &&
+             (st.s === 'all' || w.size === st.s) &&
+             (!st.a || !w.sold);
+    }).map(function(w, i){ return { w:w, i:i }; })
+      .sort(function(x, y){ return ((x.w.sold ? 1 : 0) - (y.w.sold ? 1 : 0)) || (x.i - y.i); })   /* المتاحة أولًا */
+      .map(function(o){ return o.w; });
+
+    grid.innerHTML = '';
+    if(!list.length){
+      grid.innerHTML = '<div class="empty"><p>'+ui.empty+'</p><button class="btn btn-ghost btn-sm" type="button">'+ui.reset+'</button></div>';
+      grid.querySelector('button').addEventListener('click', function(){ st.f = 'all'; st.s = 'all'; st.a = false; st.shown = PAGE_SIZE; buildWorks(); });
+    } else {
+      list.slice(0, st.shown).forEach(function(w){ grid.appendChild(card(w)); });
+    }
+
+    var left = list.length - st.shown;
+    more.hidden = left <= 0;
+    if(left > 0){
+      more.textContent = ui.more + ' (' + left + ')';
+      more.onclick = function(){ st.shown += PAGE_SIZE; buildWorks(); };
+    }
+    var cnt = document.getElementById('count-'+c);
+    if(cnt) cnt.textContent = countText(all.length, c);
   });
+
+  var wp = document.getElementById('web-price');
+  if(wp){
+    wp.textContent = priceFmt(CONFIG.landingPrice);
+    document.getElementById('web-cur').textContent = ui.currency;
+    document.getElementById('web-order').href = CONFIG.whatsapp
+      ? 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(ui.msgLanding)
+      : 'https://ig.me/m/' + CONFIG.instagramUser;
+  }
+  var pc = document.getElementById('count-print');
+  if(pc) pc.textContent = countText(CATALOG.length, 'print');
 }
 
 
@@ -638,3 +688,107 @@ document.addEventListener('click', function(e){
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();
+
+
+/* ---------- المعارض والمطبوعات كصفحات مستقلة (تنقّل بالرابط #) ---------- */
+(function(){
+  var pages = document.querySelectorAll('.page');
+  var navLinks = document.querySelectorAll('#links a');
+  var first = true, userMoved = false;
+  ['wheel','touchstart','keydown'].forEach(function(ev){ window.addEventListener(ev, function(){ userMoved = true; }, { passive:true, once:true }); });
+  function route(){
+    var id = decodeURIComponent((location.hash || '').slice(1));
+    var sub = null;
+    if(id.indexOf('g-') === 0){ sub = id; id = 'print'; }
+    var target = null;
+    pages.forEach(function(p){ var on = p.id === id; p.classList.toggle('active', on); if(on) target = p; });
+    document.body.classList.toggle('in-page', !!target);
+    navLinks.forEach(function(a){ a.classList.toggle('current', !!target && a.getAttribute('href') === '#' + id); });
+    var ddb = document.getElementById('dd-btn'); if(ddb) ddb.classList.toggle('current', !!target);
+    var el = sub ? document.getElementById(sub) : (!target && id && id !== 'top' ? document.getElementById(id) : null);
+    if(el){ el.scrollIntoView({ behavior: first ? 'auto' : 'smooth', block:'start' }); }
+    else { window.scrollTo({ top:0, behavior:'instant' }); }
+    first = false;
+  }
+  /* بعد تحميل الصور والخطوط يتغير ارتفاع الصفحة: نعيد الانتقال إلى القسم المطلوب إن لم يتحرك الزائر */
+  function settle(){
+    var id = decodeURIComponent((location.hash || '').slice(1));
+    var el = id && id !== 'top' && !document.body.classList.contains('in-page') ? document.getElementById(id) : null;
+    if(el && !userMoved) el.scrollIntoView({ behavior:'auto', block:'start' });
+  }
+  window.addEventListener('load', settle);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(settle);
+  window.addEventListener('hashchange', route);
+  route();
+})();
+
+
+/* ---------- الشريط العلوي: القائمة المنسدلة، التمييز، ظهور الشعار الصغير ---------- */
+(function(){
+  var nav = document.querySelector('.nav'), logo = document.querySelector('.hero-logo');
+  var dd = document.getElementById('dd'), ddb = document.getElementById('dd-btn');
+  var links = document.querySelectorAll('#links a');
+  var ids = ['services','showcase','process','about','contact'];
+  var endY = 0, navH = 68;
+
+  /* القائمة المنسدلة */
+  function closeDD(){ dd.classList.remove('open'); ddb.setAttribute('aria-expanded','false'); }
+  ddb.addEventListener('click', function(e){
+    e.stopPropagation();
+    var o = dd.classList.toggle('open'); ddb.setAttribute('aria-expanded', o);
+  });
+  document.addEventListener('click', function(e){ if(!dd.contains(e.target)) closeDD(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeDD(); });
+  dd.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeDD); });
+
+  function pageTop(el){ var t = 0; while(el){ t += el.offsetTop; el = el.offsetParent; } return t; }   /* لا تتأثر بالتحويلات */
+  function measure(){ navH = nav.offsetHeight; endY = Math.max(120, pageTop(logo) + logo.offsetHeight * .8 - navH); }
+
+  function update(){
+    var inPage = document.body.classList.contains('in-page');
+    var y = window.scrollY;
+    var p = inPage ? 1 : Math.min(1, Math.max(0, y / endY));
+    /* الشعار الكبير يصغر ويخفت، والصغير يظهر في الشريط */
+    if(!REDUCED) logo.style.setProperty('--sp', inPage ? 0 : p.toFixed(3));
+    var bp = Math.min(1, Math.max(0, (p - .62) / .38));
+    nav.style.setProperty('--bp', bp.toFixed(3));
+    nav.classList.toggle('brand-off', bp < .5);
+    nav.classList.toggle('at-top', !inPage && y < 12);
+    if(inPage) return;
+    /* تمييز القسم الحالي أثناء التمرير */
+    var active = null, line = navH + 90;
+    ids.forEach(function(id){ var el = document.getElementById(id); if(el && el.getBoundingClientRect().top <= line) active = id; });
+    links.forEach(function(a){ a.classList.toggle('current', active !== null && a.getAttribute('href') === '#' + active); });
+    ddb.classList.toggle('current', active === 'showcase');
+  }
+  var tick = false;
+  window.addEventListener('scroll', function(){ if(!tick){ tick = true; requestAnimationFrame(function(){ update(); tick = false; }); } }, { passive:true });
+  window.addEventListener('resize', function(){ measure(); update(); });
+  window.addEventListener('hashchange', function(){ setTimeout(function(){ measure(); update(); }, 0); });
+  window.addEventListener('load', function(){ measure(); update(); });
+  measure(); update();
+})();
+
+/* ---------- الشعار: ميل خفيف ووهج يتبعان المؤشر (الحاسوب فقط) ---------- */
+(function(){
+  if(REDUCED || !window.matchMedia || !matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  var hero = document.querySelector('.hero'), logo = hero && hero.querySelector('.hero-logo');
+  if(!logo) return;
+  hero.addEventListener('pointermove', function(e){
+    var r = hero.getBoundingClientRect();
+    var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    hero.style.setProperty('--gx', (x * 100).toFixed(1) + '%');
+    hero.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
+    logo.style.transform = 'perspective(1000px) rotateY(' + ((x - .5) * 9).toFixed(2) + 'deg) rotateX(' + (-(y - .5) * 7).toFixed(2) + 'deg)';
+  }, { passive:true });
+  hero.addEventListener('pointerleave', function(){
+    logo.style.transform = '';
+    hero.style.removeProperty('--gx'); hero.style.removeProperty('--gy');
+  });
+})();
+
+
+/* نص الواجهة يظهر بعد انتهاء كتابة الشعار */
+(function(){
+  document.querySelectorAll('.hero .reveal').forEach(function(el, i){ el.style.setProperty('--d', (2.2 + i * .12).toFixed(2) + 's'); });
+})();

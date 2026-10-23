@@ -40,8 +40,17 @@
     </a>
     <nav class="links" id="links" aria-label="التنقل الرئيسي">
       <a href="#services" data-i18n="n_services">الخدمات</a>
-      <a href="#works" data-i18n="n_works">الأعمال</a>
-      <a href="#print" data-i18n="n_print">المطبوعات</a>
+      <div class="dd" id="dd">
+        <button class="dd-btn" id="dd-btn" type="button" aria-haspopup="true" aria-expanded="false">
+          <span data-i18n="n_works">الأعمال</span>
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="dd-menu" role="menu">
+          <a href="#calligraphy" role="menuitem" data-i18n="hub_cal_t">لوحات الخط العربي</a>
+          <a href="#websites" role="menuitem" data-i18n="hub_web_t">صفحات الهبوط</a>
+          <a href="#print" role="menuitem" data-i18n="n_print">المطبوعات</a>
+        </div>
+      </div>
       <a href="#process" data-i18n="n_process">طريقة العمل</a>
       <a href="#about" data-i18n="n_about">من نحن</a>
       <a href="#contact" data-i18n="n_contact">تواصل</a>
@@ -63,13 +72,13 @@
 <main id="top">
 
 <!-- ============ البطل ============ -->
-<section class="hero">
+<section class="hero home">
   <div class="wrap">
-    <div class="hero-logo reveal">
+    <div class="hero-logo">
       <img class="l-light" src="assets/wordmark-light.webp" alt="شعار رواق مداد · Riwaq Midad" width="1000" height="582" fetchpriority="high">
       <img class="l-dark" src="assets/wordmark-dark.webp" alt="" width="1000" height="582">
     </div>
-    <div class="hero-name reveal">
+    <div class="hero-name">
       <span class="latin">RIWAQ MIDAD</span>
       <span class="ar">رواق مداد</span>
     </div>
@@ -77,7 +86,7 @@
     <p class="lead reveal" data-i18n="lead">خط عربي بخط اليد، وتصاميم وطباعة وصفحات إلكترونية، تُنجز بعناية لتحمل اسمك وذوقك.</p>
     <div class="cta reveal">
       <a class="btn btn-primary" href="#contact" data-i18n="cta1">ابدأ مشروعك</a>
-      <a class="btn btn-ghost" href="#works" data-i18n="cta2">شاهد الأعمال</a>
+      <a class="btn btn-ghost" href="#showcase" data-i18n="cta2">شاهد الأعمال</a>
     </div>
     <div class="chips reveal">
       <span class="chip" data-i18n="chip1">خط عربي</span>
@@ -88,10 +97,10 @@
   </div>
 </section>
 
-<div class="marquee" aria-hidden="true"><div class="track" id="marquee-track"></div></div>
+<div class="marquee home" aria-hidden="true"><div class="track" id="marquee-track"></div></div>
 
 <!-- ============ الخدمات ============ -->
-<section class="block" id="services">
+<section class="block home" id="services">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow" data-i18n="s_eyebrow">ماذا نقدّم</span>
@@ -148,21 +157,94 @@
   </div>
 </section>
 
-<!-- ============ الأعمال ============ -->
-<section class="block alt" id="works">
+<!-- ============ الأعمال والمطبوعات (بطاقات الدخول) ============ -->
+<section class="block alt home" id="showcase">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow" data-i18n="w_eyebrow">معرض الأعمال</span>
-      <h2 data-i18n="w_h2">بعض <span class="ruq">ما أنجزناه</span></h2>
+      <span class="eyebrow" data-i18n="hub_eyebrow">أعمالنا</span>
+      <h2 data-i18n="hub_h2">تصفّح <span class="ruq">الأعمال</span> والمطبوعات</h2>
+      <p data-i18n="hub_p">اختر القسم لترى كل ما فيه مرتبًا في مكانه.</p>
     </div>
-    <div class="filters reveal" id="filters" role="tablist" aria-label="تصفية الأعمال"></div>
-    <div class="works" id="works-grid"></div>
+    <div class="hub">
+      <a class="card hub-card reveal" href="#calligraphy">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M20.5 3.5c-5 .3-9 3.2-11.5 8.5l-1.5 4 4-1.5c5.3-2.5 8.2-6.5 9-11z"/><path d="M5 20c2-1 3.5-2.5 4.5-4.5"/></svg></div>
+        <h3 data-i18n="hub_cal_t">لوحات الخط العربي</h3>
+        <p data-i18n="hb_cal">لوحات بخط اليد بأنماط عربية أصيلة.</p><span class="count" id="count-calligraphy"></span>
+        <span class="open" data-i18n="hb_open">افتح القسم</span>
+      </a>
+      <a class="card hub-card reveal" href="#websites">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/><path d="M9 10l-2 2 2 2M15 10l2 2-2 2"/></svg></div>
+        <h3 data-i18n="hub_web_t">صفحات الهبوط</h3>
+        <p data-i18n="hb_web">صفحات ومواقع صُمّمت لمشاريع حقيقية.</p><span class="count" id="count-web"></span>
+        <span class="open" data-i18n="hb_open">افتح القسم</span>
+      </a>
+      <a class="card hub-card reveal" href="#print">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><rect x="7" y="14" width="10" height="7"/></svg></div>
+        <h3 data-i18n="n_print">المطبوعات</h3>
+        <p data-i18n="hb_print">بطاقات وفواصل وتوزيعات وشهادات.</p><span class="count" id="count-print"></span>
+        <span class="open" data-i18n="hb_open">افتح القسم</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ calligraphy ============ -->
+<section class="block page" id="calligraphy">
+  <div class="wrap">
+    <div class="page-bar"><a class="back" href="#showcase"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><a href="#showcase" data-i18n="n_works">الأعمال</a><i></i><span data-i18n="hub_cal_t">لوحات الخط العربي</span></nav></div>
+    <div class="section-head reveal in">
+      <span class="eyebrow" data-i18n="w_eyebrow">معرض الأعمال</span>
+      <h2 data-i18n="cal_h2">لوحات <span class="ruq">الخط العربي</span></h2>
+      <ul class="notes" id="notes-calligraphy"></ul>
+    </div>
+    <div class="filters" id="filters-calligraphy" hidden></div>
+    <div class="group-grid" id="grid-calligraphy"></div>
+    <div class="more-wrap"><button class="btn btn-ghost" id="more-calligraphy" type="button" hidden></button></div>
+  </div>
+</section>
+
+<!-- ============ websites ============ -->
+<section class="block page" id="websites">
+  <div class="wrap">
+    <div class="page-bar"><a class="back" href="#showcase"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><a href="#showcase" data-i18n="n_works">الأعمال</a><i></i><span data-i18n="hub_web_t">صفحات الهبوط</span></nav></div>
+    <div class="section-head reveal in">
+      <span class="eyebrow" data-i18n="w_eyebrow">معرض الأعمال</span>
+      <h2 data-i18n="web_h2">صفحات <span class="ruq">الهبوط</span></h2>
+    </div>
+
+    <div class="web-intro">
+      <div class="wi-text">
+        <h3 data-i18n="wi_t">ما هي صفحة الهبوط؟</h3>
+        <p data-i18n="wi_p1">صفحة الهبوط (Landing Page) صفحة إلكترونية واحدة، أنيقة ومرتبة، تعرّف بمشروعك أو منتجك وتقود زائرها إلى خطوة واحدة واضحة: أن يطلب أو يتواصل معك.</p>
+        <p data-i18n="wi_p2">بدل موقع كبير ومعقّد، تحصل على صفحة سريعة تعرض ما تقدّمه بوضوح، وتناسب أن تضع رابطها في حسابك على إنستغرام أو في إعلاناتك.</p>
+        <ul class="wi-list">
+          <li data-i18n="wi_l1">تصميم خاص بهوية مشروعك</li>
+          <li data-i18n="wi_l2">متوافقة مع الجوال</li>
+          <li data-i18n="wi_l3">وضع فاتح وداكن</li>
+          <li data-i18n="wi_l4">إضافات غير محدودة لمدة 15 يومًا</li>
+        </ul>
+      </div>
+      <div class="wi-price">
+        <span class="lbl" data-i18n="wi_pl">سعر ثابت لأي صفحة</span>
+        <div class="num"><span id="web-price"></span><small id="web-cur"></small></div>
+        <a class="btn btn-primary" id="web-order" target="_blank" rel="noopener" href="#" data-i18n="wi_order">اطلب صفحة هبوط لمشروعك</a>
+      </div>
+    </div>
+
+    <div class="works-label">
+      <h3 data-i18n="wl_t">من أعمالنا</h3>
+      <p data-i18n="wl_p">صفحات أنجزناها بالفعل، وهي منشورة ومعتمدة.</p>
+    </div>
+    <div class="filters" id="filters-web" hidden></div>
+    <div class="group-grid" id="grid-web"></div>
+    <div class="more-wrap"><button class="btn btn-ghost" id="more-web" type="button" hidden></button></div>
   </div>
 </section>
 
 <!-- ============ المطبوعات ============ -->
-<section class="block" id="print">
+<section class="block page" id="print">
   <div class="wrap">
+    <div class="page-bar"><a class="back" href="#showcase"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><a href="#showcase" data-i18n="n_works">الأعمال</a><i></i><span data-i18n="n_print">المطبوعات</span></nav></div>
     <div class="section-head reveal">
       <span class="eyebrow" data-i18n="k_eyebrow">المطبوعات والتصاميم</span>
       <h2 data-i18n="k_h2">كل ما <span class="ruq">تحتاجه</span> للطباعة والتصميم</h2>
@@ -174,7 +256,7 @@
 </section>
 
 <!-- ============ طريقة العمل ============ -->
-<section class="block alt" id="process">
+<section class="block home alt" id="process">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow" data-i18n="p_eyebrow">كيف نعمل</span>
@@ -190,7 +272,7 @@
 </section>
 
 <!-- ============ عن الرواق ============ -->
-<section class="block" id="about">
+<section class="block home" id="about">
   <div class="wrap about">
     <div class="pic reveal">
       <img class="p-light" src="assets/profile-light.webp" alt="رواق مداد" width="800" height="800" loading="lazy">
@@ -209,7 +291,7 @@
 </section>
 
 <!-- ============ تواصل ============ -->
-<section class="block alt" id="contact">
+<section class="block home alt" id="contact">
   <div class="wrap">
     <div class="contact reveal">
       <span class="eyebrow" data-i18n="c_eyebrow">تواصل معنا</span>

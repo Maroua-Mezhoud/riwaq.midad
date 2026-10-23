@@ -533,3 +533,174 @@ html[dir="ltr"] .step:not(:last-child)::after{transform-origin:left}
   .pills{margin-bottom:40px}
   .marquee span{font-size:1.15rem}
 }
+
+
+/* ==========================================================
+   الأقسام كصفحات مستقلة
+   ========================================================== */
+.hub{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.hub-card{display:flex;flex-direction:column;gap:6px;cursor:pointer}
+.hub-card h3{font-size:1.5rem}
+.hub-card p{color:var(--ink-soft);flex:1}
+.hub-card .open{margin-top:10px;color:var(--gold);font-weight:700;display:inline-flex;align-items:center;gap:8px}
+.hub-card .open::after{content:"\2190";transition:transform .3s}
+html[dir="ltr"] .hub-card .open::after{content:"\2192"}
+.hub-card:hover .open::after{transform:translateX(-5px)}
+html[dir="ltr"] .hub-card:hover .open::after{transform:translateX(5px)}
+
+.page{display:none;padding-top:28px;min-height:70vh}
+.page.active{display:block;animation:pgIn .5s ease both}
+@keyframes pgIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+body.in-page .home{display:none}
+.page-bar{margin-bottom:28px}
+.back{
+  display:inline-flex;align-items:center;gap:8px;padding:7px 18px 7px 14px;border:1px solid var(--line);
+  border-radius:999px;color:var(--ink-soft);transition:border-color .25s,color .25s,background .25s
+}
+.back:hover{border-color:var(--gold);color:var(--ink);background:color-mix(in srgb,var(--gold) 10%,transparent)}
+.back svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+html[dir="ltr"] .back svg{transform:scaleX(-1)}
+.links a.current{color:var(--ink)}
+.links a.current::after{transform:scaleX(1)}
+@media (max-width:980px){.hub{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.hub{grid-template-columns:1fr}}
+
+.hub-card .count{color:var(--ink-soft);font-size:.95rem;opacity:.85}
+.hub-card .count:empty{display:none}
+.page .section-head .notes{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;color:var(--ink-soft);margin-top:10px}
+.more-wrap{display:flex;justify-content:center;margin-top:36px}
+.more-wrap[hidden],.more-wrap button[hidden]{display:none}
+
+/* ------- صفحة الهبوط: التعريف والسعر ------- */
+.web-intro{
+  display:grid;grid-template-columns:1.6fr 1fr;gap:28px;align-items:stretch;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:34px 32px;margin-bottom:56px;
+  box-shadow:var(--shadow)
+}
+.wi-text h3{font-size:1.6rem;margin-bottom:6px}
+.wi-text p{color:var(--ink-soft);margin-bottom:8px}
+.wi-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 22px;margin-top:14px}
+.wi-list li{position:relative;padding-inline-start:20px}
+.wi-list li::before{content:"";position:absolute;inset-inline-start:0;top:.9em;width:8px;height:8px;background:var(--gold);transform:rotate(45deg)}
+.wi-price{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;
+  border:1px dashed var(--line);border-radius:calc(var(--r) - 4px);padding:24px 18px;background:color-mix(in srgb,var(--gold) 6%,transparent)
+}
+.wi-price .lbl{color:var(--ink-soft)}
+.wi-price .num{font-family:var(--font-head);font-weight:700;font-size:2.8rem;line-height:1.2;color:var(--gold-strong)}
+.wi-price .num small{font-size:1.05rem;margin-inline-start:6px;color:var(--ink-soft);font-weight:400}
+.works-label{text-align:center;margin-bottom:30px}
+.works-label h3{font-size:1.9rem}
+.works-label h3::after{content:"";display:block;width:60px;height:1px;background:var(--gold);margin:6px auto 0}
+.works-label p{color:var(--ink-soft)}
+@media (max-width:860px){.web-intro{grid-template-columns:1fr;padding:26px 20px}.wi-list{grid-template-columns:1fr}}
+
+
+/* ==========================================================
+   الشريط العلوي: قائمة الأعمال، الشفافية في الأعلى، تمييز المكان
+   ========================================================== */
+.nav{transition:background .4s,border-color .4s,box-shadow .35s}
+.nav.at-top{background:transparent;border-bottom-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+.nav .brand{opacity:var(--bp,1);translate:0 calc((1 - var(--bp,1)) * 8px);scale:calc(.88 + .12 * var(--bp,1))}
+.nav.brand-off .brand{pointer-events:none}
+.links a.current,.dd-btn.current{color:var(--ink)}
+.links a.current::after,.dd-btn.current::after{transform:scaleX(1)}
+
+.dd{position:relative}
+.dd-btn{
+  background:none;border:0;font:inherit;color:var(--ink-soft);cursor:pointer;position:relative;
+  display:inline-flex;align-items:center;gap:6px;padding:4px 0;transition:color .25s
+}
+.dd-btn::after{content:"";position:absolute;inset-inline:0;bottom:-2px;height:1px;background:var(--gold);transform:scaleX(0);transition:transform .3s}
+.dd-btn:hover{color:var(--ink)}
+.dd-btn:hover::after{transform:scaleX(1)}
+.dd-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s}
+.dd.open .dd-btn svg{transform:rotate(180deg)}
+.dd-menu{
+  position:absolute;top:calc(100% + 14px);left:50%;min-width:230px;padding:8px;z-index:60;
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translate(-50%,8px);transition:opacity .25s,transform .25s,visibility .25s
+}
+.dd-menu::before{content:"";position:absolute;inset-inline:0;top:-16px;height:16px}
+.dd.open .dd-menu{opacity:1;visibility:visible;transform:translate(-50%,0)}
+@media (hover:hover){.dd:hover .dd-menu{opacity:1;visibility:visible;transform:translate(-50%,0)}.dd:hover .dd-btn svg{transform:rotate(180deg)}}
+.dd-menu a{display:block;padding:10px 14px;border-radius:12px;color:var(--ink-soft);white-space:nowrap}
+.dd-menu a::after{display:none}
+.dd-menu a:hover{background:color-mix(in srgb,var(--gold) 12%,transparent);color:var(--ink)}
+.dd-menu a.current{color:var(--gold-strong);background:color-mix(in srgb,var(--gold) 10%,transparent)}
+@media (max-width:760px){
+  .dd-btn{width:100%;justify-content:space-between;padding:12px 0;border-bottom:1px dashed var(--line)}
+  .dd-menu{position:static;min-width:0;padding:0 12px;border:0;box-shadow:none;background:transparent;opacity:1;visibility:visible;transform:none;display:none}
+  .dd-menu::before{display:none}
+  .dd.open .dd-menu{display:block;transform:none}
+  @media (hover:hover){.dd:hover .dd-menu{transform:none}}
+}
+
+/* مسار التنقل في الصفحات الداخلية */
+.page-bar{display:flex;align-items:center;flex-wrap:wrap;gap:14px}
+.crumb{display:inline-flex;align-items:center;gap:10px;color:var(--ink-soft);font-size:.98rem}
+.crumb a:hover{color:var(--gold-strong)}
+.crumb i::before{content:"\2039";color:var(--gold)}
+html[dir="ltr"] .crumb i::before{content:"\203A"}
+.crumb span{color:var(--ink)}
+
+/* ==========================================================
+   الشعار: كتابة بالحبر، تفاعل مع المؤشر، وانتقال إلى الشريط
+   ========================================================== */
+@property --p{syntax:'<number>';inherits:false;initial-value:140}
+.hero-logo{
+  transition:transform .35s ease-out;
+  scale:calc(1 - var(--sp,0) * .28);opacity:calc(1 - var(--sp,0) * 1.05);
+  transform-origin:50% 60%
+}
+.hero-logo img{
+  --p:140;
+  -webkit-mask-image:linear-gradient(to left,#000 calc(var(--p) * 1% - 14%),transparent calc(var(--p) * 1%));
+          mask-image:linear-gradient(to left,#000 calc(var(--p) * 1% - 14%),transparent calc(var(--p) * 1%));
+  animation:ink 2s cubic-bezier(.5,.05,.25,1) .25s both
+}
+@keyframes ink{from{--p:0}to{--p:140}}
+/* بعد الشعار: الخط الذهبي ثم الاسم اللاتيني ثم العربي */
+.hero-name::before{animation:grow 1s 1.9s both cubic-bezier(.2,.7,.2,1)}
+.hero-name .latin{animation:track 1.5s 2.2s both cubic-bezier(.2,.7,.2,1)}
+.hero-name .ar{animation:rise 1s 2.6s both cubic-bezier(.2,.7,.2,1)}
+@keyframes track{from{opacity:0;letter-spacing:1.1em}to{opacity:1}}
+@keyframes rise{from{opacity:0;translate:0 12px}to{opacity:1;translate:0 0}}
+/* وهج يتبع المؤشر خلف الشعار */
+.hero::after{
+  content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;
+  background:radial-gradient(circle 360px at var(--gx,50%) var(--gy,34%),var(--glow),transparent 70%);
+  transition:background-position .2s
+}
+@media (prefers-reduced-motion:reduce){
+  .hero-logo img{animation:none !important;-webkit-mask:none;mask:none}
+  .hero-name::before,.hero-name .latin,.hero-name .ar{animation:none !important}
+  .hero-logo{scale:none;opacity:1}
+}
+
+
+/* ==========================================================
+   لوحات الخط: التصفية، «تم البيع»، الحالة الفارغة
+   ========================================================== */
+.filters{flex-direction:column;align-items:center;gap:14px}
+.fgroup{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px 14px}
+.flabel{color:var(--ink-soft);min-width:70px}
+.fchips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.filter{min-height:42px;padding-block:6px}
+.filter:focus-visible,.btn-sold:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+.btn-sold{
+  display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;cursor:default;user-select:none;
+  padding:7px 22px;border-radius:999px;background:#b3261e;color:#fff;font-size:.95rem;font-weight:700;
+  font-family:var(--font-body);line-height:1.6
+}
+:root[data-theme="dark"] .btn-sold{background:#c0392b}
+.work.is-sold .price{color:var(--ink-soft)}
+.specs .dim{color:var(--ink-soft);opacity:.85}
+
+.empty{width:100%;text-align:center;padding:48px 16px;color:var(--ink-soft);display:flex;flex-direction:column;align-items:center;gap:16px}
+@media (max-width:560px){
+  .fgroup{flex-direction:column;gap:8px}
+  .filters{margin-bottom:26px}
+  .buy{flex-wrap:wrap}
+}
