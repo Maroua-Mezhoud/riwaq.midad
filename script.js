@@ -162,6 +162,7 @@ var WORKS = [
     script: DIWANI,
     size:"A5",
     price:"1650",
+    sold:true,
     img:"assets/works/lawha-4.webp"
   },
   {
