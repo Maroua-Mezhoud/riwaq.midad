@@ -7,7 +7,7 @@ var CONFIG = {
   instagram: "https://www.instagram.com/riwaq.midad/",
   instagramUser: "riwaq.midad",
   whatsapp: "213674026632",   // رقمك بصيغة دولية بدون + مثل 213550000000 (اتركه فارغًا لإخفاء الزر)
-  email: ""       // بريدك (اتركه فارغًا لإخفاء الزر)
+  email: "riwaq.midad@gmail.com"       // بريدك (اتركه فارغًا لإخفاء الزر)
 };
 
 /* ==========================================================
@@ -40,11 +40,6 @@ var GROUPS = {
   }
 };
 
-
-var MARQ = {
-  ar:["الخط العربي","التصميم الغرافيكي","بطاقات الأعمال","فواصل الكتب","المطبوعات","التوزيعات","الشهادات","صفحات الهبوط"],
-  en:["Arabic calligraphy","Graphic design","Business cards","Bookmarks","Print design","Favors","Certificates","Landing pages"]
-};
 
 var DIWANI = { ar:"الديواني", en:"Diwani" };
 var THULUTH = { ar:"الثلث", en:"Thuluth" };
@@ -127,9 +122,9 @@ var UI = {
    الترجمة: الإنجليزية هنا، أما العربية فتُقرأ من الصفحة نفسها
    ========================================================== */
 var EN = {
-  title:"Riwaq Midad | Portfolio: Arabic Calligraphy & Design",
-  desc:"Riwaq Midad: a portfolio of Arabic calligraphy, graphic design, print design and landing pages.",
-  back:"Back", skip:"Skip to content",
+  title:"Riwaq Midad | Learn Arabic Calligraphy",
+  desc:"Riwaq Midad: Arabic calligraphy lessons, practice sheets and visual guides, from the first letter to mastering the hand, alongside handwritten paintings.",
+  cr_pre:"Design, code, development, content and calligraphy by", cr_name:"Maroua Mezhoud", back:"Back", skip:"Skip to content",
   co_t:"About the paintings",
   co_p:"The paintings are written by hand in ink on ornamental paper, in the Diwani and Thuluth scripts. Each one is a single piece that is never repeated.",
   co_l1:"Handwritten in ink on ornamental paper", co_l2:"Verses, poetry, names and dedications", co_l3:"Scripts: Diwani and Thuluth", co_l4:"One unique piece",
@@ -143,10 +138,10 @@ var EN = {
   hb_services:"Calligraphy, design, print design and websites.", hb_works:"Paintings and websites I have made.", hb_print:"Cards, bookmarks, giveaways and certificates.",
   hb_process:"From idea to finished work.", hb_about:"The story of Riwaq Midad and what I believe in.", hb_contact:"Get in touch.",
   n_services:"Fields", n_print:"Print", n_works:"Works", n_process:"Process", n_about:"About", n_contact:"Contact",
-  h1:'Where <span class="ruq">Arabic letters</span> meet design',
-  lead:"Handwritten Arabic calligraphy, graphic design, print design and web pages, work that brings tradition and modernity together.",
-  cta1:"Paintings gallery", cta2:"Get in touch",
-  chip1:"Arabic calligraphy", chip2:"Graphic design", chip3:"Print design", chip4:"Landing pages",
+  h1:'A journey into the beauty of <span class="ruq">Arabic letters</span>',
+  tag:"From the first letter, to mastering the hand.",
+  lead:"Arabic calligraphy lessons, visual guides and hands-on practice, to discover the beauty of the letters and learn how to write them.",
+  cta1:"Start learning", cta2:"Explore the lessons",
   k_eyebrow:"Print & stationery",
   k_h2:'Samples of <span class="ruq">print</span> and design',
   k_p:"Cards, bookmarks, favors and certificates, designed with an Arabic touch.",
@@ -175,8 +170,10 @@ var EN = {
 
   a_eyebrow:"About the studio",
   a_h2:'Riwaq <span class="ruq">Midad</span>',
-  a_p1:"“Midad” is the ink that letters are written with, and “Riwaq” is a quiet gallery where they are shown. Here Arabic calligraphy meets design, printing and web page making.",
-  a_p2:"I believe Arabic letters are beautiful enough to be part of everyday life: on the wall of a home, in a project's brand identity, or on a web page.",
+  a_p1:"“Midad” is the ink that letters are written with, and “Riwaq” is a quiet gallery where they are shown.",
+  a_p2:"Here, we open the doors of Arabic calligraphy to anyone who wishes to learn it, accompanying the letters from their very first steps to the beauty of their construction and mastery. A space for knowledge and practice, where lessons meet visual explanations, and where Arabic calligraphy can be discovered in both Arabic and English.",
+  a_p3:"The Riwaq also hosts calligraphic works and artistic experiments, celebrating the beauty of the Arabic letter and its endless creative possibilities.",
+  a_p4:"Welcome to Riwaq Midad, where the letter begins its journey.",
   a_k1:"Arabic calligraphy", a_k2:"Design", a_k3:"Print",
 
   c_eyebrow:"Contact",
@@ -190,10 +187,9 @@ var EN = {
   lh_btn:"Enter the learning section",
   lr_eyebrow:"Learn Arabic calligraphy",
   lr_h2:"Choose a <span class=\"ruq\">letter</span> to begin",
-  lr_p:"We start with Alif and Baa, and the other letters will be added over time.",
+  lr_p:"We start with Alif, Baa and Hah, and the other letters will be added over time.",
   pdf_dl:"Download the file (PDF)",
   pdf_open:"Open in a new tab",
-  soon_baa:"The practice sheet for the single Baa is being prepared and will be added soon.",
   lg_on:"Connected",
   src_1_t:"Single Alif model", src_1_p:"The reference image: the shape of Alif, its five-dot measure and stroke direction.",
   src_2_t:"Coloured Alif with dots", src_2_p:"A coloured version of the letter with the measuring dots.",
@@ -201,6 +197,18 @@ var EN = {
   src_4_t:"Alif alone", src_4_p:"The letter alone on a transparent background between the two guide lines.",
   src_5_t:"Original sheet (PDF)", src_5_p:"The original scanned version of the page.",
   src_6_t:"Open design file (AF)", src_6_p:"The editable Affinity file, for developing the design.",
+  b_src_1_t:"Single Baa model", b_src_1_p:"The reference image: the shape of Baa, its dot measure, stroke direction and baseline.",
+  b_src_2_t:"Coloured Baa", b_src_2_p:"A coloured version of the letter with the stroke direction and baseline.",
+  b_src_3_t:"Grey Baa with dots", b_src_3_p:"The letter, measuring dots and frame lines in grey, ready for the practice sheet.",
+  b_src_4_t:"Baa alone", b_src_4_p:"The letter alone in grey on the baseline.",
+  b_src_5_t:"Original sheet (PDF)", b_src_5_p:"The original scanned version of the page.",
+  b_src_6_t:"Open design file (AF)", b_src_6_p:"The editable Affinity file, for developing the Baa design.",
+  h_src_1_t:"Single Hah model", h_src_1_p:"The reference image: the shape of Hah, its dot measure, stroke direction and baseline.",
+  h_src_2_t:"Coloured Hah", h_src_2_p:"A coloured version of the letter with the measuring dots and stroke direction, on a transparent background.",
+  h_src_3_t:"Grey Hah with dots", h_src_3_p:"The letter and measuring dots in grey on a transparent background, ready for the practice sheet.",
+  h_src_4_t:"Hah alone", h_src_4_p:"The letter alone in grey on a transparent background.",
+  h_src_5_t:"Original sheet (PDF)", h_src_5_p:"The original scanned version of the page.",
+  h_src_6_t:"Open design file (AF)", h_src_6_p:"The editable Affinity file, for developing the Hah design.",
   src_h:"Source files", src_p:"Copies of the files used to draw the letter, to keep safe and for anyone who wants to develop the design.", src_dl:"Download",
   lg_off:"Separate",
   l_alif:"Letter Alif",
@@ -210,6 +218,10 @@ var EN = {
   l_alif_s_t:"Single Alif",
   l_alif_s_e:"Learn Arabic calligraphy",
   l_alif_s_h:"<span class=\"ruq\">Single Alif</span>",
+  l_alif_f_t:"Source files",
+  l_alif_f_e:"Learn Arabic calligraphy",
+  l_alif_f_h:"<span class=\"ruq\">Source</span> files",
+  l_alif_f_p:"Copies of the files used to draw the letter, to keep or to develop the design.",
   l_alif_l_t:"Connections of Alif",
   l_alif_l_e:"Learn Arabic calligraphy",
   l_alif_l_h:"Connections of <span class=\"ruq\">Alif</span>",
@@ -225,10 +237,24 @@ var EN = {
   l_baa_l_e:"Learn Arabic calligraphy",
   l_baa_l_h:"Connections of <span class=\"ruq\">Baa</span>",
   l_baa_l_p:"How the letter connects with every other letter.",
+  l_hah:"Letter Hah",
+  l_hah_e:"Letter Hah",
+  l_hah_h:"Letter <span class=\"ruq\">Hah</span>",
+  l_hah_p:"Choose what you want to learn.",
+  l_hah_s_t:"Single Hah",
+  l_hah_s_e:"Learn Arabic calligraphy",
+  l_hah_s_h:"<span class=\"ruq\">Single Hah</span>",
+  l_hah_s_p:"A practice sheet for writing the letter on its own, with the stroke direction and rows to trace.",
+  l_hah_l_t:"Connections of Hah",
+  l_hah_l_e:"Learn Arabic calligraphy",
+  l_hah_l_h:"Connections of <span class=\"ruq\">Hah</span>",
+  l_hah_l_p:"How the letter connects with every other letter.",
+  s_hah_p:"The sheet shows the shape of Hah, its measure and stroke direction, then rows to trace. Download it, print it and practise with your pen.",
+  rule_hah:"Hah connects to the letter after it, and the letter before it joins to it if that letter connects forward. The six letters (ا د ذ ر ز و) never connect to what follows them.",
   l_alif_s_p:"A practice sheet for writing the letter on its own, with the stroke direction and rows to trace.",
-  l_baa_s_p:"Exercises for writing the letter on its own.",
+  l_baa_s_p:"A practice sheet for writing the letter on its own, with the stroke direction and rows to trace.",
   s_alif_p:"The sheet shows the shape of Alif, its measure and stroke direction, then rows to trace. Download it, print it and practise with your pen.",
-  s_baa_p:"Content is being prepared.",
+  s_baa_p:"The sheet shows the shape of Baa, its measure and stroke direction, then rows to trace. Download it, print it and practise with your pen.",
   rule_alif:"Alif does not connect to the letter after it; it connects only to the letter before it. So every letter that follows it stays separate, and the letter before it joins to it if that letter connects forward.",
   rule_baa:"Baa connects to the letter after it, and the letter before it joins to it if that letter connects forward. The six letters (ا د ذ ر ز و) never connect to what follows them."
 };
@@ -239,16 +265,15 @@ var ARIA = {
 
 /* ---------- قسم تعلّم الخط: الحروف واتصالاتها ---------- */
 var LETTERS = [
-  {c:'ا',ar:'ألف',en:'Alif',k:'alif'},{c:'ب',ar:'باء',en:'Baa',k:'baa'},{c:'ت',ar:'تاء',en:'Taa'},{c:'ث',ar:'ثاء',en:'Thaa'},
-  {c:'ج',ar:'جيم',en:'Jeem'},{c:'ح',ar:'حاء',en:'Hah'},{c:'خ',ar:'خاء',en:'Khaa'},{c:'د',ar:'دال',en:'Dal'},
-  {c:'ذ',ar:'ذال',en:'Dhal'},{c:'ر',ar:'راء',en:'Raa'},{c:'ز',ar:'زاي',en:'Zay'},{c:'س',ar:'سين',en:'Seen'},
-  {c:'ش',ar:'شين',en:'Sheen'},{c:'ص',ar:'صاد',en:'Saad'},{c:'ض',ar:'ضاد',en:'Daad'},{c:'ط',ar:'طاء',en:'Tah'},
-  {c:'ظ',ar:'ظاء',en:'Zah'},{c:'ع',ar:'عين',en:'Ayn'},{c:'غ',ar:'غين',en:'Ghayn'},{c:'ف',ar:'فاء',en:'Faa'},
-  {c:'ق',ar:'قاف',en:'Qaf'},{c:'ك',ar:'كاف',en:'Kaf'},{c:'ل',ar:'لام',en:'Lam'},{c:'م',ar:'ميم',en:'Meem'},
-  {c:'ن',ar:'نون',en:'Noon'},{c:'ه',ar:'هاء',en:'Heh'},{c:'و',ar:'واو',en:'Waw'},{c:'ي',ar:'ياء',en:'Yaa'}
+  {c:'ا',ar:'ألف',en:'Alif',k:'alif'},{c:'ب',ar:'باء',en:'Baa',k:'baa'},{c:'ح',ar:'حاء',en:'Hah',k:'hah'},
+  {c:'د',ar:'دال',en:'Dal'},{c:'ر',ar:'راء',en:'Raa'},{c:'س',ar:'سين',en:'Seen'},
+  {c:'ص',ar:'صاد',en:'Saad'},{c:'ط',ar:'طاء',en:'Tah'},{c:'ع',ar:'عين',en:'Ayn'},
+  {c:'ف',ar:'فاء',en:'Faa'},{c:'ق',ar:'قاف',en:'Qaf'},{c:'ك',ar:'كاف',en:'Kaf'},
+  {c:'ل',ar:'لام',en:'Lam'},{c:'م',ar:'ميم',en:'Meem'},{c:'ن',ar:'نون',en:'Noon'},
+  {c:'ه',ar:'هاء',en:'Heh'},{c:'و',ar:'واو',en:'Waw'},{c:'ي',ar:'ياء',en:'Yaa'}
 ];
-var NO_JOIN = 'ادذرزو';          /* حروف لا تتصل بما بعدها */
-var BASE_NAME = { alif:{ ar:'الألف', en:'Alif' }, baa:{ ar:'الباء', en:'Baa' } };
+var NO_JOIN = 'ادرو';          /* حروف لا تتصل بما بعدها */
+var BASE_NAME = { alif:{ ar:'الألف', en:'Alif' }, baa:{ ar:'الباء', en:'Baa' }, hah:{ ar:'الحاء', en:'Hah' } };
 
 function buildLearn(){
   var ui = UI[LANG];
@@ -375,17 +400,6 @@ function buildWorks(){
 }
 
 
-/* ---------- شريط الكلمات المتحرك ---------- */
-function buildMarquee(){
-  var track = document.getElementById('marquee-track');
-  if(!track) return;
-  var words = MARQ[LANG], html = '';
-  for(var r = 0; r < 4; r++){
-    words.forEach(function(w){ html += '<span>'+w+'</span><i></i>'; });
-  }
-  track.innerHTML = html;
-}
-
 /* ---------- أزرار التواصل ---------- */
 function buildContact(){
   var box = document.getElementById('contact-buttons');
@@ -431,7 +445,6 @@ function buildContact(){
     themeBtn.setAttribute('aria-label', ARIA[l].theme);
     menuBtn.setAttribute('aria-label', ARIA[l].menu);
     buildWorks(false);
-    buildMarquee();
     buildLearn();
     buildContact(); buildFab();
     if(save){ try{ localStorage.setItem('midad-lang', l); }catch(e){} }
@@ -442,7 +455,7 @@ function buildContact(){
   var saved = null;
   try{ saved = localStorage.getItem('midad-lang'); }catch(e){}
   if(saved === 'en'){ setLang('en', false); }
-  else { buildWorks(true); buildMarquee(); buildLearn(); buildContact(); buildFab(); }
+  else { buildWorks(true); buildLearn(); buildContact(); buildFab(); }
 })();
 
 /* ---------- الوضع الفاتح / الداكن (مع انتقال دائري) ---------- */
@@ -485,7 +498,7 @@ var REDUCED = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)'
 (function(){
   /* تأخير متتابع لعناصر كل مجموعة */
   [['.hero .reveal', .11], ['.services .card', .09], ['.steps .step', .12],
-   ['.group-grid', .1], ['.skills span', .06], ['.chips .chip', .07]].forEach(function(g){
+   ['.group-grid', .1], ['.skills span', .06]].forEach(function(g){
     var sel = g[0], gap = g[1];
     if(sel === '.group-grid'){
       document.querySelectorAll(sel).forEach(function(grid){
@@ -823,4 +836,149 @@ document.getElementById('skip').addEventListener('click', function(e){
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(en){ if(en[0].isIntersecting){ if(!raf) frame(); } else stop(); }, { threshold:.05 }).observe(box);
   } else { frame(); }
+})();
+
+
+/* ==========================================================
+   توقيع الصانعة: ورود وقلوب ونجوم عند التقريب، وانفجار كبير عند الضغط
+   ========================================================== */
+(function(){
+  var link = document.getElementById('credit-link');
+  if(!link) return;
+  var TARGET = link.href;
+  var GLYPHS = ['🌹','🌸','💖','⭐','💗','🌷','✨','💕','🌺','🎀','💝','🌟'];
+  var sprites = null, cv = null, ctx = null, W = 0, H = 0, dpr = 1;
+  var P = [], running = false, last = 0, hovering = false, busy = false;
+  var tBurst = -1, hoverAcc = 0, rainAcc = 0;
+
+  function rnd(a, b){ return a + Math.random() * (b - a); }
+
+  function setup(){
+    if(cv) return;
+    sprites = GLYPHS.map(function(g){
+      var c = document.createElement('canvas'); c.width = c.height = 96;
+      var x = c.getContext('2d');
+      x.font = '70px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';
+      x.textAlign = 'center'; x.textBaseline = 'middle';
+      x.fillText(g, 48, 54);
+      return c;
+    });
+    cv = document.createElement('canvas');
+    cv.setAttribute('aria-hidden', 'true');
+    cv.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:500;display:none';
+    document.body.appendChild(cv);
+    ctx = cv.getContext('2d');
+    size();
+    window.addEventListener('resize', size);
+  }
+  function size(){
+    if(!cv) return;
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = window.innerWidth; H = window.innerHeight;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function add(x, y, vx, vy, s, life, g, drag){
+    P.push({ x:x, y:y, vx:vx, vy:vy, s:s, life:life, age:0, g:g || 0, drag:drag || 0,
+             r:rnd(-.6, .6), vr:rnd(-2.2, 2.2), sp:sprites[(Math.random() * sprites.length) | 0] });
+  }
+
+  function start(){
+    if(running) return;
+    setup(); cv.style.display = 'block'; running = true; last = performance.now();
+    requestAnimationFrame(loop);
+  }
+
+  function emitHover(dt){
+    hoverAcc += dt;
+    while(hoverAcc > .045){
+      hoverAcc -= .045;
+      var r = link.getBoundingClientRect();
+      add(rnd(r.left, r.right), rnd(r.top, r.bottom) - 4, rnd(-40, 40), rnd(-170, -70), rnd(18, 34), rnd(1.2, 2), -30, .2);
+    }
+  }
+
+  function glowAlpha(tb){
+    if(tb < 0) return 0;
+    if(tb < .5) return tb / .5 * .55;
+    if(tb < 2.4) return .55;
+    return Math.max(0, .55 * (1 - (tb - 2.4) / 1.2));
+  }
+
+  function loop(now){
+    var dt = Math.min(.033, (now - last) / 1000); last = now;
+    ctx.clearRect(0, 0, W, H);
+    var tb = tBurst < 0 ? -1 : (now - tBurst) / 1000;
+
+    if(hovering && !busy) emitHover(dt);
+    if(tb >= .4 && tb < 2.2){          /* مطر من الورود يملأ الصفحة */
+      rainAcc += dt;
+      while(rainAcc > .012){ rainAcc -= .012;
+        add(rnd(0, W), rnd(-40, H), rnd(-60, 60), rnd(-120, 160), rnd(30, 90), rnd(1.2, 2.2), 40, .3); }
+    }
+    if(tb >= .3 && !P.waveB){ P.waveB = 1; wave(260, 700, 1900); }
+    if(tb >= .75 && !P.waveC){ P.waveC = 1; wave(300, 400, 2200); }
+
+    var ga = glowAlpha(tb);
+    if(ga > 0){
+      var cx = W / 2, cy = H / 2, R = Math.hypot(W, H) / 1.6;
+      var gr = ctx.createRadialGradient(cx, cy, 0, cx, cy, R);
+      gr.addColorStop(0, 'rgba(255,214,232,' + ga + ')');
+      gr.addColorStop(.55, 'rgba(255,140,190,' + (ga * .75) + ')');
+      gr.addColorStop(1, 'rgba(255,100,170,' + (ga * .5) + ')');
+      ctx.fillStyle = gr; ctx.fillRect(0, 0, W, H);
+    }
+
+    for(var i = P.length - 1; i >= 0; i--){
+      var p = P[i];
+      p.age += dt;
+      if(p.age >= p.life){ P.splice(i, 1); continue; }
+      var k = Math.exp(-p.drag * dt);
+      p.vx *= k; p.vy = p.vy * k + p.g * dt;
+      p.x += p.vx * dt; p.y += p.vy * dt; p.r += p.vr * dt;
+      var pop = Math.min(1, p.age / .22), fade = Math.min(1, (p.life - p.age) / .5);
+      var sz = p.s * (pop * (2 - pop));
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, fade);
+      ctx.translate(p.x, p.y); ctx.rotate(p.r);
+      ctx.drawImage(p.sp, -sz / 2, -sz / 2, sz, sz);
+      ctx.restore();
+    }
+
+    if(P.length || hovering || (tb >= 0 && tb < 4)){ requestAnimationFrame(loop); }
+    else { running = false; cv.style.display = 'none'; }
+  }
+
+  function wave(n, vmin, vmax){
+    var r = link.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    for(var i = 0; i < n; i++){
+      var a = Math.random() * Math.PI * 2, v = rnd(vmin, vmax);
+      add(cx, cy, Math.cos(a) * v, Math.sin(a) * v, rnd(26, 96), rnd(2.4, 3.6), 140, .85);
+    }
+  }
+
+  function burst(){
+    busy = true; start();
+    tBurst = performance.now();
+    wave(560, 250, 1700);
+  }
+
+  if(!REDUCED){
+    link.addEventListener('pointerenter', function(){ hovering = true; start(); });
+    link.addEventListener('pointerleave', function(){ hovering = false; });
+    link.addEventListener('focus', function(){ hovering = true; start(); });
+    link.addEventListener('blur', function(){ hovering = false; });
+    link.addEventListener('click', function(e){
+      if(e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      if(busy) return;
+      burst();
+      setTimeout(function(){ window.location.href = TARGET; }, 3800);
+    });
+    window.addEventListener('pageshow', function(){
+      busy = false; hovering = false; tBurst = -1; P.length = 0; P.waveB = P.waveC = 0;
+      if(cv){ cv.style.display = 'none'; }
+    });
+  }
 })();
