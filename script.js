@@ -124,7 +124,7 @@ var UI = {
 var EN = {
   title:"Riwaq Midad | Learn Arabic Calligraphy",
   desc:"Riwaq Midad: Arabic calligraphy lessons, practice sheets and visual guides, from the first letter to mastering the hand, alongside handwritten paintings.",
-  cr_pre:"Design, code, development, content and calligraphy by", cr_name:"Maroua Mezhoud", back:"Back", skip:"Skip to content",
+  cr_pre:"Concept, Design, Educational Materials, Development Direction & Website Management:", cr_name:"Maroua Mezhoud", back:"Back", skip:"Skip to content",
   co_t:"About the paintings",
   co_p:"The paintings are written by hand in ink on ornamental paper, in the Diwani and Thuluth scripts. Each one is a single piece that is never repeated.",
   co_l1:"Handwritten in ink on ornamental paper", co_l2:"Verses, poetry, names and dedications", co_l3:"Scripts: Diwani and Thuluth", co_l4:"One unique piece",
