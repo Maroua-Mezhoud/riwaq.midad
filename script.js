@@ -41,66 +41,6 @@ var GROUPS = {
 };
 
 
-/* ==========================================================
-   المطبوعات والتصاميم (نماذج للعرض بلا أسعار)
-   cat:   cards | bookmarks | giveaways | certificates
-   mock:  شكل الصورة التوضيحية؛ أو ضعي img:"assets/works/xxx.webp" لصورة حقيقية
-   ========================================================== */
-var CGROUPS = {
-  cards:{
-    title:{ ar:"بطاقات الأعمال", en:"Business cards" },
-    notes:{ ar:["تصميم ينسجم مع الهوية البصرية", "ملفات مُعدّة للطباعة"], en:["Designed around the brand identity", "Print-ready files"] }
-  },
-  bookmarks:{
-    title:{ ar:"فواصل الكتب", en:"Bookmarks" },
-    notes:{ ar:["بالخط العربي أو بتصميم حديث"], en:["Arabic calligraphy or a modern look"] }
-  },
-  giveaways:{
-    title:{ ar:"التوزيعات", en:"Giveaways & favors" },
-    notes:{ ar:["للأعراس والمواليد والمناسبات", "الاسم والعبارة بحسب المناسبة"], en:["Weddings, births and occasions", "Name and wording to suit the occasion"] }
-  },
-  certificates:{
-    title:{ ar:"الشهادات", en:"Certificates" },
-    notes:{ ar:["للمدارس والنوادي والفعاليات", "بتصميم رسمي أو بخط اليد"], en:["Schools, clubs and events", "Formal design or handwritten"] }
-  }
-};
-
-var CATALOG = [
-  { cat:"cards", mock:"cards",
-    title:{ ar:"بطاقة أعمال", en:"Business card" },
-    desc:{ ar:"وجهان بتصميم يناسب هوية النشاط.", en:"A two-sided design that suits the brand." } },
-  { cat:"cards", mock:"cards",
-    title:{ ar:"بطاقة بخط اليد", en:"Hand-lettered card" },
-    desc:{ ar:"الاسم أو الشعار بالخط العربي.", en:"A name or logo in Arabic calligraphy." } },
-
-  { cat:"bookmarks", mock:"bookmark",
-    title:{ ar:"فواصل مطبوعة", en:"Printed bookmarks" },
-    desc:{ ar:"بتصاميم متنوعة تناسب القرّاء.", en:"In varied designs for readers." } },
-  { cat:"bookmarks", mock:"bookmark",
-    title:{ ar:"فاصل بخط اليد", en:"Hand-lettered bookmark" },
-    desc:{ ar:"عبارة أو اسم بالخط العربي.", en:"A phrase or a name in Arabic calligraphy." } },
-  { cat:"bookmarks", mock:"bookmark",
-    title:{ ar:"طقم فواصل", en:"Bookmark set" },
-    desc:{ ar:"خمسة فواصل بتصاميم مختلفة.", en:"Five bookmarks in different designs." } },
-
-  { cat:"giveaways", mock:"giveaway",
-    title:{ ar:"بطاقات شكر", en:"Thank-you tags" },
-    desc:{ ar:"بتصميم يناسب المناسبة.", en:"Designed to match the occasion." } },
-  { cat:"giveaways", mock:"giveaway",
-    title:{ ar:"توزيعات بالخط", en:"Hand-lettered favors" },
-    desc:{ ar:"اسم المناسبة بخط اليد على كل قطعة.", en:"The occasion's name handwritten on each piece." } },
-  { cat:"giveaways", mock:"giveaway",
-    title:{ ar:"ملصقات مخصصة", en:"Custom stickers" },
-    desc:{ ar:"لتغليف الهدايا والتوزيعات.", en:"For wrapping gifts and favors." } },
-
-  { cat:"certificates", mock:"certificate",
-    title:{ ar:"تصميم شهادة", en:"Certificate design" },
-    desc:{ ar:"قالب رسمي أنيق.", en:"A formal, elegant template." } },
-  { cat:"certificates", mock:"certificate",
-    title:{ ar:"شهادة بخط اليد", en:"Handwritten certificate" },
-    desc:{ ar:"الاسم مكتوب بالخط العربي.", en:"The name written in Arabic calligraphy." } }
-];
-
 var MARQ = {
   ar:["الخط العربي","التصميم الغرافيكي","بطاقات الأعمال","فواصل الكتب","المطبوعات","التوزيعات","الشهادات","صفحات الهبوط"],
   en:["Arabic calligraphy","Graphic design","Business cards","Bookmarks","Print design","Favors","Certificates","Landing pages"]
@@ -169,7 +109,8 @@ var UI = {
     catPlural:{ calligraphy:"خط عربي", design:"تصميم", web:"مواقع" },
     visit:"زيارة الموقع",
     scriptLabel:"نوع الخط: ", sizeLabel:"المقاس: ", cm:"سم", fSize:"المقاس", fScript:"نوع الخط", empty:"لا توجد لوحات بهذه المواصفات حاليًا.", reset:"إزالة التصفية",
-    wa:"واتساب", ig:"إنستغرام", mail:"البريد", msgHi:"مرحبًا، أعجبتني أعمالك وأودّ التواصل معك", lbClose:"إغلاق", lbPrev:"السابق", lbNext:"التالي", waFab:"تواصل عبر واتساب"
+    wa:"واتساب", ig:"إنستغرام", mail:"البريد", msgHi:"مرحبًا، أعجبتني أعمالك وأودّ التواصل معك", lbClose:"إغلاق", lbPrev:"السابق", lbNext:"التالي", waFab:"تواصل عبر واتساب",
+    soon:"قريبًا", on:"متصلان", off:"منفصلان", lt:"الحرف", lthen:"ثم"
   },
   en: {
     all:"All", more:"Show more", cnt:{ calligraphy:"paintings", web:"pages", print:"designs" },
@@ -177,7 +118,8 @@ var UI = {
     catPlural:{ calligraphy:"Calligraphy", design:"Design", web:"Websites" },
     visit:"Visit website",
     scriptLabel:"Script: ", sizeLabel:"Size: ", cm:"cm", fSize:"Size", fScript:"Script", empty:"No paintings match these filters right now.", reset:"Clear filters",
-    wa:"WhatsApp", ig:"Instagram", mail:"Email", msgHi:"Hello, I like your work and would like to get in touch", lbClose:"Close", lbPrev:"Previous", lbNext:"Next", waFab:"Chat on WhatsApp"
+    wa:"WhatsApp", ig:"Instagram", mail:"Email", msgHi:"Hello, I like your work and would like to get in touch", lbClose:"Close", lbPrev:"Previous", lbNext:"Next", waFab:"Chat on WhatsApp",
+    soon:"Soon", on:"Connected", off:"Separate", lt:"letter", lthen:"then"
   }
 };
 
@@ -197,13 +139,13 @@ var EN = {
   wi_l1:"Designed around each project's brand", wi_l2:"Mobile friendly", wi_l3:"Light and dark mode",
   wl_t:"My work", wl_p:"Pages I have built, live online.", hub_eyebrow:"My work", hub_h2:'Browse my <span class="ruq">work</span> and print designs', hub_p:"Pick a section to see everything inside it, neatly in one place.",
   hub_cal_t:"Arabic calligraphy paintings", hub_web_t:"Landing pages", hb_cal:"Handwritten paintings in authentic Arabic scripts.", hb_web:"Pages and sites designed for real projects.",
-  cal_h2:'<span class="ruq">Arabic calligraphy</span> paintings', web_h2:'<span class="ruq">Landing</span> pages', hb_open:"Open section",
+  cal_h2:'<span class="ruq">My paintings</span> gallery', web_h2:'<span class="ruq">Websites</span>', cal_e:"My work", web_e:"What I built", n_cal:"Paintings gallery", n_web:"Websites", hb_open:"Open section",
   hb_services:"Calligraphy, design, print design and websites.", hb_works:"Paintings and websites I have made.", hb_print:"Cards, bookmarks, giveaways and certificates.",
   hb_process:"From idea to finished work.", hb_about:"The story of Riwaq Midad and what I believe in.", hb_contact:"Get in touch.",
   n_services:"Fields", n_print:"Print", n_works:"Works", n_process:"Process", n_about:"About", n_contact:"Contact",
   h1:'Where <span class="ruq">Arabic letters</span> meet design',
   lead:"Handwritten Arabic calligraphy, graphic design, print design and web pages, work that brings tradition and modernity together.",
-  cta1:"View works", cta2:"Get in touch",
+  cta1:"Paintings gallery", cta2:"Get in touch",
   chip1:"Arabic calligraphy", chip2:"Graphic design", chip3:"Print design", chip4:"Landing pages",
   k_eyebrow:"Print & stationery",
   k_h2:'Samples of <span class="ruq">print</span> and design',
@@ -240,12 +182,104 @@ var EN = {
   c_eyebrow:"Contact",
   c_h2:'Get in <span class="ruq">touch</span>',
   c_p:"For collaboration or questions about the work, you can reach me through the channels below.",
-  loc:"Bordj Bou Arréridj, Algeria"
+  loc:"Bordj Bou Arréridj, Algeria",
+  n_learn:"Learn calligraphy",
+  lh_eyebrow:"Learn calligraphy",
+  lh_h2:"Begin your journey with <span class=\"ruq\">the Arabic letter</span>",
+  lh_p:"Simple lessons and downloadable practice sheets, letter by letter.",
+  lh_btn:"Enter the learning section",
+  lr_eyebrow:"Learn Arabic calligraphy",
+  lr_h2:"Choose a <span class=\"ruq\">letter</span> to begin",
+  lr_p:"We start with Alif and Baa, and the other letters will be added over time.",
+  pdf_dl:"Download the file (PDF)",
+  pdf_open:"Open in a new tab",
+  soon_baa:"The practice sheet for the single Baa is being prepared and will be added soon.",
+  lg_on:"Connected",
+  src_1_t:"Single Alif model", src_1_p:"The reference image: the shape of Alif, its five-dot measure and stroke direction.",
+  src_2_t:"Coloured Alif with dots", src_2_p:"A coloured version of the letter with the measuring dots.",
+  src_3_t:"Grey Alif with dots", src_3_p:"The letter and measuring dots on a transparent background, ready for the practice sheet.",
+  src_4_t:"Alif alone", src_4_p:"The letter alone on a transparent background between the two guide lines.",
+  src_5_t:"Original sheet (PDF)", src_5_p:"The original scanned version of the page.",
+  src_6_t:"Open design file (AF)", src_6_p:"The editable Affinity file, for developing the design.",
+  src_h:"Source files", src_p:"Copies of the files used to draw the letter, to keep safe and for anyone who wants to develop the design.", src_dl:"Download",
+  lg_off:"Separate",
+  l_alif:"Letter Alif",
+  l_alif_e:"Letter Alif",
+  l_alif_h:"Letter <span class=\"ruq\">Alif</span>",
+  l_alif_p:"Choose what you want to learn.",
+  l_alif_s_t:"Single Alif",
+  l_alif_s_e:"Learn Arabic calligraphy",
+  l_alif_s_h:"<span class=\"ruq\">Single Alif</span>",
+  l_alif_l_t:"Connections of Alif",
+  l_alif_l_e:"Learn Arabic calligraphy",
+  l_alif_l_h:"Connections of <span class=\"ruq\">Alif</span>",
+  l_alif_l_p:"How Alif connects with every other letter.",
+  l_baa:"Letter Baa",
+  l_baa_e:"Letter Baa",
+  l_baa_h:"Letter <span class=\"ruq\">Baa</span>",
+  l_baa_p:"Choose what you want to learn.",
+  l_baa_s_t:"Single Baa",
+  l_baa_s_e:"Learn Arabic calligraphy",
+  l_baa_s_h:"<span class=\"ruq\">Single Baa</span>",
+  l_baa_l_t:"Connections of Baa",
+  l_baa_l_e:"Learn Arabic calligraphy",
+  l_baa_l_h:"Connections of <span class=\"ruq\">Baa</span>",
+  l_baa_l_p:"How the letter connects with every other letter.",
+  l_alif_s_p:"A practice sheet for writing the letter on its own, with the stroke direction and rows to trace.",
+  l_baa_s_p:"Exercises for writing the letter on its own.",
+  s_alif_p:"The sheet shows the shape of Alif, its measure and stroke direction, then rows to trace. Download it, print it and practise with your pen.",
+  s_baa_p:"Content is being prepared.",
+  rule_alif:"Alif does not connect to the letter after it; it connects only to the letter before it. So every letter that follows it stays separate, and the letter before it joins to it if that letter connects forward.",
+  rule_baa:"Baa connects to the letter after it, and the letter before it joins to it if that letter connects forward. The six letters (ا د ذ ر ز و) never connect to what follows them."
 };
 var ARIA = {
   ar:{ lang:"English", theme:"تبديل الوضع الليلي والنهاري", menu:"القائمة", filters:"تصفية الأعمال" },
   en:{ lang:"العربية", theme:"Toggle light and dark mode", menu:"Menu", filters:"Filter works" }
 };
+
+/* ---------- قسم تعلّم الخط: الحروف واتصالاتها ---------- */
+var LETTERS = [
+  {c:'ا',ar:'ألف',en:'Alif',k:'alif'},{c:'ب',ar:'باء',en:'Baa',k:'baa'},{c:'ت',ar:'تاء',en:'Taa'},{c:'ث',ar:'ثاء',en:'Thaa'},
+  {c:'ج',ar:'جيم',en:'Jeem'},{c:'ح',ar:'حاء',en:'Hah'},{c:'خ',ar:'خاء',en:'Khaa'},{c:'د',ar:'دال',en:'Dal'},
+  {c:'ذ',ar:'ذال',en:'Dhal'},{c:'ر',ar:'راء',en:'Raa'},{c:'ز',ar:'زاي',en:'Zay'},{c:'س',ar:'سين',en:'Seen'},
+  {c:'ش',ar:'شين',en:'Sheen'},{c:'ص',ar:'صاد',en:'Saad'},{c:'ض',ar:'ضاد',en:'Daad'},{c:'ط',ar:'طاء',en:'Tah'},
+  {c:'ظ',ar:'ظاء',en:'Zah'},{c:'ع',ar:'عين',en:'Ayn'},{c:'غ',ar:'غين',en:'Ghayn'},{c:'ف',ar:'فاء',en:'Faa'},
+  {c:'ق',ar:'قاف',en:'Qaf'},{c:'ك',ar:'كاف',en:'Kaf'},{c:'ل',ar:'لام',en:'Lam'},{c:'م',ar:'ميم',en:'Meem'},
+  {c:'ن',ar:'نون',en:'Noon'},{c:'ه',ar:'هاء',en:'Heh'},{c:'و',ar:'واو',en:'Waw'},{c:'ي',ar:'ياء',en:'Yaa'}
+];
+var NO_JOIN = 'ادذرزو';          /* حروف لا تتصل بما بعدها */
+var BASE_NAME = { alif:{ ar:'الألف', en:'Alif' }, baa:{ ar:'الباء', en:'Baa' } };
+
+function buildLearn(){
+  var ui = UI[LANG];
+  var g = document.getElementById('learn-grid');
+  if(g){
+    g.innerHTML = LETTERS.map(function(l){
+      var nm = LANG === 'en' ? l.en : l.ar;
+      return l.k
+        ? '<a class="letter-tile" href="#learn-'+l.k+'"><b>'+l.c+'</b><span>'+nm+'</span></a>'
+        : '<div class="letter-tile soon" aria-disabled="true"><b>'+l.c+'</b><span>'+nm+'</span><em>'+ui.soon+'</em></div>';
+    }).join('');
+  }
+  function pair(a, b, joined){
+    return joined ? '<span class="pr on">'+a+b+'</span>' : '<span class="pr off"><span>'+a+'</span><span>'+b+'</span></span>';
+  }
+  Object.keys(BASE_NAME).forEach(function(k){
+    var box = document.getElementById('conn-'+k); if(!box) return;
+    var base = LETTERS.filter(function(l){ return l.k === k; })[0];
+    var bn = BASE_NAME[k][LANG === 'en' ? 'en' : 'ar'];
+    var html = '';
+    LETTERS.forEach(function(l){
+      if(k === 'alif' && l.k === 'alif') return;
+      var j1 = NO_JOIN.indexOf(base.c) < 0, j2 = NO_JOIN.indexOf(l.c) < 0;
+      var l1 = bn + ' ' + ui.lthen + ' ' + ui.lt, l2 = ui.lt + ' ' + ui.lthen + ' ' + bn;
+      html += '<article class="conn reveal in"><div class="cn-head"><b>'+l.c+'</b><span>'+(LANG === 'en' ? l.en : l.ar)+'</span></div>'+
+        '<div class="cn-row"><small>'+l1+'</small>'+pair(base.c, l.c, j1)+'<em class="'+(j1?'on':'off')+'">'+(j1?ui.on:ui.off)+'</em></div>'+
+        '<div class="cn-row"><small>'+l2+'</small>'+pair(l.c, base.c, j2)+'<em class="'+(j2?'on':'off')+'">'+(j2?ui.on:ui.off)+'</em></div></article>';
+    });
+    box.innerHTML = html;
+  });
+}
 
 var AR = {};          // تُملأ من الصفحة عند التحميل
 var LANG = 'ar';
@@ -315,27 +349,6 @@ function buildWorks(){
       notesEl.innerHTML = nh; notesEl.style.display = nh ? '' : 'none';
     }
 
-    /* القيم الموجودة فعلًا في الأعمال */
-    var sizes = [], scripts = [];
-    all.forEach(function(w){
-      if(w.size && !sizes.some(function(v){ return v.key === w.size; })) sizes.push({ key:w.size, label:w.size });
-      if(w.script && !scripts.some(function(v){ return v.key === w.script.ar; })) scripts.push({ key:w.script.ar, label:w.script[LANG] });
-    });
-    sizes.sort(function(a, b){ return parseInt(b.key.slice(1), 10) - parseInt(a.key.slice(1), 10); });   /* A5 قبل A4 */
-
-    var html = '';
-    if(sizes.length > 1)   html += chips('s', sizes, st.s, ui.fSize);
-    if(scripts.length > 1) html += chips('f', scripts, st.f, ui.fScript);
-    bar.hidden = !html;
-    bar.innerHTML = html;
-    bar.querySelectorAll('.filter').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var gr = btn.dataset.g;
-        st[gr] = btn.dataset.v;
-        st.shown = PAGE_SIZE; buildWorks();
-      });
-    });
-
     var list = all.filter(function(w){
       return (st.f === 'all' || (w.script && w.script.ar === st.f)) &&
              (st.s === 'all' || w.size === st.s);
@@ -359,77 +372,8 @@ function buildWorks(){
     if(cnt) cnt.textContent = countText(all.length, c);
   });
 
-  var pc = document.getElementById('count-print');
-  if(pc) pc.textContent = countText(CATALOG.length, 'print');
 }
 
-
-/* ---------- المطبوعات: صور توضيحية مبنية بالـ CSS ---------- */
-function mockup(type){
-  var L = '<img class="mk-logo" src="assets/wordmark-light.webp" alt="">';
-  var D = '<img class="mk-logo" src="assets/wordmark-dark.webp" alt="">';
-  var parts = {
-    cards:
-      '<div class="paper pc c-back">'+D+'<span class="mk-line"></span></div>'+
-      '<div class="paper pc c-front">'+L+'<span class="mk-small">RIWAQ MIDAD</span></div>',
-    bookmark:
-      '<div class="paper bm bm-dark"><i class="hole"></i>'+D+'<span class="mk-diamond"></span></div>'+
-      '<div class="paper bm bm-cream"><i class="hole"></i><b class="mk-word">اقرأ</b><span class="mk-diamond"></span></div>'+
-      '<div class="paper bm bm-gold"><i class="hole"></i>'+L+'<span class="mk-diamond"></span></div>',
-    print:
-      '<div class="paper sh sh-3"></div><div class="paper sh sh-2"></div>'+
-      '<div class="paper sh sh-1"><i class="bar"></i><i class="ln"></i><span class="dots"><u></u><u></u><u></u><u></u></span></div>',
-    giveaway:
-      '<div class="paper tag tag-b"><i class="hole"></i><b class="mk-word">بارك الله</b></div>'+
-      '<div class="paper tag tag-a"><i class="hole"></i><b class="mk-word">شكرًا لكم</b><span class="mk-diamond"></span></div>'+
-      '<div class="sticker">'+D+'</div>',
-    certificate:
-      '<div class="paper cert"><i class="frame"></i><b class="c-title">شهادة تقدير</b>'+
-      '<span class="c-sub">تُمنح هذه الشهادة إلى</span><span class="c-name"></span>'+
-      '<span class="seal"><u></u></span></div>'
-  };
-  return '<div class="thumb mock mock-'+type+'" aria-hidden="true">'+(parts[type]||'')+'</div>';
-}
-
-function buildCatalog(animate){
-  var root = document.getElementById('catalog-groups');
-  var pills = document.getElementById('catalog-pills');
-  if(!root) return;
-  var ui = UI[LANG];
-  var inCls = animate ? '' : ' in';
-  root.innerHTML = '';
-  var order = ['cards','bookmarks','giveaways','certificates'];
-  var pillHtml = '';
-
-  order.forEach(function(c){
-    var items = CATALOG.filter(function(w){ return w.cat === c; });
-    if(!items.length) return;
-    var g = CGROUPS[c];
-    pillHtml += '<a class="pill" href="#g-'+c+'">'+g.title[LANG]+'</a>';
-
-    var sec = document.createElement('div');
-    sec.className = 'group';
-    sec.id = 'g-' + c;
-    var notes = g.notes[LANG] || [];
-    sec.innerHTML = '<div class="group-head reveal'+inCls+'"><h3>'+g.title[LANG]+'</h3>'+
-      (notes.length ? '<ul class="notes">'+notes.map(function(n){ return '<li>'+n+'</li>'; }).join('')+'</ul>' : '')+'</div>';
-
-    var grid = document.createElement('div');
-    grid.className = 'group-grid';
-    items.forEach(function(w){
-      var title = w.title[LANG];
-      var el = document.createElement('article');
-      el.className = 'work reveal' + inCls;
-      var visual = w.img ? '<div class="thumb art"><img src="'+w.img+'" alt="'+title+'" loading="lazy"></div>' : mockup(w.mock);
-      el.innerHTML = visual +
-        '<div class="meta"><h3>'+title+'</h3><p>'+w.desc[LANG]+'</p></div>';
-      grid.appendChild(el);
-    });
-    sec.appendChild(grid);
-    root.appendChild(sec);
-  });
-  pills.innerHTML = pillHtml;
-}
 
 /* ---------- شريط الكلمات المتحرك ---------- */
 function buildMarquee(){
@@ -487,8 +431,8 @@ function buildContact(){
     themeBtn.setAttribute('aria-label', ARIA[l].theme);
     menuBtn.setAttribute('aria-label', ARIA[l].menu);
     buildWorks(false);
-    buildCatalog(false);
     buildMarquee();
+    buildLearn();
     buildContact(); buildFab();
     if(save){ try{ localStorage.setItem('midad-lang', l); }catch(e){} }
   }
@@ -498,7 +442,7 @@ function buildContact(){
   var saved = null;
   try{ saved = localStorage.getItem('midad-lang'); }catch(e){}
   if(saved === 'en'){ setLang('en', false); }
-  else { buildWorks(true); buildCatalog(true); buildMarquee(); buildContact(); buildFab(); }
+  else { buildWorks(true); buildMarquee(); buildLearn(); buildContact(); buildFab(); }
 })();
 
 /* ---------- الوضع الفاتح / الداكن (مع انتقال دائري) ---------- */
@@ -626,8 +570,8 @@ document.getElementById('year').textContent = new Date().getFullYear();
     var target = null;
     pages.forEach(function(p){ var on = p.id === id; p.classList.toggle('active', on); if(on) target = p; });
     document.body.classList.toggle('in-page', !!target);
-    navLinks.forEach(function(a){ a.classList.toggle('current', !!target && a.getAttribute('href') === '#' + id); });
-    var ddb = document.getElementById('dd-btn'); if(ddb) ddb.classList.toggle('current', !!target);
+    var navId = id.indexOf('learn-') === 0 && target ? 'learn' : id;
+    navLinks.forEach(function(a){ a.classList.toggle('current', !!target && a.getAttribute('href') === '#' + navId); });
     var el = sub ? document.getElementById(sub) : (!target && id && id !== 'top' ? document.getElementById(id) : null);
     if(el){ el.scrollIntoView({ behavior: first ? 'auto' : 'smooth', block:'start' }); }
     else { window.scrollTo({ top:0, behavior:'instant' }); }
@@ -649,20 +593,9 @@ document.getElementById('year').textContent = new Date().getFullYear();
 /* ---------- الشريط العلوي: القائمة المنسدلة، التمييز، ظهور الشعار الصغير ---------- */
 (function(){
   var nav = document.querySelector('.nav'), logo = document.querySelector('.hero-logo');
-  var dd = document.getElementById('dd'), ddb = document.getElementById('dd-btn');
   var links = document.querySelectorAll('#links a');
-  var ids = ['services','showcase','process','about','contact'];
+  var ids = ['about','contact'];
   var endY = 0, navH = 68;
-
-  /* القائمة المنسدلة */
-  function closeDD(){ dd.classList.remove('open'); ddb.setAttribute('aria-expanded','false'); }
-  ddb.addEventListener('click', function(e){
-    e.stopPropagation();
-    var o = dd.classList.toggle('open'); ddb.setAttribute('aria-expanded', o);
-  });
-  document.addEventListener('click', function(e){ if(!dd.contains(e.target)) closeDD(); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeDD(); });
-  dd.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeDD); });
 
   function pageTop(el){ var t = 0; while(el){ t += el.offsetTop; el = el.offsetParent; } return t; }   /* لا تتأثر بالتحويلات */
   function measure(){ navH = nav.offsetHeight; endY = Math.max(120, pageTop(logo) + logo.offsetHeight * .8 - navH); }
@@ -682,7 +615,6 @@ document.getElementById('year').textContent = new Date().getFullYear();
     var active = null, line = navH + 90;
     ids.forEach(function(id){ var el = document.getElementById(id); if(el && el.getBoundingClientRect().top <= line) active = id; });
     links.forEach(function(a){ a.classList.toggle('current', active !== null && a.getAttribute('href') === '#' + active); });
-    ddb.classList.toggle('current', active === 'showcase');
   }
   var tick = false;
   window.addEventListener('scroll', function(){ if(!tick){ tick = true; requestAnimationFrame(function(){ update(); tick = false; }); } }, { passive:true });
@@ -737,7 +669,7 @@ function buildFab(){
 }
 document.getElementById('skip').addEventListener('click', function(e){
   e.preventDefault();
-  var t = document.querySelector('.page.active') || document.getElementById('services');
+  var t = document.querySelector('.page.active') || document.getElementById('learn-home');
   if(!t) return;
   t.setAttribute('tabindex','-1'); t.focus(); t.scrollIntoView({ block:'start' });
 });
