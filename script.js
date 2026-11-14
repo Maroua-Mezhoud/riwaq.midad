@@ -4,27 +4,18 @@
 
 /* ---------- إعدادات سهلة التعديل ---------- */
 var CONFIG = {
-  landingPrice: "2000",   // سعر صفحة الهبوط الثابت (أرقام فقط)
   instagram: "https://www.instagram.com/riwaq.midad/",
   instagramUser: "riwaq.midad",
   whatsapp: "213674026632",   // رقمك بصيغة دولية بدون + مثل 213550000000 (اتركه فارغًا لإخفاء الزر)
   email: ""       // بريدك (اتركه فارغًا لإخفاء الزر)
 };
 
-/* ---------- أسعار اللوحات (أرقام فقط) ---------- */
-var PRICES = {
-  custom: { A5:"2300", A4:"3400" },   // طلب خاص: اسم أو آية أو إهداء (تظهر في بطاقة «اطلب لوحتك»)
-  ready:  { A5:"1800", A4:"2700" }    // لوحة جاهزة: استعملها في اللوحة الجديدة هكذا  price: PRICES.ready.A5
-};
-
 /* ==========================================================
    الأعمال: لإضافة عمل جديد انسخ كتلة { ... } وعدّلها
-   cat:    calligraphy (خط عربي) | design (تصميم) | web (مواقع)
-   title / desc: ar بالعربية و en بالإنجليزية
+   cat:    calligraphy (خط عربي) | web (مواقع)
+   title:  ar بالعربية و en بالإنجليزية
    script: نوع الخط (للوحات فقط) بالعربية والإنجليزية
    size:   المقاس: "A5" أو "A4" (للوحات، ويُستعمل في التصفية)
-   sold:   true إذا بيعت اللوحة (يظهر زر «تم البيع» الأحمر). احذف السطر إذا كانت متاحة
-   price:  السعر (للوحات فقط). صفحات الهبوط سعرها ثابت في CONFIG.landingPrice
    img:    صورة العمل (للوحات)
    logo:   شعار المشروع (لصفحات الهبوط)
    link:   رابط الصفحة، و domain النص الظاهر تحت البطاقة
@@ -36,43 +27,37 @@ var GROUPS = {
   calligraphy:{
     title:{ ar:"لوحات الخط العربي", en:"Arabic calligraphy paintings" },
     notes:{
-      ar:["مكتوبة بخط اليد بالحبر", "ورق تركي مزخرف", "يمكن كتابة عبارتك حسب الطلب"],
-      en:["Handwritten in ink", "Ornamented Turkish paper", "Your own phrase can be written to order"]
+      ar:["مكتوبة بخط اليد بالحبر", "ورق تركي مزخرف"],
+      en:["Handwritten in ink", "Ornamented Turkish paper"]
     }
   },
   web:{
     title:{ ar:"صفحات الهبوط والمواقع", en:"Landing pages & websites" },
     notes:{
-      ar:["لديك عدد غير محدود من الإضافات لمدة 15 يومًا"],
-      en:["Unlimited additions for 15 days"]
+      ar:[],
+      en:[]
     }
   }
 };
 
 
 /* ==========================================================
-   المطبوعات والتصاميم (الأسعار تقريبية، عدّلها كما تشائين)
-   cat:   cards | bookmarks | printing | giveaways | certificates
+   المطبوعات والتصاميم (نماذج للعرض بلا أسعار)
+   cat:   cards | bookmarks | giveaways | certificates
    mock:  شكل الصورة التوضيحية؛ أو ضعي img:"assets/works/xxx.webp" لصورة حقيقية
-   price: بالأرقام فقط    from: true لتظهر كلمة «من»
-   unit:  وحدة السعر (للقطعة، لكل 100 بطاقة...)
    ========================================================== */
 var CGROUPS = {
   cards:{
     title:{ ar:"بطاقات الأعمال", en:"Business cards" },
-    notes:{ ar:["تصميم حسب هويتك", "يصلك ملف جاهز للطباعة"], en:["Designed around your brand", "Delivered print-ready"] }
+    notes:{ ar:["تصميم ينسجم مع الهوية البصرية", "ملفات مُعدّة للطباعة"], en:["Designed around the brand identity", "Print-ready files"] }
   },
   bookmarks:{
     title:{ ar:"فواصل الكتب", en:"Bookmarks" },
-    notes:{ ar:["بالخط العربي أو بتصميم حديث", "هدية أنيقة للقرّاء"], en:["Arabic calligraphy or a modern look", "An elegant gift for readers"] }
-  },
-  printing:{
-    title:{ ar:"الطباعة", en:"Printing" },
-    notes:{ ar:["الأسعار تقريبية وتختلف حسب الكمية ونوع الورق"], en:["Prices are approximate and vary with quantity and paper"] }
+    notes:{ ar:["بالخط العربي أو بتصميم حديث"], en:["Arabic calligraphy or a modern look"] }
   },
   giveaways:{
     title:{ ar:"التوزيعات", en:"Giveaways & favors" },
-    notes:{ ar:["للأعراس والمواليد والمناسبات", "الاسم والعبارة حسب طلبك"], en:["Weddings, births and occasions", "Name and wording to your order"] }
+    notes:{ ar:["للأعراس والمواليد والمناسبات", "الاسم والعبارة بحسب المناسبة"], en:["Weddings, births and occasions", "Name and wording to suit the occasion"] }
   },
   certificates:{
     title:{ ar:"الشهادات", en:"Certificates" },
@@ -82,74 +67,43 @@ var CGROUPS = {
 
 var CATALOG = [
   { cat:"cards", mock:"cards",
-    title:{ ar:"تصميم بطاقة أعمال", en:"Business card design" },
-    desc:{ ar:"وجهان بتصميم يناسب نشاطك.", en:"A two-sided design that suits your business." },
-    price:"1000", unit:{ ar:"للتصميم", en:"per design" } },
-  { cat:"cards", mock:"cards",
-    title:{ ar:"تصميم وطباعة", en:"Design & print" },
-    desc:{ ar:"بطاقاتك مطبوعة وجاهزة للتوزيع.", en:"Your cards printed and ready to hand out." },
-    price:"2500", unit:{ ar:"لكل 100 بطاقة", en:"per 100 cards" } },
+    title:{ ar:"بطاقة أعمال", en:"Business card" },
+    desc:{ ar:"وجهان بتصميم يناسب هوية النشاط.", en:"A two-sided design that suits the brand." } },
   { cat:"cards", mock:"cards",
     title:{ ar:"بطاقة بخط اليد", en:"Hand-lettered card" },
-    desc:{ ar:"اسمك أو شعارك بالخط العربي.", en:"Your name or logo in Arabic calligraphy." },
-    price:"3500", from:true, unit:{ ar:"لكل 100 بطاقة", en:"per 100 cards" } },
+    desc:{ ar:"الاسم أو الشعار بالخط العربي.", en:"A name or logo in Arabic calligraphy." } },
 
   { cat:"bookmarks", mock:"bookmark",
     title:{ ar:"فواصل مطبوعة", en:"Printed bookmarks" },
-    desc:{ ar:"بتصميمك أو بتصميم من عندنا.", en:"With your design or one of ours." },
-    price:"800", unit:{ ar:"لكل 10 فواصل", en:"per 10 bookmarks" } },
+    desc:{ ar:"بتصاميم متنوعة تناسب القرّاء.", en:"In varied designs for readers." } },
   { cat:"bookmarks", mock:"bookmark",
     title:{ ar:"فاصل بخط اليد", en:"Hand-lettered bookmark" },
-    desc:{ ar:"عبارة أو اسم بالخط العربي.", en:"A phrase or a name in Arabic calligraphy." },
-    price:"500", unit:{ ar:"للقطعة", en:"each" } },
+    desc:{ ar:"عبارة أو اسم بالخط العربي.", en:"A phrase or a name in Arabic calligraphy." } },
   { cat:"bookmarks", mock:"bookmark",
-    title:{ ar:"طقم هدية", en:"Gift set" },
-    desc:{ ar:"خمسة فواصل بتصاميم مختلفة.", en:"Five bookmarks in different designs." },
-    price:"1500", unit:{ ar:"للطقم", en:"per set" } },
-
-  { cat:"printing", mock:"print",
-    title:{ ar:"طباعة ملونة A4", en:"Colour printing A4" },
-    desc:{ ar:"مستندات وصور بجودة عالية.", en:"Documents and photos in high quality." },
-    price:"30", unit:{ ar:"للورقة", en:"per sheet" } },
-  { cat:"printing", mock:"print",
-    title:{ ar:"طباعة ملونة A3", en:"Colour printing A3" },
-    desc:{ ar:"للملصقات والعروض والمخططات.", en:"For flyers, presentations and plans." },
-    price:"100", unit:{ ar:"للورقة", en:"per sheet" } },
-  { cat:"printing", mock:"print",
-    title:{ ar:"طباعة لوحة أو بوستر", en:"Poster or painting print" },
-    desc:{ ar:"بمقاس A2 على ورق مختار.", en:"A2 size on selected paper." },
-    price:"400", unit:{ ar:"للقطعة", en:"each" } },
+    title:{ ar:"طقم فواصل", en:"Bookmark set" },
+    desc:{ ar:"خمسة فواصل بتصاميم مختلفة.", en:"Five bookmarks in different designs." } },
 
   { cat:"giveaways", mock:"giveaway",
-    title:{ ar:"بطاقات شكر مطبوعة", en:"Printed thank-you tags" },
-    desc:{ ar:"بتصميم يناسب مناسبتك.", en:"Designed to match your occasion." },
-    price:"2000", unit:{ ar:"لكل 50 قطعة", en:"per 50 pieces" } },
+    title:{ ar:"بطاقات شكر", en:"Thank-you tags" },
+    desc:{ ar:"بتصميم يناسب المناسبة.", en:"Designed to match the occasion." } },
   { cat:"giveaways", mock:"giveaway",
     title:{ ar:"توزيعات بالخط", en:"Hand-lettered favors" },
-    desc:{ ar:"اسم المناسبة بخط اليد على كل قطعة.", en:"The occasion's name handwritten on each piece." },
-    price:"70", from:true, unit:{ ar:"للقطعة (من 30 قطعة)", en:"each (from 30 pieces)" } },
+    desc:{ ar:"اسم المناسبة بخط اليد على كل قطعة.", en:"The occasion's name handwritten on each piece." } },
   { cat:"giveaways", mock:"giveaway",
     title:{ ar:"ملصقات مخصصة", en:"Custom stickers" },
-    desc:{ ar:"لتغليف الهدايا والتوزيعات.", en:"For wrapping gifts and favors." },
-    price:"1200", unit:{ ar:"لكل 24 ملصقًا", en:"per 24 stickers" } },
+    desc:{ ar:"لتغليف الهدايا والتوزيعات.", en:"For wrapping gifts and favors." } },
 
   { cat:"certificates", mock:"certificate",
     title:{ ar:"تصميم شهادة", en:"Certificate design" },
-    desc:{ ar:"قالب رسمي قابل للتعديل.", en:"A formal, editable template." },
-    price:"600", unit:{ ar:"للتصميم", en:"per design" } },
-  { cat:"certificates", mock:"certificate",
-    title:{ ar:"تصميم وطباعة", en:"Design & print" },
-    desc:{ ar:"شهاداتك جاهزة للتسليم.", en:"Your certificates ready to hand out." },
-    price:"2500", unit:{ ar:"لكل 20 شهادة", en:"per 20 certificates" } },
+    desc:{ ar:"قالب رسمي أنيق.", en:"A formal, elegant template." } },
   { cat:"certificates", mock:"certificate",
     title:{ ar:"شهادة بخط اليد", en:"Handwritten certificate" },
-    desc:{ ar:"الاسم مكتوب بالخط العربي.", en:"The name written in Arabic calligraphy." },
-    price:"400", unit:{ ar:"للقطعة", en:"each" } }
+    desc:{ ar:"الاسم مكتوب بالخط العربي.", en:"The name written in Arabic calligraphy." } }
 ];
 
 var MARQ = {
-  ar:["الخط العربي","التصميم الغرافيكي","بطاقات الأعمال","فواصل الكتب","الطباعة","التوزيعات","الشهادات","صفحات الهبوط"],
-  en:["Arabic calligraphy","Graphic design","Business cards","Bookmarks","Printing","Favors","Certificates","Landing pages"]
+  ar:["الخط العربي","التصميم الغرافيكي","بطاقات الأعمال","فواصل الكتب","المطبوعات","التوزيعات","الشهادات","صفحات الهبوط"],
+  en:["Arabic calligraphy","Graphic design","Business cards","Bookmarks","Print design","Favors","Certificates","Landing pages"]
 };
 
 var DIWANI = { ar:"الديواني", en:"Diwani" };
@@ -161,8 +115,6 @@ var WORKS = [
     title:{ ar:"وظني فيك يا ربي جميل", en:"“My hope in You, my Lord, is beautiful”" },
     script: DIWANI,
     size:"A5",
-    price:"1650",
-    sold:true,
     img:"assets/works/lawha-4.webp"
   },
   {
@@ -170,8 +122,6 @@ var WORKS = [
     title:{ ar:"لوحة بإطار مزخرف ذهبي وأزرق", en:"Painting with a gold-and-blue ornamental border" },
     script: DIWANI,
     size:"A4",
-    price:"1900",
-    sold:true,
     img:"assets/works/lawha-1.webp"
   },
   {
@@ -185,8 +135,6 @@ var WORKS = [
     title:{ ar:"خديجة", en:"Khadija" },
     script: THULUTH,
     size:"A5",
-    price:"1200",
-    sold:true,
     img:"assets/works/lawha-3.webp"
   },
   {
@@ -216,22 +164,20 @@ var WORKS = [
 /* ---------- نصوص الواجهة الديناميكية ---------- */
 var UI = {
   ar: {
-    all:"الكل", more:"عرض المزيد", cnt:{ calligraphy:"لوحة", web:"صفحة", print:"منتجًا" },
+    all:"الكل", more:"عرض المزيد", cnt:{ calligraphy:"لوحة", web:"صفحة", print:"تصميم" },
     cat:{ calligraphy:"خط عربي", design:"تصميم", web:"موقع" },
     catPlural:{ calligraphy:"خط عربي", design:"تصميم", web:"مواقع" },
-    order:"اطلب اللوحة", orderWeb:"اطلب موقعًا مماثلًا", visit:"زيارة الموقع", currency:"دج",
-    scriptLabel:"نوع الخط: ", sizeLabel:"المقاس: ", cm:"سم", sold:"تم البيع", fSize:"المقاس", fScript:"نوع الخط", fAvail:"المتاحة فقط", empty:"لا توجد لوحات بهذه المواصفات حاليًا.", reset:"إزالة التصفية", orderItem:"اطلب الآن", msgItem:"مرحبًا، أريد طلب: ", from:"من",
-    msg:"مرحبًا، أريد طلب: ", msgWeb:"مرحبًا، أريد طلب موقع مماثل لـ: ",
-    wa:"واتساب", ig:"إنستغرام", mail:"البريد", msgLanding:"مرحبًا، أريد طلب صفحة هبوط لمشروعي", msgHi:"مرحبًا، أودّ الاستفسار عن خدماتكم", lbClose:"إغلاق", lbPrev:"السابق", lbNext:"التالي", waFab:"تواصل عبر واتساب", msgCustom:"مرحبًا، أريد طلب لوحة بخط اليد بمقاس ", coOrder:"اطلب مقاس"
+    visit:"زيارة الموقع",
+    scriptLabel:"نوع الخط: ", sizeLabel:"المقاس: ", cm:"سم", fSize:"المقاس", fScript:"نوع الخط", empty:"لا توجد لوحات بهذه المواصفات حاليًا.", reset:"إزالة التصفية",
+    wa:"واتساب", ig:"إنستغرام", mail:"البريد", msgHi:"مرحبًا، أعجبتني أعمالك وأودّ التواصل معك", lbClose:"إغلاق", lbPrev:"السابق", lbNext:"التالي", waFab:"تواصل عبر واتساب"
   },
   en: {
-    all:"All", more:"Show more", cnt:{ calligraphy:"paintings", web:"pages", print:"items" },
+    all:"All", more:"Show more", cnt:{ calligraphy:"paintings", web:"pages", print:"designs" },
     cat:{ calligraphy:"Calligraphy", design:"Design", web:"Website" },
     catPlural:{ calligraphy:"Calligraphy", design:"Design", web:"Websites" },
-    order:"Order this piece", orderWeb:"Order a similar site", visit:"Visit website", currency:"DZD",
-    scriptLabel:"Script: ", sizeLabel:"Size: ", cm:"cm", sold:"Sold", fSize:"Size", fScript:"Script", fAvail:"Available only", empty:"No paintings match these filters right now.", reset:"Clear filters", orderItem:"Order now", msgItem:"Hello, I would like to order: ", from:"From",
-    msg:"Hello, I would like to order: ", msgWeb:"Hello, I would like a website similar to: ",
-    wa:"WhatsApp", ig:"Instagram", mail:"Email", msgLanding:"Hello, I would like to order a landing page for my project", msgHi:"Hello, I would like to ask about your services", lbClose:"Close", lbPrev:"Previous", lbNext:"Next", waFab:"Chat on WhatsApp", msgCustom:"Hello, I would like to order a handwritten calligraphy painting, size ", coOrder:"Order size"
+    visit:"Visit website",
+    scriptLabel:"Script: ", sizeLabel:"Size: ", cm:"cm", fSize:"Size", fScript:"Script", empty:"No paintings match these filters right now.", reset:"Clear filters",
+    wa:"WhatsApp", ig:"Instagram", mail:"Email", msgHi:"Hello, I like your work and would like to get in touch", lbClose:"Close", lbPrev:"Previous", lbNext:"Next", waFab:"Chat on WhatsApp"
   }
 };
 
@@ -239,63 +185,61 @@ var UI = {
    الترجمة: الإنجليزية هنا، أما العربية فتُقرأ من الصفحة نفسها
    ========================================================== */
 var EN = {
-  title:"Riwaq Midad | Arabic Calligraphy, Design & Printing",
-  desc:"Riwaq Midad: Arabic calligraphy, graphic design, printing and landing pages. Order a custom piece with a handmade touch and an elegant identity.",
+  title:"Riwaq Midad | Portfolio: Arabic Calligraphy & Design",
+  desc:"Riwaq Midad: a portfolio of Arabic calligraphy, graphic design, print design and landing pages.",
   back:"Back", skip:"Skip to content",
-  co_t:"Order your handwritten painting",
-  co_p:"Your painting is written by hand in ink on ornamental paper, with the name, verse or dedication you choose. It is one piece that is never repeated.",
-  co_l1:"Handwritten in ink on ornamental paper", co_l2:"Name, verse or dedication of your choice", co_l3:"Script: Diwani or Thuluth", co_l4:"One unique piece",
-  co_note:"The frame is sold separately and delivery is paid by the customer. A 50% deposit confirms your order.",
+  co_t:"About the paintings",
+  co_p:"The paintings are written by hand in ink on ornamental paper, in the Diwani and Thuluth scripts. Each one is a single piece that is never repeated.",
+  co_l1:"Handwritten in ink on ornamental paper", co_l2:"Verses, poetry, names and dedications", co_l3:"Scripts: Diwani and Thuluth", co_l4:"One unique piece",
   wi_t:"What is a landing page?",
-  wi_p1:"A landing page is a single, clean web page that introduces your project or product and leads visitors to one clear step: to order or get in touch.",
-  wi_p2:"Instead of a large, complicated website, you get a fast page that presents what you offer clearly, and is ideal to link from your Instagram profile or your ads.",
-  wi_l1:"Designed around your brand", wi_l2:"Mobile friendly", wi_l3:"Light and dark mode", wi_l4:"Unlimited additions for 15 days",
-  wi_pl:"Fixed price for any page", wi_order:"Order a landing page for your project",
-  wl_t:"Our work", wl_p:"Pages we have already built, live and approved.", hub_eyebrow:"Our work", hub_h2:'Browse our <span class="ruq">work</span> and print', hub_p:"Pick a section to see everything inside it, neatly in one place.",
+  wi_p1:"A landing page is a single, clean web page that introduces a project or product and leads the visitor to one clear step.",
+  wi_p2:"Instead of a large, complicated website, it is a fast page that presents what the project offers clearly, easy to link from an Instagram profile or from ads.",
+  wi_l1:"Designed around each project's brand", wi_l2:"Mobile friendly", wi_l3:"Light and dark mode",
+  wl_t:"My work", wl_p:"Pages I have built, live online.", hub_eyebrow:"My work", hub_h2:'Browse my <span class="ruq">work</span> and print designs', hub_p:"Pick a section to see everything inside it, neatly in one place.",
   hub_cal_t:"Arabic calligraphy paintings", hub_web_t:"Landing pages", hb_cal:"Handwritten paintings in authentic Arabic scripts.", hb_web:"Pages and sites designed for real projects.",
   cal_h2:'<span class="ruq">Arabic calligraphy</span> paintings', web_h2:'<span class="ruq">Landing</span> pages', hb_open:"Open section",
-  hb_services:"Calligraphy, design, printing and websites.", hb_works:"Paintings and websites we have made.", hb_print:"Cards, bookmarks, giveaways and certificates.",
-  hb_process:"Four steps from idea to delivery.", hb_about:"The story of Riwaq Midad and what we believe in.", hb_contact:"Write to us and start your project.",
-  n_services:"Services", n_print:"Print", n_works:"Works", n_process:"Process", n_about:"About", n_contact:"Contact", n_order:"Order now",
+  hb_services:"Calligraphy, design, print design and websites.", hb_works:"Paintings and websites I have made.", hb_print:"Cards, bookmarks, giveaways and certificates.",
+  hb_process:"From idea to finished work.", hb_about:"The story of Riwaq Midad and what I believe in.", hb_contact:"Get in touch.",
+  n_services:"Fields", n_print:"Print", n_works:"Works", n_process:"Process", n_about:"About", n_contact:"Contact",
   h1:'Where <span class="ruq">Arabic letters</span> meet design',
-  lead:"Handwritten Arabic calligraphy, design, printing and web pages, made with care to carry your name and taste.",
-  cta1:"Start your project", cta2:"View works",
-  chip1:"Arabic calligraphy", chip2:"Graphic design", chip3:"Printing", chip4:"Landing pages",
+  lead:"Handwritten Arabic calligraphy, graphic design, print design and web pages, work that brings tradition and modernity together.",
+  cta1:"View works", cta2:"Get in touch",
+  chip1:"Arabic calligraphy", chip2:"Graphic design", chip3:"Print design", chip4:"Landing pages",
   k_eyebrow:"Print & stationery",
-  k_h2:'Everything you need for <span class="ruq">print</span> and design',
-  k_p:"Business cards, bookmarks, printing, favors and certificates, designed with an Arabic touch.",
+  k_h2:'Samples of <span class="ruq">print</span> and design',
+  k_p:"Cards, bookmarks, favors and certificates, designed with an Arabic touch.",
 
-  s_eyebrow:"What we offer",
-  s_h2:'Services that blend <span class="ruq">tradition</span> and modernity',
+  s_eyebrow:"Areas of work",
+  s_h2:'Fields that blend <span class="ruq">tradition</span> and modernity',
   s_p:"From a hand-lettered painting to a complete web page, every piece is made with attention to detail.",
   sv1_t:"Arabic calligraphy", sv1_p:"Hand-lettered paintings and writing in authentic Arabic scripts.",
   sv1_l1:"Paintings, names and dedications", sv1_l2:"Verses, poetry and phrases", sv1_l3:"Writing for occasion cards",
-  sv2_t:"Graphic design", sv2_p:"A visual identity that looks like your project and speaks for it.",
+  sv2_t:"Graphic design", sv2_p:"Visual identities that express a project and introduce it.",
   sv2_l1:"Logos and brand identities", sv2_l2:"Cards, menus and posters", sv2_l3:"Social media designs",
-  sv3_t:"Printing", sv3_p:"High-quality printing on carefully chosen paper and materials.",
-  sv3_l1:"Printing paintings and posters", sv3_l2:"Custom cards and gifts", sv3_l3:"Prints for small businesses",
-  sv4_t:"Landing pages & websites", sv4_p:"An elegant page that presents your product and reaches your customers.",
-  sv4_l1:"A landing page for your project", sv4_l2:"Light and dark modes", sv4_l3:"Mobile friendly",
+  sv3_t:"Print design", sv3_p:"Carefully designed print pieces on selected paper and materials.",
+  sv3_l1:"Paintings and posters", sv3_l2:"Custom cards and gifts", sv3_l3:"Print pieces for projects and events",
+  sv4_t:"Landing pages & websites", sv4_p:"Elegant pages that present a project and reach its audience.",
+  sv4_l1:"Landing pages for projects", sv4_l2:"Light and dark modes", sv4_l3:"Mobile friendly",
 
   w_eyebrow:"Portfolio",
-  w_h2:'Some of <span class="ruq">what we\'ve made</span>',
+  w_h2:'Some of <span class="ruq">my work</span>',
 
-  p_eyebrow:"How we work",
-  p_h2:'Four <span class="ruq">simple</span> steps',
-  p1_t:"Contact", p1_p:"Tell us your idea and what you need through Instagram or WhatsApp.",
-  p2_t:"Agree", p2_p:"We settle the details, timing and price before we begin.",
-  p3_t:"Create", p3_p:"We work on your order and show you the stages to hear your feedback.",
-  p4_t:"Deliver", p4_p:"Your piece arrives ready, digital or printed.",
+  p_eyebrow:"My process",
+  p_h2:'From idea <span class="ruq">to finished work</span>',
+  p1_t:"Idea", p1_p:"I start by understanding the idea, the references and the audience.",
+  p2_t:"Design", p2_p:"I sketch drafts and choose the script, colours and composition.",
+  p3_t:"Execution", p3_p:"I carry the work out in detail and review it stage by stage.",
+  p4_t:"Finish", p4_p:"The work comes out finished, digital or printed.",
 
   a_eyebrow:"About the studio",
   a_h2:'Riwaq <span class="ruq">Midad</span>',
   a_p1:"“Midad” is the ink that letters are written with, and “Riwaq” is a quiet gallery where they are shown. Here Arabic calligraphy meets design, printing and web page making.",
-  a_p2:"I believe Arabic letters are beautiful enough to be part of your daily life: on the wall of your home, in your brand identity, or on your web page.",
-  a_k1:"Arabic calligraphy", a_k2:"Design", a_k3:"Printing",
+  a_p2:"I believe Arabic letters are beautiful enough to be part of everyday life: on the wall of a home, in a project's brand identity, or on a web page.",
+  a_k1:"Arabic calligraphy", a_k2:"Design", a_k3:"Print",
 
-  c_eyebrow:"Get in touch",
-  c_h2:'Let\'s write <span class="ruq">your story</span> in letters',
-  c_p:"Have an idea or an order? Message us and we will reply as soon as possible.",
+  c_eyebrow:"Contact",
+  c_h2:'Get in <span class="ruq">touch</span>',
+  c_p:"For collaboration or questions about the work, you can reach me through the channels below.",
   loc:"Bordj Bou Arréridj, Algeria"
 };
 var ARIA = {
@@ -306,13 +250,11 @@ var ARIA = {
 var AR = {};          // تُملأ من الصفحة عند التحميل
 var LANG = 'ar';
 
-function priceFmt(p){ return String(p).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
-
 /* ---------- معرض الأعمال ---------- */
 var currentFilter = 'all';
 
 /* صيغة العدد: «لوحتان»، «3 لوحات»، «12 لوحة» */
-var CNT_AR = { calligraphy:['لوحة','لوحتان','لوحات','لوحة'], web:['صفحة','صفحتان','صفحات','صفحة'], print:['منتج','منتجان','منتجات','منتجًا'] };
+var CNT_AR = { calligraphy:['لوحة','لوحتان','لوحات','لوحة'], web:['صفحة','صفحتان','صفحات','صفحة'], print:['تصميم','تصميمان','تصاميم','تصميمًا'] };
 function countText(n, c){
   if(LANG === 'en') return n + ' ' + UI.en.cnt[c];
   var f = CNT_AR[c];
@@ -322,8 +264,8 @@ function countText(n, c){
 }
 var PAGE_SIZE = 9;                       /* عدد الأعمال المعروضة في كل دفعة */
 var WSTATE = {
-  calligraphy:{ shown:PAGE_SIZE, f:'all', s:'all', a:false },   /* f: نوع الخط، s: المقاس، a: المتاحة فقط */
-  web:{ shown:PAGE_SIZE, f:'all', s:'all', a:false }
+  calligraphy:{ shown:PAGE_SIZE, f:'all', s:'all' },   /* f: نوع الخط، s: المقاس */
+  web:{ shown:PAGE_SIZE, f:'all', s:'all' }
 };
 var SIZES = { A5:"14.8 × 21", A4:"21 × 29.7" };
 
@@ -331,17 +273,10 @@ function buildWorks(){
   var ui = UI[LANG];
   var arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 8V7H8"/></svg>';
 
-  function orderLink(w){
-    var msg = ui.msg + w.title[LANG];
-    if(CONFIG.whatsapp){ return 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(msg); }
-    return 'https://ig.me/m/' + CONFIG.instagramUser;
-  }
-
   function card(w){
     var title = w.title[LANG];
-    var isWeb = (w.cat === 'web');
     var el = document.createElement('article');
-    el.className = 'work reveal in' + (w.sold ? ' is-sold' : '');
+    el.className = 'work reveal in';
     el.dataset.cat = w.cat;
     var thumb = w.logo
       ? '<div class="thumb logo"><img src="'+w.logo+'" alt="'+title+'" loading="lazy"></div>'
@@ -355,15 +290,9 @@ function buildWorks(){
 
     var visit = w.link ? '<div class="visit"><a class="go" href="'+w.link+'" target="_blank" rel="noopener">'+ui.visit+' '+arrow+'</a>'+
               (w.domain ? '<div class="domain">'+w.domain+'</div>' : '')+'</div>' : '';
-    var action = w.sold
-      ? '<span class="btn-sold" role="status">'+ui.sold+'</span>'
-      : '<a class="btn btn-primary btn-sm" target="_blank" rel="noopener" href="'+orderLink(w)+'">'+ui.order+'</a>';
-    var buy = (w.price && !isWeb) ? '<div class="buy"><div class="price">'+priceFmt(w.price)+'<small>'+ui.currency+'</small></div>'+action+'</div>' : '';
-    el.innerHTML = thumb + '<div class="meta"><h3>'+title+'</h3>'+specs+visit+buy+'</div>';
+    el.innerHTML = thumb + '<div class="meta"><h3>'+title+'</h3>'+specs+visit+'</div>';
     return el;
   }
-
-  function rank(w){ return w.sold ? 2 : (w.price ? 0 : 1); }
 
   function chips(group, values, current, label){
     var h = '<button class="filter'+(current==='all'?' active':'')+'" data-g="'+group+'" data-v="all" type="button">'+ui.all+'</button>';
@@ -381,7 +310,10 @@ function buildWorks(){
     if(!grid) return;
     var all = WORKS.filter(function(w){ return w.cat === c; });
     var g = GROUPS[c] || {};
-    if(notesEl) notesEl.innerHTML = ((g.notes && g.notes[LANG]) || []).map(function(n){ return '<li>'+n+'</li>'; }).join('');
+    if(notesEl){
+      var nh = ((g.notes && g.notes[LANG]) || []).map(function(n){ return '<li>'+n+'</li>'; }).join('');
+      notesEl.innerHTML = nh; notesEl.style.display = nh ? '' : 'none';
+    }
 
     /* القيم الموجودة فعلًا في الأعمال */
     var sizes = [], scripts = [];
@@ -390,34 +322,29 @@ function buildWorks(){
       if(w.script && !scripts.some(function(v){ return v.key === w.script.ar; })) scripts.push({ key:w.script.ar, label:w.script[LANG] });
     });
     sizes.sort(function(a, b){ return parseInt(b.key.slice(1), 10) - parseInt(a.key.slice(1), 10); });   /* A5 قبل A4 */
-    var canAvail = all.some(function(w){ return w.sold; }) && all.some(function(w){ return w.price && !w.sold; });
 
     var html = '';
     if(sizes.length > 1)   html += chips('s', sizes, st.s, ui.fSize);
     if(scripts.length > 1) html += chips('f', scripts, st.f, ui.fScript);
-    if(canAvail) html += '<div class="fgroup"><button class="filter avail'+(st.a?' active':'')+'" data-g="a" data-v="1" type="button" aria-pressed="'+st.a+'">'+ui.fAvail+'</button></div>';
     bar.hidden = !html;
     bar.innerHTML = html;
     bar.querySelectorAll('.filter').forEach(function(btn){
       btn.addEventListener('click', function(){
         var gr = btn.dataset.g;
-        if(gr === 'a'){ st.a = !st.a; } else { st[gr] = btn.dataset.v; }
+        st[gr] = btn.dataset.v;
         st.shown = PAGE_SIZE; buildWorks();
       });
     });
 
     var list = all.filter(function(w){
       return (st.f === 'all' || (w.script && w.script.ar === st.f)) &&
-             (st.s === 'all' || w.size === st.s) &&
-             (!st.a || (w.price && !w.sold));
-    }).map(function(w, i){ return { w:w, i:i }; })
-      .sort(function(x, y){ return (rank(x.w) - rank(y.w)) || (x.i - y.i); })   /* المتاحة أولًا ثم أعمال بلا سعر ثم المباعة */
-      .map(function(o){ return o.w; });
+             (st.s === 'all' || w.size === st.s);
+    });
 
     grid.innerHTML = '';
     if(!list.length){
       grid.innerHTML = '<div class="empty"><p>'+ui.empty+'</p><button class="btn btn-ghost btn-sm" type="button">'+ui.reset+'</button></div>';
-      grid.querySelector('button').addEventListener('click', function(){ st.f = 'all'; st.s = 'all'; st.a = false; st.shown = PAGE_SIZE; buildWorks(); });
+      grid.querySelector('button').addEventListener('click', function(){ st.f = 'all'; st.s = 'all'; st.shown = PAGE_SIZE; buildWorks(); });
     } else {
       list.slice(0, st.shown).forEach(function(w){ grid.appendChild(card(w)); });
     }
@@ -432,26 +359,6 @@ function buildWorks(){
     if(cnt) cnt.textContent = countText(all.length, c);
   });
 
-  ['A5','A4'].forEach(function(s){
-    var k = s.toLowerCase(), p = document.getElementById('co-'+k+'-price');
-    if(!p) return;
-    p.textContent = priceFmt(PRICES.custom[s]);
-    document.getElementById('co-'+k+'-cur').textContent = ui.currency;
-    document.getElementById('co-'+k+'-dim').textContent = SIZES[s] + ' ' + ui.cm;
-    var btn = document.getElementById('co-'+k+'-btn');
-    btn.textContent = ui.coOrder + ' ' + s;
-    btn.href = CONFIG.whatsapp
-      ? 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(ui.msgCustom + s)
-      : 'https://ig.me/m/' + CONFIG.instagramUser;
-  });
-  var wp = document.getElementById('web-price');
-  if(wp){
-    wp.textContent = priceFmt(CONFIG.landingPrice);
-    document.getElementById('web-cur').textContent = ui.currency;
-    document.getElementById('web-order').href = CONFIG.whatsapp
-      ? 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(ui.msgLanding)
-      : 'https://ig.me/m/' + CONFIG.instagramUser;
-  }
   var pc = document.getElementById('count-print');
   if(pc) pc.textContent = countText(CATALOG.length, 'print');
 }
@@ -491,7 +398,7 @@ function buildCatalog(animate){
   var ui = UI[LANG];
   var inCls = animate ? '' : ' in';
   root.innerHTML = '';
-  var order = ['cards','bookmarks','printing','giveaways','certificates'];
+  var order = ['cards','bookmarks','giveaways','certificates'];
   var pillHtml = '';
 
   order.forEach(function(c){
@@ -511,18 +418,11 @@ function buildCatalog(animate){
     grid.className = 'group-grid';
     items.forEach(function(w){
       var title = w.title[LANG];
-      var msg = ui.msgItem + g.title[LANG] + ' / ' + title;
-      var href = CONFIG.whatsapp
-        ? 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(msg)
-        : 'https://ig.me/m/' + CONFIG.instagramUser;
       var el = document.createElement('article');
       el.className = 'work reveal' + inCls;
       var visual = w.img ? '<div class="thumb art"><img src="'+w.img+'" alt="'+title+'" loading="lazy"></div>' : mockup(w.mock);
       el.innerHTML = visual +
-        '<div class="meta"><h3>'+title+'</h3><p>'+w.desc[LANG]+'</p>'+
-        '<div class="buy"><div class="price-wrap"><div class="price">'+(w.from ? '<span class="from">'+ui.from+'</span>' : '')+priceFmt(w.price)+'<small>'+ui.currency+'</small></div>'+
-        '<div class="unit">'+w.unit[LANG]+'</div></div>'+
-        '<a class="btn btn-primary btn-sm" target="_blank" rel="noopener" href="'+href+'">'+ui.orderItem+'</a></div></div>';
+        '<div class="meta"><h3>'+title+'</h3><p>'+w.desc[LANG]+'</p></div>';
       grid.appendChild(el);
     });
     sec.appendChild(grid);
@@ -871,8 +771,7 @@ document.getElementById('skip').addEventListener('click', function(e){
     items = [].slice.call(card.parentNode.querySelectorAll('.work')).map(function(w){
       var t = w.querySelector('.thumb.art img');
       return t ? { src:t.getAttribute('src'), title:w.querySelector('h3').textContent,
-        meta:[].slice.call(w.querySelectorAll('.specs li')).map(function(li){ return li.textContent.replace(/\s*\(.*?\)/,'').replace(/\s+/g,' ').trim(); }).join('  ·  ') +
-             (w.classList.contains('is-sold') ? '  ·  ' + UI[LANG].sold : ''), el:w } : null;
+        meta:[].slice.call(w.querySelectorAll('.specs li')).map(function(li){ return li.textContent.replace(/\s*\(.*?\)/,'').replace(/\s+/g,' ').trim(); }).join('  ·  '), el:w } : null;
     }).filter(Boolean);
     var i = 0; items.forEach(function(it, k){ if(it.el === card) i = k; });
     opener = from; labels(); show(i);

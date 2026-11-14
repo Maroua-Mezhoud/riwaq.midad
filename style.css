@@ -228,15 +228,8 @@ section.block{padding:96px 0}
 .meta h3{font-size:1.4rem}
 .meta p{color:var(--ink-soft);font-size:.92rem;line-height:1.8}
 .meta .visit{margin-top:auto;padding-top:12px;padding-bottom:14px}
-.visit + .buy{margin-top:0}
 .meta .go{color:var(--gold);font-size:.92rem;display:inline-flex;gap:8px;align-items:center}
 .meta .go:hover{color:var(--gold-strong)}
-.buy{
-  padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;
-  border-top:1px dashed var(--line);margin-top:auto
-}
-.price{font-family:var(--font-head);font-size:1.5rem;color:var(--gold);line-height:1.4}
-.price small{font-size:.95rem;color:var(--ink-soft);margin-inline-start:4px}
 .specs{list-style:none;margin-top:10px;margin-bottom:14px;font-size:.9rem;color:var(--ink-soft)}
 .specs li{padding:4px 0;display:flex;gap:10px;align-items:baseline}
 .specs li::before{content:"";width:5px;height:5px;background:var(--gold);transform:rotate(45deg);flex:none;translate:0 -3px}
@@ -424,9 +417,6 @@ html[dir="ltr"] .progress{transform-origin:left}
 }
 .pill:hover{background:var(--gold);color:var(--on-gold);border-color:var(--gold);transform:translateY(-3px)}
 .group{scroll-margin-top:90px}
-.price-wrap{display:flex;flex-direction:column;line-height:1.35}
-.price .from{font-size:.95rem;color:var(--ink-soft);margin-inline-end:6px}
-.unit{font-size:.88rem;color:var(--ink-soft)}
 .catalog .meta h3{font-size:1.3rem}
 .catalog .meta p{margin-bottom:12px}
 
@@ -571,9 +561,9 @@ html[dir="ltr"] .back svg{transform:scaleX(-1)}
 .more-wrap{display:flex;justify-content:center;margin-top:36px}
 .more-wrap[hidden],.more-wrap button[hidden]{display:none}
 
-/* ------- صفحة الهبوط: التعريف والسعر ------- */
+/* ------- صفحة الهبوط: التعريف ------- */
 .web-intro{
-  display:grid;grid-template-columns:1.6fr 1fr;gap:28px;align-items:stretch;
+  display:grid;grid-template-columns:1fr;gap:28px;align-items:stretch;
   background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:34px 32px;margin-bottom:56px;
   box-shadow:var(--shadow)
 }
@@ -582,13 +572,6 @@ html[dir="ltr"] .back svg{transform:scaleX(-1)}
 .wi-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 22px;margin-top:14px}
 .wi-list li{position:relative;padding-inline-start:20px}
 .wi-list li::before{content:"";position:absolute;inset-inline-start:0;top:.9em;width:8px;height:8px;background:var(--gold);transform:rotate(45deg)}
-.wi-price{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;
-  border:1px dashed var(--line);border-radius:calc(var(--r) - 4px);padding:24px 18px;background:color-mix(in srgb,var(--gold) 6%,transparent)
-}
-.wi-price .lbl{color:var(--ink-soft)}
-.wi-price .num{font-family:var(--font-head);font-weight:700;font-size:2.8rem;line-height:1.2;color:var(--gold-strong)}
-.wi-price .num small{font-size:1.05rem;margin-inline-start:6px;color:var(--ink-soft);font-weight:400}
 .works-label{text-align:center;margin-bottom:30px}
 .works-label h3{font-size:1.9rem}
 .works-label h3::after{content:"";display:block;width:60px;height:1px;background:var(--gold);margin:6px auto 0}
@@ -687,46 +670,9 @@ html[dir="ltr"] .crumb i::before{content:"\203A"}
 .flabel{color:var(--ink-soft);min-width:70px}
 .fchips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
 .filter{min-height:42px;padding-block:6px}
-.filter:focus-visible,.btn-sold:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.filter:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
-.btn-sold{
-  display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;cursor:default;user-select:none;
-  padding:7px 22px;border-radius:999px;background:#b3261e;color:#fff;font-size:.95rem;font-weight:700;
-  font-family:var(--font-body);line-height:1.6
-}
-:root[data-theme="dark"] .btn-sold{background:#c0392b}
-.work.is-sold .price{color:var(--ink-soft)}
-.specs .dim{color:var(--ink-soft);opacity:.85}
-
-.empty{width:100%;text-align:center;padding:48px 16px;color:var(--ink-soft);display:flex;flex-direction:column;align-items:center;gap:16px}
-@media (max-width:560px){
-  .fgroup{flex-direction:column;gap:8px}
-  .filters{margin-bottom:26px}
-  .buy{flex-wrap:wrap}
-}
-
-/* ------- لوحات الخط: بطاقة الطلب الخاص ------- */
-.cal-order{grid-template-columns:1fr;gap:26px}
-.co-sizes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.co-sizes .wi-price .sz{font-family:var(--font-head);font-weight:700;font-size:1.6rem;line-height:1}
-.co-sizes .wi-price .num{font-size:2.4rem}
-.co-note{color:var(--ink-soft);font-size:.95rem;margin-top:16px}
-@media (max-width:640px){.co-sizes{grid-template-columns:1fr}.co-sizes .wi-price .btn{width:100%}}
-
-
-/* ==========================================================
-   إمكانية الوصول، زر واتساب العائم، عارض اللوحات
-   ========================================================== */
-a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:8px}
-.skip{position:fixed;top:-60px;inset-inline-start:12px;z-index:200;padding:10px 18px;border-radius:999px;background:var(--gold);color:#fff;transition:top .25s}
-.skip:focus{top:12px}
-
-.fab-wa{
-  position:fixed;z-index:70;inset-inline-end:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));
-  width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff;
-  box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform .3s,opacity .3s;animation:fabIn .6s 2.6s both cubic-bezier(.2,.8,.2,1)
-}
-.fab-wa svg{width:30px;height:30px;fill:currentColor}
+:root[data-theme="dark"] .fab-wa svg{width:30px;height:30px;fill:currentColor}
 .fab-wa:hover{transform:scale(1.08)}
 .fab-wa.away,body.lb-open .fab-wa{opacity:0;pointer-events:none;transform:scale(.8)}
 @keyframes fabIn{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
