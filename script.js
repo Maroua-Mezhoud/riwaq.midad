@@ -141,7 +141,7 @@ var EN = {
   h1:'A journey into the beauty of <span class="ruq">Arabic letters</span>',
   tag:"From the first letter, to mastering the hand.",
   lead:"Arabic calligraphy lessons, visual guides and hands-on practice, to discover the beauty of the letters and learn how to write them.",
-  cta1:"Start learning", cta2:"Explore the lessons",
+  cta1:"Start learning",
   k_eyebrow:"Print & stationery",
   k_h2:'Samples of <span class="ruq">print</span> and design',
   k_p:"Cards, bookmarks, favors and certificates, designed with an Arabic touch.",
@@ -181,10 +181,7 @@ var EN = {
   c_p:"For collaboration or questions about the work, you can reach me through the channels below.",
   loc:"Bordj Bou Arréridj, Algeria",
   n_learn:"Learn calligraphy",
-  lh_eyebrow:"Learn calligraphy",
-  lh_h2:"Begin your journey with <span class=\"ruq\">the Arabic letter</span>",
-  lh_p:"Simple lessons and downloadable practice sheets, letter by letter.",
-  lh_btn:"Enter the learning section",
+  ab_btn:"About Riwaq Midad",
   lr_eyebrow:"Learn Arabic calligraphy",
   lr_h2:"Choose a <span class=\"ruq\">letter</span> to begin",
   lr_p:"We start with Alif, Baa and Hah, and the other letters will be added over time.",
@@ -448,6 +445,7 @@ function buildContact(){
       var v = dict[el.dataset.i18n];
       if(v !== undefined) el.innerHTML = v;
     });
+    splitHero();
     document.title = dict.title;
     metaDesc.setAttribute('content', dict.desc);
     langBtn.textContent = (l === 'en') ? 'ع' : 'EN';
@@ -467,6 +465,7 @@ function buildContact(){
   try{ saved = localStorage.getItem('midad-lang'); }catch(e){}
   if(saved === 'en'){ setLang('en', false); }
   else { buildWorks(true); buildLearn(); buildContact(); buildFab(); }
+  splitHero();
 })();
 
 /* ---------- الوضع الفاتح / الداكن (مع انتقال دائري) ---------- */
@@ -504,6 +503,33 @@ var REDUCED = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)'
     a.addEventListener('click', function(){ links.classList.remove('open'); btn.setAttribute('aria-expanded','false'); });
   });
 })();
+
+/* ---------- العبارة: تُكتب كلمةً كلمة من اليمين إلى اليسار عند أول تمرير ---------- */
+function splitWords(el, idx){
+  if(el.querySelector('.w')) return idx + el.querySelectorAll('.w').length;
+  (function walk(node){
+    Array.prototype.slice.call(node.childNodes).forEach(function(n){
+      if(n.nodeType === 3){
+        var frag = document.createDocumentFragment();
+        n.nodeValue.split(/(\s+)/).forEach(function(p){
+          if(!p) return;
+          if(/^\s+$/.test(p)){ frag.appendChild(document.createTextNode(p)); return; }
+          var w = document.createElement('span'); w.className = 'w';
+          w.style.setProperty('--i', idx++); w.textContent = p; frag.appendChild(w);
+        });
+        node.replaceChild(frag, n);
+      } else if(n.nodeType === 1){ walk(n); }
+    });
+  })(el);
+  return idx;
+}
+function splitHero(){
+  var hero = document.querySelector('.hero'); if(!hero) return;
+  var idx = 0;
+  [hero.querySelector('h1'), hero.querySelector('.hero-tag')].forEach(function(el){ if(el) idx = splitWords(el, idx); });
+  hero.style.setProperty('--after', (idx * .24 + .6).toFixed(2) + 's');
+  var ch = document.querySelector('.contact h2'); if(ch) splitWords(ch, 0);
+}
 
 /* ---------- ظهور تدريجي مع تتابع ---------- */
 (function(){
@@ -618,7 +644,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 (function(){
   var nav = document.querySelector('.nav'), logo = document.querySelector('.hero-logo');
   var links = document.querySelectorAll('#links a');
-  var ids = ['about','contact'];
+  var ids = ['contact'];
   var endY = 0, navH = 68;
 
   function pageTop(el){ var t = 0; while(el){ t += el.offsetTop; el = el.offsetParent; } return t; }   /* لا تتأثر بالتحويلات */
@@ -667,6 +693,31 @@ document.getElementById('year').textContent = new Date().getFullYear();
 })();
 
 
+
+/* بدء كتابة العبارة عند أول تمرير بسيط من الصفحة الرئيسية */
+(function(){
+  var hero = document.querySelector('.hero'); if(!hero) return;
+  var done = false;
+  function go(){
+    if(done) return; done = true; hero.classList.add('spoken');
+    window.removeEventListener('scroll', check); window.removeEventListener('hashchange', later);
+  }
+  function check(){
+    if(hero.getClientRects().length && (window.scrollY || document.documentElement.scrollTop) > 24) go();
+  }
+  function later(){ setTimeout(check, 120); }
+  if(REDUCED){ go(); return; }
+  window.addEventListener('scroll', check, { passive:true });
+  window.addEventListener('hashchange', later);
+  window.addEventListener('load', later);
+  var cue = hero.querySelector('.hero-cue');
+  if(cue) cue.addEventListener('click', function(){
+    var h1 = hero.querySelector('h1'), nav = document.querySelector('.nav');
+    var y = h1.getBoundingClientRect().top + window.scrollY - (nav ? nav.offsetHeight : 68) - 40;
+    window.scrollTo({ top: Math.max(y, 60), behavior:'smooth' });
+  });
+})();
+
 /* نص الواجهة يظهر بعد انتهاء كتابة الشعار */
 (function(){
   document.querySelectorAll('.hero .reveal').forEach(function(el, i){ el.style.setProperty('--d', (2.2 + i * .12).toFixed(2) + 's'); });
@@ -693,7 +744,7 @@ function buildFab(){
 }
 document.getElementById('skip').addEventListener('click', function(e){
   e.preventDefault();
-  var t = document.querySelector('.page.active') || document.getElementById('learn-home');
+  var t = document.querySelector('.page.active') || document.querySelector('.hero h1');
   if(!t) return;
   t.setAttribute('tabindex','-1'); t.focus(); t.scrollIntoView({ block:'start' });
 });
@@ -857,7 +908,7 @@ document.getElementById('skip').addEventListener('click', function(e){
   var link = document.getElementById('credit-link');
   if(!link) return;
   var TARGET = link.href;
-  var GLYPHS = ['🌹','🌸','💖','⭐','💗','🌷','✨','💕','🌺','🎀','💝','🌟'];
+  var GLYPHS = ['🌹','🌸','💖','⭐','💗','🌷','✨','💕','🌺','🎀','💝','🌟','🤍'];
   var sprites = null, cv = null, ctx = null, W = 0, H = 0, dpr = 1;
   var P = [], running = false, last = 0, hovering = false, busy = false;
   var tBurst = -1, hoverAcc = 0, rainAcc = 0;

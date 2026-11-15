@@ -76,6 +76,7 @@
 <!-- ============ البطل ============ -->
 <section class="hero home">
   <div class="wrap">
+    <div class="hero-intro">
     <div class="hero-logo">
       <img class="l-light" src="assets/wordmark-light.webp" alt="شعار رواق مداد · Riwaq Midad" width="1000" height="582" fetchpriority="high">
       <img class="l-dark" src="assets/wordmark-dark.webp" alt="" width="1000" height="582">
@@ -84,12 +85,13 @@
       <span class="latin">RIWAQ MIDAD</span>
       <span class="ar">رواق مداد</span>
     </div>
-    <h1 class="reveal" data-i18n="h1">رحلة في جمال <span class="ruq">الحرف العربي</span></h1>
-    <p class="hero-tag reveal" data-i18n="tag">من أول حرف، إلى إتقان الكتابة.</p>
-    <p class="lead reveal" data-i18n="lead">دروس في الخط العربي، وشروحات مرئية، وتمارين عملية لاكتشاف جمال الحروف وتعلّم كتابتها.</p>
-    <div class="cta reveal">
+    <button class="hero-cue" type="button" aria-hidden="true" tabindex="-1"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+    </div>
+    <h1 data-i18n="h1">رحلة في جمال <span class="ruq">الحرف العربي</span></h1>
+    <p class="hero-tag" data-i18n="tag">من أول حرف، إلى إتقان الكتابة.</p>
+    <p class="lead after" data-i18n="lead">دروس في الخط العربي، وشروحات مرئية، وتمارين عملية لاكتشاف جمال الحروف وتعلّم كتابتها.</p>
+    <div class="cta after">
       <a class="btn btn-primary" href="#learn" data-i18n="cta1">ابدأ تعلّم الخط</a>
-      <a class="btn btn-ghost" href="#learn-home" data-i18n="cta2">استكشف الدروس</a>
     </div>
   </div>
 </section>
@@ -121,26 +123,23 @@
   </div>
 </section>
 
-<!-- ============ تعلّم الخط (مدخل في الصفحة الرئيسية) ============ -->
-<section class="block home" id="learn-home">
+<!-- ============ زر الانتقال إلى «عن الرواق» ============ -->
+<section class="block home about-link">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow" data-i18n="lh_eyebrow">تعلّم الخط</span>
-      <h2 data-i18n="lh_h2">ابدأ رحلتك مع <span class="ruq">الحرف العربي</span></h2>
-      <p data-i18n="lh_p">دروس مبسّطة وأوراق تمرين قابلة للتحميل، حرفًا بعد حرف.</p>
-    </div>
-    <div class="cta reveal"><a class="btn btn-primary" href="#learn" data-i18n="lh_btn">ادخل قسم التعلّم</a></div>
+    <div class="cta reveal"><a class="btn btn-ghost" href="#about" data-i18n="ab_btn">تعرّف على الرواق</a></div>
   </div>
 </section>
 
 <!-- ============ عن الرواق ============ -->
-<section class="block home" id="about">
-  <div class="wrap about">
-    <div class="pic reveal">
+<section class="block page" id="about">
+  <div class="wrap">
+    <div class="page-bar"><a class="back" href="#top"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><span data-i18n="n_about">عن الرواق</span></nav></div>
+    <div class="about">
+    <div class="pic reveal in">
       <img class="p-light" src="assets/profile-light.webp" alt="رواق مداد" width="800" height="800" loading="lazy">
       <img class="p-dark" src="assets/profile-dark.webp" alt="" width="800" height="800" loading="lazy">
     </div>
-    <div class="reveal">
+    <div class="reveal in">
       <span class="eyebrow" data-i18n="a_eyebrow">عن الرواق</span>
       <h2 data-i18n="a_h2">رواق <span class="ruq">مداد</span></h2>
       <p data-i18n="a_p1">«مداد» هو الحبر الذي تُكتب به الحروف، و«الرواق» مساحة هادئة تُعرض فيها.</p>
@@ -148,19 +147,20 @@
       <p data-i18n="a_p3">كما يحتضن الرواق أعمالًا خطية وتجارب فنية، احتفاءً بجمال الحرف العربي وما يحمله من إمكانات إبداعية لا تنتهي.</p>
       <p data-i18n="a_p4">أهلًا بك في رواق مداد، حيث يبدأ الحرف رحلته.</p>
     </div>
+    </div>
   </div>
 </section>
 
 <!-- ============ قسم تعلّم الخط ============ -->
 <section class="block page" id="learn">
   <div class="wrap">
-    <div class="page-bar"><a class="back" href="#learn-home"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><span data-i18n="n_learn">تعلّم الخط</span></nav></div>
+    <div class="page-bar"><a class="back" href="#top"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><span data-i18n="n_learn">تعلّم الخط</span></nav></div>
     <div class="section-head reveal in">
       <span class="eyebrow" data-i18n="lr_eyebrow">تعلّم الخط العربي</span>
       <h2 data-i18n="lr_h2">اختر <span class="ruq">حرفًا</span> لتبدأ</h2>
       <p data-i18n="lr_p">نبدأ بالألف والباء والحاء، وستُضاف بقية الحروف تباعًا.</p>
     </div>
-    <div class="hub one">
+    <div class="pen-hub">
       <a class="card hub-card pen-card reveal in" href="#learn-pen">
         <img src="assets/learn/qalam-nib.webp" alt="" width="480" height="1536" loading="lazy">
         <div>
@@ -563,6 +563,13 @@
     <div class="contact reveal">
       <span class="eyebrow" data-i18n="c_eyebrow">تواصل</span>
       <h2 data-i18n="c_h2">للتواصل <span class="ruq">والتعاون</span></h2>
+      <svg class="c-swash" viewBox="0 0 240 28" aria-hidden="true" focusable="false">
+        <defs><linearGradient id="swg" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0" stop-color="currentColor" stop-opacity="0"/><stop offset=".3" stop-color="currentColor"/><stop offset=".7" stop-color="currentColor"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/>
+        </linearGradient></defs>
+        <path class="sw-line" d="M4 19C70 9 170 8 236 17 170 15 70 18 4 19z" fill="url(#swg)"/>
+        <path class="sw-dot" d="M120 1.500l5 5-5 5-5-5z" fill="currentColor"/>
+      </svg>
       <p data-i18n="c_p">للتعاون أو الاستفسار عن الأعمال، يمكنك مراسلتي عبر الوسائل التالية.</p>
       <div class="cta" id="contact-buttons"></div>
     </div>

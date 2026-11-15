@@ -272,19 +272,60 @@ footer .loc{margin-bottom:12px}
 /* ------- تواصل ------- */
 .contact{
   text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:28px;
-  padding:64px 24px;position:relative;overflow:hidden
+  padding:80px 24px 76px;position:relative;overflow:hidden;isolation:isolate
 }
-.contact::before{
-  content:"";position:absolute;width:520px;height:520px;border-radius:50%;
-  border:1px solid var(--line);inset-inline-start:-180px;top:-260px;
+.contact::before{ /* وهج ذهبي ناعم يتهادى خلف العنوان، كحبرٍ يتوهّج */
+  content:"";position:absolute;z-index:-1;left:50%;top:-30px;width:640px;height:420px;margin-left:-320px;pointer-events:none;
+  background:radial-gradient(closest-side,var(--glow),transparent);opacity:.9;animation:contact-glow 12s ease-in-out infinite alternate
 }
-.contact::after{
-  content:"";position:absolute;width:380px;height:380px;border-radius:50%;
-  border:1px solid var(--line);inset-inline-end:-140px;bottom:-200px;
-}
+@keyframes contact-glow{from{translate:-70px 0;scale:1}to{translate:70px 14px;scale:1.12}}
 .contact > *{position:relative;z-index:1}
-.contact h2{font-size:clamp(2rem,4.8vw,3rem);margin-bottom:8px}
-.contact p{color:var(--ink-soft);max-width:520px;margin:0 auto 30px}
+.contact h2{font-size:clamp(2.1rem,5vw,3.2rem);line-height:1.6;margin:4px 0 0}
+.c-swash{display:block;width:200px;height:auto;margin:2px auto 18px;color:var(--gold);overflow:visible}
+.contact p{color:var(--ink-soft);max-width:480px;margin:0 auto 38px;line-height:1.9}
+.contact .cta{gap:14px}
+.contact .cta .btn{min-width:172px;height:52px;padding:0 24px;gap:11px;font-size:1rem}
+.contact .cta .btn svg{width:20px;height:20px;flex:none;stroke-width:1.6;transition:translate .35s cubic-bezier(.2,.7,.2,1),scale .35s}
+.contact .cta .btn:hover svg{translate:0 -2px;scale:1.1}
+
+/* حركة التواصل: تُكتب الكلمات كما يُكتب الحبر، ثم يُمدّ الخط، وتصل النقطة، فتظهر الأزرار */
+.contact h2 .w{
+  display:inline-block;padding-inline:.12em;margin-inline:-.12em;--p:0;
+  -webkit-mask-image:linear-gradient(to left,#000 calc(var(--p) * 1% - 30%),transparent calc(var(--p) * 1%));
+          mask-image:linear-gradient(to left,#000 calc(var(--p) * 1% - 30%),transparent calc(var(--p) * 1%))
+}
+html[dir="ltr"] .contact h2 .w{
+  -webkit-mask-image:linear-gradient(to right,#000 calc(var(--p) * 1% - 30%),transparent calc(var(--p) * 1%));
+          mask-image:linear-gradient(to right,#000 calc(var(--p) * 1% - 30%),transparent calc(var(--p) * 1%))
+}
+.contact.in h2 .w{animation:ink .7s cubic-bezier(.5,.05,.25,1) calc(var(--i) * .3s + .35s) both}
+
+.contact .eyebrow::before,.contact .eyebrow::after{transform:scaleX(0);transition:transform .9s cubic-bezier(.2,.7,.2,1) .15s}
+.contact .eyebrow::before{transform-origin:right}.contact .eyebrow::after{transform-origin:left}
+.contact.in .eyebrow::before,.contact.in .eyebrow::after{transform:scaleX(1)}
+
+.c-swash .sw-line{clip-path:inset(0 0 0 100%)}
+.contact.in .c-swash .sw-line{animation:sw-draw 1s cubic-bezier(.5,.05,.25,1) 1.25s both}
+@keyframes sw-draw{to{clip-path:inset(0 0 0 0)}}
+.c-swash .sw-dot{transform-box:fill-box;transform-origin:center;scale:0;opacity:0}
+.contact.in .c-swash .sw-dot{animation:sw-dot .7s cubic-bezier(.3,1.6,.5,1) 2.1s both}
+@keyframes sw-dot{from{scale:0;opacity:0;translate:0 -14px}to{scale:1;opacity:1;translate:0 0}}
+
+.contact p{opacity:0;translate:0 12px;transition:opacity .9s ease 1.7s,translate .9s cubic-bezier(.2,.7,.2,1) 1.7s}
+.contact.in p{opacity:1;translate:0 0}
+.contact .cta .btn{opacity:0;translate:0 16px;
+  transition:transform .25s,background .25s,color .25s,box-shadow .25s,opacity .8s ease var(--bd,2s),translate .8s cubic-bezier(.2,.7,.2,1) var(--bd,2s)}
+.contact .cta .btn:nth-child(1){--bd:2s}.contact .cta .btn:nth-child(2){--bd:2.15s}.contact .cta .btn:nth-child(3){--bd:2.3s}
+.contact.in .cta .btn{opacity:1;translate:0 0}
+
+@media (prefers-reduced-motion:reduce){
+  .contact h2 .w{-webkit-mask:none;mask:none;animation:none !important}
+  .contact::before{animation:none}
+  .contact .eyebrow::before,.contact .eyebrow::after{transform:none;transition:none}
+  .c-swash .sw-line{clip-path:none;animation:none !important}
+  .c-swash .sw-dot{scale:1;opacity:1;animation:none !important}
+  .contact p,.contact .cta .btn{opacity:1;translate:none;transition:none}
+}
 
 footer{padding:40px 0 46px;border-top:1px solid var(--line);text-align:center;color:var(--ink-soft);font-size:.92rem}
 footer .brand{justify-content:center;margin-bottom:10px}
@@ -330,7 +371,9 @@ footer .brand img{height:50px}
   body{font-size:16px}
   .services,.steps{grid-template-columns:1fr}
   .hero{padding-top:36px}
-  .contact{padding:48px 18px}
+  .contact{padding:60px 18px 56px}
+  .contact::before{width:420px;margin-left:-210px}
+  .contact .cta .btn{width:min(100%,280px)}
 }
 
 
@@ -418,8 +461,6 @@ html[dir="ltr"] .step:not(:last-child)::after{transform-origin:left}
 .about .pic:hover img{transform:scale(1.04) rotate(-2deg)}
 .skills span{transition:background .3s,color .3s,border-color .3s,transform .3s}
 .skills span:hover{background:var(--gold);color:var(--on-gold);border-color:var(--gold);transform:translateY(-3px)}
-.contact::before{animation:breathe 9s ease-in-out infinite}
-.contact::after{animation:breathe 11s ease-in-out infinite reverse}
 @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
 
 /* ==========================================================
@@ -763,6 +804,7 @@ a.letter-tile:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .letter-tile.soon{opacity:.5;box-shadow:none;cursor:not-allowed}
 .letter-tile.soon em{font-style:normal;font-size:.72rem;line-height:1.2;color:var(--ink-soft)}
 .letter-tile.soon b{font-size:2.6rem;line-height:1.8}
+.letter-grid>*{min-width:0}
 .hub.one{grid-template-columns:1fr;max-width:520px;margin:56px auto 0}
 .hub.three{max-width:1040px;margin-inline:auto}
 .hub.two{grid-template-columns:repeat(2,1fr);max-width:820px;margin-inline:auto}
@@ -787,7 +829,7 @@ a.letter-tile:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .pr.off{display:inline-flex;gap:14px;color:var(--ink-soft)}
 @media (max-width:900px){.letter-grid{grid-template-columns:repeat(6,1fr);gap:10px}.conn-grid{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:640px){
-  .letter-grid{grid-template-columns:repeat(3,1fr);gap:10px}.letter-tile b{font-size:2.2rem}.letter-tile.soon b{font-size:2rem}
+  .letter-grid{grid-template-columns:repeat(3,1fr);gap:10px}.letter-tile b{font-size:2.2rem;line-height:1.4}.letter-tile.soon b{font-size:2rem;line-height:1.4}
   .conn-grid{grid-template-columns:repeat(2,1fr);gap:10px}.pr{font-size:2rem}
   .hub.two,.pdf-pages{grid-template-columns:1fr}
 }
@@ -827,7 +869,11 @@ footer .credit a:hover,footer .credit a:focus-visible{color:#e0488a;text-shadow:
 footer .credit a:focus-visible{outline:2px solid #ff7eb6;outline-offset:3px;border-radius:8px}
 
 /* ---------- درس القلم ---------- */
+<<<<<<< HEAD
 .hub.one{grid-template-columns:1fr;max-width:820px;margin:0 auto 28px}
+=======
+.pen-hub{display:grid;grid-template-columns:1fr;max-width:820px;margin:0 auto 28px}
+>>>>>>> 3aa0fb6 ( some apdates)
 .pen-card{flex-direction:row;align-items:center;gap:22px}
 .pen-card img{width:64px;height:auto;flex:none;aspect-ratio:480/1536;object-fit:contain;max-height:120px;width:auto}
 .pen-fig{margin:0 auto 36px;max-width:620px}
@@ -839,3 +885,48 @@ footer .credit a:focus-visible{outline:2px solid #ff7eb6;outline-offset:3px;bord
 .pen-defs h3{font-size:1.3rem;color:var(--gold-strong)}
 @media (max-width:760px){.pen-defs{grid-template-columns:1fr}}
 @media (max-width:600px){.pen-defs{grid-template-columns:1fr}}
+<<<<<<< HEAD
+=======
+
+
+/* ==========================================================
+   الصفحة الأولى: الشعار أولًا، ثم تُكتب العبارة عند التمرير
+   ========================================================== */
+.hero-intro{
+  position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:calc(100vh - 190px);min-height:calc(100svh - 190px);padding-bottom:64px
+}
+.hero-cue{
+  position:absolute;inset-inline:0;bottom:6px;margin-inline:auto;width:44px;height:44px;border-radius:50%;
+  display:grid;place-items:center;background:none;border:1px solid var(--line);cursor:pointer;
+  opacity:0;animation:cue-in .8s 3.6s both ease,cue-bob 2.2s 4.4s infinite ease-in-out
+}
+.hero-cue svg{width:20px;height:20px;fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hero.spoken .hero-cue{animation:none;opacity:0;pointer-events:none;transition:opacity .4s}
+@keyframes cue-in{from{opacity:0}to{opacity:1}}
+@keyframes cue-bob{0%,100%{translate:0 0}50%{translate:0 7px}}
+
+.hero h1 .w,.hero-tag .w{
+  display:inline-block;padding-inline:.12em;margin-inline:-.12em;--p:0;
+  -webkit-mask-image:linear-gradient(to left,#000 calc(var(--p) * 1% - 30%),transparent calc(var(--p) * 1%));
+          mask-image:linear-gradient(to left,#000 calc(var(--p) * 1% - 30%),transparent calc(var(--p) * 1%))
+}
+html[dir="ltr"] .hero h1 .w,html[dir="ltr"] .hero-tag .w{
+  -webkit-mask-image:linear-gradient(to right,#000 calc(var(--p) * 1% - 30%),transparent calc(var(--p) * 1%));
+          mask-image:linear-gradient(to right,#000 calc(var(--p) * 1% - 30%),transparent calc(var(--p) * 1%))
+}
+.hero.spoken .w{animation:ink .6s cubic-bezier(.5,.05,.25,1) calc(var(--i) * .24s + .15s) both}
+
+.hero .after{opacity:0;translate:0 18px;pointer-events:none;
+  transition:opacity .9s ease var(--after,2.6s),translate .9s cubic-bezier(.2,.7,.2,1) var(--after,2.6s)}
+.hero.spoken .after{opacity:1;translate:0 0;pointer-events:auto}
+
+@media (prefers-reduced-motion:reduce){
+  .hero h1 .w,.hero-tag .w{-webkit-mask:none;mask:none;animation:none !important}
+  .hero .after{opacity:1;translate:none;transition:none;pointer-events:auto}
+  .hero-cue{display:none}
+}
+
+/* زر «عن الرواق» في الصفحة الرئيسية: سطر خفيف بلا ازدحام */
+.block.about-link{padding-block:0 8px}
+>>>>>>> 3aa0fb6 ( some apdates)
