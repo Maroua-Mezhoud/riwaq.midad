@@ -908,7 +908,7 @@ document.getElementById('skip').addEventListener('click', function(e){
   var link = document.getElementById('credit-link');
   if(!link) return;
   var TARGET = link.href;
-  var GLYPHS = ['🌹','🌸','💖','⭐','💗','🌷','✨','💕','🌺','🎀','💝','🌟','🤍'];
+  var GLYPHS = ['🌹','🌸','💖','⭐','💗','🌷','✨','💕','🌺','🎀','💝','🌟'];
   var sprites = null, cv = null, ctx = null, W = 0, H = 0, dpr = 1;
   var P = [], running = false, last = 0, hovering = false, busy = false;
   var tBurst = -1, hoverAcc = 0, rainAcc = 0;
