@@ -4,7 +4,15 @@
 
   if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js').catch(function () {});
+      navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(function (r) {
+        try { r.update(); } catch (e) {}
+      }).catch(function () {});
+    });
+    // عند تفعيل نسخة جديدة من الـ Service Worker أعد تحميل الصفحة مرة واحدة لتظهر التحديثات فورًا
+    var hadController = !!navigator.serviceWorker.controller, reloaded = false;
+    navigator.serviceWorker.addEventListener('controllerchange', function () {
+      if (!hadController || reloaded) return;
+      reloaded = true; location.reload();
     });
   }
 

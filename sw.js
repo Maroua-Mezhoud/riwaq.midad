@@ -3,7 +3,7 @@
    - الصور والخطوط: المحفوظ أولًا للسرعة.
    - ملفات PDF والمصادر الكبيرة لا تُحفظ تلقائيًا.
    عند تغيير أي ملف مهم غيّر رقم VERSION ليُنظَّف المخزن القديم. */
-var VERSION = 'midad-v4';
+var VERSION = 'midad-v5';
 var SHELL = [
   './', 'index.html', 'style.css', 'script.js', 'pwa.js', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png',
@@ -39,7 +39,7 @@ function networkFirst(req, isNav) {
     var t = setTimeout(function () {
       fallback().then(function (r) { if (r && !done) { done = true; resolve(r); } });
     }, 4000);
-    fetch(req).then(function (res) {
+    fetch(req.url, { cache: 'no-cache', credentials: 'same-origin' }).then(function (res) {
       clearTimeout(t);
       if (res && res.ok) {
         var copy = res.clone();
