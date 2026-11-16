@@ -702,6 +702,8 @@ html[dir="ltr"] .crumb i::before{content:"\203A"}
   box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform .3s,opacity .3s;animation:fabIn .6s 2.6s both cubic-bezier(.2,.8,.2,1)
 }
 .fab-wa svg{width:30px;height:30px;fill:currentColor}
+/* إخفاء زر واتساب العائم من الصفحة الرئيسية (يظهر داخل الصفحات الفرعية فقط) */
+body:not(.in-page) .fab-wa{display:none}
 .fab-wa:hover{transform:scale(1.08)}
 .fab-wa.away,body.lb-open .fab-wa{opacity:0;pointer-events:none;transform:scale(.8)}
 @keyframes fabIn{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
