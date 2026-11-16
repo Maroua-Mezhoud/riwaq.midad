@@ -3,9 +3,9 @@
    - الصور والخطوط: المحفوظ أولًا للسرعة.
    - ملفات PDF والمصادر الكبيرة لا تُحفظ تلقائيًا.
    عند تغيير أي ملف مهم غيّر رقم VERSION ليُنظَّف المخزن القديم. */
-var VERSION = 'midad-v5';
+var VERSION = 'midad-v6';
 var SHELL = [
-  './', 'index.html', 'style.css', 'script.js', 'pwa.js', 'manifest.webmanifest',
+  './', 'index.html', 'install.html', 'style.css', 'script.js', 'pwa.js', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png',
   'assets/favicon.png', 'assets/wordmark-light.webp', 'assets/wordmark-dark.webp',
   'assets/fonts/Amiri-Regular.woff', 'assets/fonts/Amiri-Bold.woff', 'assets/fonts/Amiri-Italic.woff'

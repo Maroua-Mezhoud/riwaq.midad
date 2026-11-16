@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 
 <script>
 /* تطبيق الوضع واللغة المحفوظين قبل الرسم لتفادي الوميض */
@@ -689,6 +689,13 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>
       <span data-i18n="pwa_btn">حمّل تطبيق رواق مداد</span>
     </button>
+    <div class="pwa-share" id="pwa-share">
+      <span class="pwa-share-lbl" data-i18n="pwa_share">رابط تحميل التطبيق (للمشاركة)</span>
+      <div class="pwa-share-row">
+        <input class="pwa-url" id="pwa-url" type="text" readonly dir="ltr" value="https://maroua-mezhoud.github.io/riwaq.midad/install.html" aria-label="رابط تحميل التطبيق">
+        <button type="button" class="pwa-copy" id="pwa-copy" data-i18n="pwa_copy">نسخ الرابط</button>
+      </div>
+    </div>
     <div>© <span id="year"></span> رواق مداد · Riwaq Midad</div>
     <p class="credit"><span data-i18n="cr_pre">فكرة وتصميم وإعداد المواد التعليمية وتوجيه التطوير وإدارة الموقع:</span> <a id="credit-link" href="https://github.com/Maroua-Mezhoud/Maroua-Mezhoud" target="_blank" rel="noopener" data-i18n="cr_name">مروى مزهود</a></p>
   </div>
@@ -702,7 +709,7 @@
   <button type="button" class="pwa-close" data-pwa-close data-i18n="pwa_ok">حسنًا</button>
 </dialog>
 
-<script src="script.js?v=5"></script>
-<script src="pwa.js?v=5"></script>
+<script src="script.js?v=6"></script>
+<script src="pwa.js?v=6"></script>
 </body>
 </html>

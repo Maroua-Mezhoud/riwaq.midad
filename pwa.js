@@ -16,6 +16,23 @@
     });
   }
 
+  // نسخ رابط التحميل للمشاركة
+  var cbtn = document.getElementById('pwa-copy'), cin = document.getElementById('pwa-url');
+  if (cbtn && cin) {
+    var ctext = cbtn.textContent;
+    var done = function () {
+      cbtn.textContent = (document.documentElement.lang === 'en') ? 'Copied ✔' : 'تم النسخ ✔';
+      cbtn.classList.add('ok');
+      setTimeout(function () { cbtn.textContent = ctext; cbtn.classList.remove('ok'); }, 1800);
+    };
+    var fallback = function () { cin.focus(); cin.select(); cin.setSelectionRange(0, 999); try { document.execCommand('copy'); } catch (e) {} done(); };
+    cbtn.addEventListener('click', function () {
+      ctext = (document.documentElement.lang === 'en') ? 'Copy link' : 'نسخ الرابط';
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(cin.value).then(done, fallback); else fallback();
+    });
+    cin.addEventListener('focus', function () { cin.select(); });
+  }
+
   var btn = document.getElementById('pwa-install');
   var dlg = document.getElementById('pwa-dialog');
   if (!btn || !dlg) return;

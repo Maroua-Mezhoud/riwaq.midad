@@ -124,7 +124,7 @@ var UI = {
 var EN = {
   title:"Riwaq Midad | Learn Arabic Calligraphy",
   desc:"Riwaq Midad: Arabic calligraphy lessons, practice sheets and visual guides, from the first letter to mastering the hand, alongside handwritten paintings.",
-  pwa_btn:"Get the Riwaq Midad app", pwa_t:"Install the app", pwa_ok:"Got it",
+  pwa_btn:"Get the Riwaq Midad app", pwa_share:"App download link (to share)", pwa_copy:"Copy link", pwa_copied:"Copied ✔", pwa_t:"Install the app", pwa_ok:"Got it",
   pwa_ios:"On iPhone and iPad: open the site in <b>Safari</b>, tap the <b>Share</b> button (the square with an up arrow), then choose <b>\"Add to Home Screen\"</b>.",
   pwa_and:"Open the browser menu <b>⋮</b>, then choose <b>\"Install app\"</b> or <b>\"Add to Home screen\"</b>.",
   pwa_app:"You are browsing inside another app (such as Instagram). Tap <b>⋮</b> or <b>⋯</b> and choose <b>\"Open in browser\"</b>, then tap the download button again.",
