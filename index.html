@@ -24,7 +24,12 @@
 "sameAs":["https://www.instagram.com/riwaq.midad/","https://github.com/Maroua-Mezhoud/riwaq.midad"]}
 </script>
 <link rel="icon" href="assets/favicon.png" type="image/png">
-<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="رواق مداد">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&display=swap" rel="stylesheet">
@@ -169,6 +174,14 @@
           <span class="open" data-i18n="hb_open">افتح القسم</span>
         </div>
       </a>
+      <a class="card hub-card pen-card reveal in" href="#learn-basics">
+        <span class="grip-ico" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M10 14h28M10 24h28M10 34h18"/></svg></span>
+        <div>
+          <h3 data-i18n="bs_c_t">الأساسيات</h3>
+          <p data-i18n="bs_c_p">درسان قبل الحروف: مسكة القلم، ثم النقطة.</p>
+          <span class="open" data-i18n="hb_open">افتح القسم</span>
+        </div>
+      </a>
     </div>
     <div class="letter-grid" id="learn-grid"></div>
   </div>
@@ -203,6 +216,90 @@
       <article class="card reveal in"><h3 data-i18n="pen_p1">السن الوحشي</h3><p data-i18n="pen_d1">الزاوية العليا من رأس القلم المائل.</p></article>
       <article class="card reveal in"><h3 data-i18n="pen_p3">السن الإنسي</h3><p data-i18n="pen_d3">الزاوية السفلى من رأس القلم المائل.</p></article>
     </div>
+    <div class="pdf-actions"><a class="btn btn-primary" href="#learn-basics" data-i18n="pen_next">تابع إلى الأساسيات</a></div>
+  </div>
+</section>
+
+<section class="block page" id="learn-basics">
+  <div class="wrap">
+    <div class="page-bar"><a class="back" href="#learn"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><a href="#learn" data-i18n="n_learn">تعلّم الخط</a><i></i><span data-i18n="bs_n">الأساسيات</span></nav></div>
+    <div class="section-head reveal in">
+      <span class="eyebrow" data-i18n="lr_eyebrow">تعلّم الخط العربي</span>
+      <h2 data-i18n="bs_h2"><span class="ruq">الأساسيات</span></h2>
+      <p data-i18n="bs_p">خطوتان قبل الحروف: كيف تمسك القلم، ثم كيف تصنع النقطة.</p>
+    </div>
+    <div class="pen-hub">
+      <a class="card hub-card pen-card reveal in" href="#learn-grip">
+        <span class="grip-ico" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M10 38l4-11L33 8l7 7-19 19z"/><path d="M28 13l7 7M10 38l5-1"/></svg></span>
+        <div>
+          <h3 data-i18n="grip_c_t">مسكة القلم</h3>
+          <p data-i18n="grip_c_p2">كيف تمسك قلم الخط قبل أن تكتب أي حرف.</p>
+          <span class="open" data-i18n="hb_open">افتح القسم</span>
+        </div>
+      </a>
+      <a class="card hub-card pen-card reveal in" href="#learn-dot">
+        <span class="grip-ico" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 7l13 17-13 17-13-17z"/></svg></span>
+        <div>
+          <h3 data-i18n="dot_c_t">النقطة</h3>
+          <p data-i18n="dot_c_p">وحدة القياس في الخط: كيف تصنعها وبها تُقاس الحروف.</p>
+          <span class="open" data-i18n="hb_open">افتح القسم</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="block page" id="learn-grip">
+  <div class="wrap">
+    <div class="page-bar"><a class="back" href="#learn-basics"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><a href="#learn" data-i18n="n_learn">تعلّم الخط</a><i></i><a href="#learn-basics" data-i18n="bs_n">الأساسيات</a><i></i><span data-i18n="grip_n">مسكة القلم</span></nav></div>
+    <div class="section-head reveal in">
+      <span class="eyebrow" data-i18n="grip_e">تعلّم الخط العربي</span>
+      <h2 data-i18n="grip_h">مسكة <span class="ruq">القلم</span></h2>
+      <p data-i18n="grip_p">قبل الحروف والأوراق، تعلّم كيف تمسك القلم. فهذه أول خطوة في الخط، وعليها يقوم كل ما بعدها.</p>
+    </div>
+    <aside class="grip-note reveal in" role="note">
+      <em class="core-badge" data-i18n="core_b">من الأساسيات</em>
+      <p data-i18n="grip_note"><strong>مسكة القلم من أساسيات تعلّم الخط العربي</strong> التي لا يصح تجاوزها. كثير من الطلبة يبدؤون بالحروف دون أن يعرفوا كيف يمسكون القلم، فتتعب أيديهم ويضطرب خطهم. أتقن المسكة أولًا، تسهل عليك الحروف بعدها.</p>
+    </aside>
+    <div class="hub grip-defs">
+      <article class="card reveal in"><h3 data-i18n="g1_t">الأصابع الثلاثة</h3><p data-i18n="g1_p">يُمسك القلم بثلاثة أصابع: الإبهام والسبابة تضغطان عليه برفق من الجانبين، والوسطى تسنده من الأسفل. أما البنصر والخنصر فيبقيان مسترخيين.</p></article>
+      <article class="card reveal in"><h3 data-i18n="g2_t">موضع الإمساك</h3><p data-i18n="g2_p">أمسك القلم قريبًا من رأسه، على بعد ثلاثة سنتيمترات تقريبًا من السن. إن أبعدته كثيرًا ضعف تحكّمك، وإن قرّبته كثيرًا حجبت أصابعك السن عن نظرك.</p></article>
+      <article class="card reveal in"><h3 data-i18n="g3_t">قوة المسكة</h3><p data-i18n="g3_p">اجعلها ثابتة وخفيفة. إن شددت القلم بقوة تعبت يدك وارتجف الخط، وإن أرخيته أكثر من اللازم أفلت منك. اشعر أنك تقوده ولا تعصره.</p></article>
+      <article class="card reveal in"><h3 data-i18n="g4_t">ثبات زاوية السن</h3><p data-i18n="g4_p">يبقى القَطّ مستويًا على الورقة بكامل عرضه، ولا تُدِر القلم بين أصابعك أثناء الكتابة؛ فتغيّر الزاوية يغيّر غلظ الخط. تذكّر من <a class="inl" href="#learn-pen">درس القلم</a> أن عرض القَطّ هو ما يحدّد الغلظ.</p></article>
+      <article class="card reveal in"><h3 data-i18n="g5_t">حركة اليد</h3><p data-i18n="g5_p">لا تضغط على الورقة، ودع القلم ينساب بحركة هادئة من المعصم واليد، ودع الحبر يخرج من السن بنفسه.</p></article>
+      <article class="card reveal in"><h3 data-i18n="g6_t">أخطاء شائعة</h3><p data-i18n="g6_p">شدّ القلم بقوة، وإمساكه من بعيد جدًا، وتدويره أثناء الكتابة، والضغط على الورقة، وثني المعصم بشدة. إن لاحظت أن يدك تتعب بسرعة فراجع مسكتك.</p></article>
+    </div>
+    <p class="grip-tip reveal in" data-i18n="grip_tip">تدرّب قبل كل جلسة: امسك القلم وارسم خطوطًا مستقيمة على ورقة بضع دقائق، ثم انتقل إلى الحروف.</p>
+    <div class="pdf-actions"><a class="btn btn-primary" href="#learn-dot" data-i18n="grip_next_dot">الدرس التالي: النقطة</a></div>
+  </div>
+</section>
+
+<section class="block page" id="learn-dot">
+  <div class="wrap">
+    <div class="page-bar"><a class="back" href="#learn-basics"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><a href="#learn" data-i18n="n_learn">تعلّم الخط</a><i></i><a href="#learn-basics" data-i18n="bs_n">الأساسيات</a><i></i><span data-i18n="dot_n">النقطة</span></nav></div>
+    <div class="section-head reveal in">
+      <span class="eyebrow" data-i18n="dot_e">تعلّم الخط العربي</span>
+      <h2 data-i18n="dot_h">تعرّف على <span class="ruq">النقطة</span></h2>
+      <p data-i18n="dot_p">النقطة أول ما يُرسم بالقلم، وهي المقياس الذي تُبنى عليه الحروف كلها.</p>
+    </div>
+    <figure class="pen-fig dot-fig reveal in">
+      <svg viewBox="0 0 1200 570" role="img" aria-labelledby="dot-svg-t" xmlns="http://www.w3.org/2000/svg">
+        <title id="dot-svg-t" data-i18n="dot_alt">النقطة: معيّن عرضه عرض القَطّ</title>
+        <path class="dot-shape" d="M600 40L780 240 600 440 420 240z"/>
+        <g class="pl"><path d="M420 490H780"/><path d="M420 475V505M780 475V505"/></g>
+        <g class="pt"><text x="600" y="518" text-anchor="middle" data-i18n="dot_w">عرض القَطّ</text></g>
+      </svg>
+    </figure>
+    <div class="hub grip-defs">
+      <article class="card reveal in"><h3 data-i18n="dt1_t">ما هي النقطة</h3><p data-i18n="dt1_p">هي أثر القَطّ حين يُوضع على الورقة بكامل عرضه، وتظهر على شكل معيّن، أي مربع مائل.</p></article>
+      <article class="card reveal in"><h3 data-i18n="dt2_t">وحدة القياس</h3><p data-i18n="dt2_p">عرض النقطة هو عرض القَطّ نفسه، وبها يُقاس ارتفاع الحرف وطوله واتساعه. لذلك تُعدّ ميزان الخط.</p></article>
+      <article class="card reveal in"><h3 data-i18n="dt3_t">كيف تصنعها</h3><p data-i18n="dt3_p">ثبّت مسكتك، وضع القَطّ على الورقة بكامل عرضه، واضغط برفق ثم ارفع القلم دون أن تسحبه.</p></article>
+      <article class="card reveal in"><h3 data-i18n="dt4_t">ما تراعيه</h3><p data-i18n="dt4_p">تناسق الأضلاع، وتساوي حجم النقاط، واستقامة صفّها على الخط الأساس.</p></article>
+      <article class="card reveal in"><h3 data-i18n="dt5_t">تدرّب</h3><p data-i18n="dt5_p">املأ سطرًا بنقاط متتالية متساوية، ثم قارن أحجامها والمسافات بينها وأعد المحاولة.</p></article>
+      <article class="card reveal in"><h3 data-i18n="dt6_t">أخطاء شائعة</h3><p data-i18n="dt6_p">الضغط الشديد فتتسع النقطة، وتدوير القلم فتتشوّه، ورفعه مع السحب فيظهر لها ذيل.</p></article>
+    </div>
+    <p class="grip-tip reveal in" data-i18n="dot_tip">أتقن النقطة أولًا، فكل حرف بعدها يُقاس بها.</p>
+    <div class="pdf-actions"><a class="btn btn-primary" href="#learn" data-i18n="grip_next">ابدأ بالحروف</a></div>
   </div>
 </section>
 
@@ -588,11 +685,24 @@
       <a class="ft-link" href="#websites" data-i18n="n_web">المواقع الإلكترونية</a>
       <a class="ft-gh" href="https://github.com/Maroua-Mezhoud/riwaq.midad" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
     </div>
+    <button type="button" class="pwa-install" id="pwa-install" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>
+      <span data-i18n="pwa_btn">حمّل تطبيق رواق مداد</span>
+    </button>
     <div>© <span id="year"></span> رواق مداد · Riwaq Midad</div>
     <p class="credit"><span data-i18n="cr_pre">فكرة وتصميم وإعداد المواد التعليمية وتوجيه التطوير وإدارة الموقع:</span> <a id="credit-link" href="https://github.com/Maroua-Mezhoud/Maroua-Mezhoud" target="_blank" rel="noopener" data-i18n="cr_name">مروى مزهود</a></p>
   </div>
 </footer>
 
+<dialog class="pwa-dialog" id="pwa-dialog" aria-labelledby="pwa-title">
+  <h2 id="pwa-title" data-i18n="pwa_t">تثبيت التطبيق</h2>
+  <p data-pwa="ios" data-i18n="pwa_ios" hidden>في الآيفون والآيباد: افتح الموقع في <b>Safari</b>، اضغط زر <b>المشاركة</b> (المربع الذي يخرج منه سهم للأعلى)، ثم اختر <b>«إضافة إلى الشاشة الرئيسية»</b>.</p>
+  <p data-pwa="android" data-i18n="pwa_and" hidden>اضغط على قائمة المتصفح <b>⋮</b> ثم اختر <b>«تثبيت التطبيق»</b> أو <b>«إضافة إلى الشاشة الرئيسية»</b>.</p>
+  <p data-pwa="inapp" data-i18n="pwa_app" hidden>أنت تتصفح من داخل تطبيق آخر (مثل إنستغرام). اضغط على <b>⋮</b> أو <b>⋯</b> ثم اختر <b>«فتح في المتصفح»</b>، وبعدها اضغط زر التحميل من جديد.</p>
+  <button type="button" class="pwa-close" data-pwa-close data-i18n="pwa_ok">حسنًا</button>
+</dialog>
+
 <script src="script.js"></script>
+<script src="pwa.js"></script>
 </body>
 </html>
