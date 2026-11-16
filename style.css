@@ -259,8 +259,8 @@ footer .loc{margin-bottom:12px}
 
 /* ------- عن الرواق ------- */
 .about{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
-.about .pic{position:relative;max-width:360px;width:100%;margin-inline:auto}
-.about .pic img{border-radius:50%;box-shadow:var(--shadow);width:100%;height:auto;aspect-ratio:1/1}
+.about .pic{position:relative;max-width:420px;width:100%;margin-inline:auto}
+.about .pic img{width:100%;height:auto;border-radius:0;box-shadow:none;background:none}
 .about .pic .p-dark{display:none}
 :root[data-theme="dark"] .about .pic .p-dark{display:block}
 :root[data-theme="dark"] .about .pic .p-light{display:none}
