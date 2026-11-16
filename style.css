@@ -979,3 +979,76 @@ html[dir="ltr"] a.letter-tile:hover::after{transform:translateX(5px)}
 .pwa-close{padding:10px 30px;border:1px solid var(--gold);border-radius:999px;background:transparent;color:var(--ink);font:inherit;font-weight:700;cursor:pointer;transition:background .25s}
 .pwa-close:hover{background:color-mix(in srgb,var(--gold) 18%,transparent)}
 @media(max-width:560px){.pwa-install{width:100%;max-width:340px}}
+
+/* ==========================================================
+   لمسات ذهبية إضافية
+   ========================================================== */
+:root{
+  --gold-grad:linear-gradient(135deg,#8a6420 0%,#c9a24a 38%,#e9cf8e 52%,#b98f35 78%,#8a6420 100%);
+}
+:root[data-theme="dark"]{
+  --gold-grad:linear-gradient(135deg,#b88f3c 0%,#e6c375 38%,#f6e4ae 52%,#d4ae5e 78%,#b88f3c 100%);
+}
+
+/* توهّج ذهبي ناعم على الكلمات المميّزة، وتدرّج معدني في عناوين الأقسام */
+.ruq{text-shadow:0 0 28px color-mix(in srgb,var(--gold) 38%,transparent)}
+.section-head .ruq,.about h2 .ruq,.contact h2 .ruq{
+  background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;text-shadow:none
+}
+
+/* زخرفة ذهبية تحت عناوين الأقسام: خط، معيّن، خط */
+.section-head h2::after{
+  content:"";display:block;width:150px;height:12px;margin:10px auto 0;
+  background:
+    linear-gradient(90deg,transparent,var(--gold)) left center/58px 1px no-repeat,
+    linear-gradient(270deg,transparent,var(--gold)) right center/58px 1px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) center/7px 7px no-repeat;
+  clip-path:none;opacity:.9
+}
+.section-head h2::after{background-blend-mode:normal}
+
+/* خط ذهبي رفيع أسفل شريط التنقّل وأعلى التذييل */
+.nav{border-bottom:1px solid transparent;border-image:linear-gradient(90deg,transparent,var(--gold),transparent) 1;border-image-slice:1}
+footer{border-top:0;position:relative}
+footer::before{
+  content:"";position:absolute;top:0;inset-inline:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent)
+}
+
+/* الأزرار: ذهب معدني مع لمعان */
+.btn-primary{
+  background:var(--gold-grad);color:var(--on-gold);
+  box-shadow:0 10px 26px -12px color-mix(in srgb,var(--gold) 80%,transparent),inset 0 1px 0 rgba(255,255,255,.35)
+}
+.btn-primary:hover{background:var(--gold-grad);filter:brightness(1.07)}
+.btn-ghost{border-color:var(--gold)}
+
+/* البطاقات: شريط ذهبي علوي، وأيقونات بخلفية ذهبية خفيفة */
+.card{position:relative;overflow:hidden}
+.card::before{
+  content:"";position:absolute;top:0;inset-inline:0;height:3px;
+  background:var(--gold-grad);opacity:.75;transition:opacity .35s
+}
+.card:hover::before{opacity:1}
+.card:hover{box-shadow:0 22px 44px -24px color-mix(in srgb,var(--gold) 55%,transparent)}
+.card .ico{background:color-mix(in srgb,var(--gold) 12%,transparent);box-shadow:0 0 0 5px color-mix(in srgb,var(--gold) 7%,transparent)}
+.work{border-color:color-mix(in srgb,var(--gold) 38%,var(--line))}
+
+/* الواجهة العامة */
+::selection{background:color-mix(in srgb,var(--gold) 45%,transparent);color:var(--ink)}
+html{scrollbar-color:var(--gold) var(--bg)}
+.eyebrow::before,.eyebrow::after{background:var(--gold-grad);opacity:1;height:2px}
+
+@media (prefers-reduced-motion:reduce){.card::before{transition:none}}
+
+/* زر «حمّل تطبيق رواق مداد» بالذهبي المعدني */
+.pwa-install{
+  background:var(--gold-grad);color:var(--on-gold);
+  box-shadow:0 12px 28px -12px color-mix(in srgb,var(--gold) 85%,transparent),inset 0 1px 0 rgba(255,255,255,.4);
+  border:1px solid color-mix(in srgb,var(--gold) 70%,transparent)
+}
+.pwa-install:hover{background:var(--gold-grad);filter:brightness(1.08);box-shadow:0 18px 34px -12px color-mix(in srgb,var(--gold) 90%,transparent),inset 0 1px 0 rgba(255,255,255,.45)}
+.pwa-close{border-color:var(--gold)}
+
+.fab-wa{display:none !important}

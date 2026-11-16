@@ -762,6 +762,9 @@ document.getElementById('year').textContent = new Date().getFullYear();
    زر واتساب العائم + رابط «انتقل إلى المحتوى»
    ========================================================== */
 function buildFab(){
+  /* زر واتساب العائم محذوف من كل الصفحات؛ يبقى زر واتساب في قسم «اتصل بنا» فقط */
+  var gone = document.getElementById('fab-wa'); if(gone) gone.remove();
+  return;
   var ui = UI[LANG], el = document.getElementById('fab-wa');
   if(!CONFIG.whatsapp){ if(el) el.remove(); return; }
   if(!el){
