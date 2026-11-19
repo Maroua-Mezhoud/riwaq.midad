@@ -6,7 +6,7 @@
 var CONFIG = {
   instagram: "https://www.instagram.com/riwaq.midad/",
   instagramUser: "riwaq.midad",
-  whatsapp: "213674026632",   // رقمك بصيغة دولية بدون + مثل 213550000000 (اتركه فارغًا لإخفاء الزر)
+  whatsapp: "",
   email: "riwaq.midad@gmail.com"       // بريدك (اتركه فارغًا لإخفاء الزر)
 };
 
@@ -128,7 +128,7 @@ var EN = {
   pwa_ios:"On iPhone and iPad: open the site in <b>Safari</b>, tap the <b>Share</b> button (the square with an up arrow), then choose <b>\"Add to Home Screen\"</b>.",
   pwa_and:"Open the browser menu <b>⋮</b>, then choose <b>\"Install app\"</b> or <b>\"Add to Home screen\"</b>.",
   pwa_app:"You are browsing inside another app (such as Instagram). Tap <b>⋮</b> or <b>⋯</b> and choose <b>\"Open in browser\"</b>, then tap the download button again.",
-  cr_pre:"Concept, Design, Educational Materials, Development Direction & Website Management:", cr_name:"Maroua Mezhoud", back:"Back", skip:"Skip to content",
+  cr_pre:"Made by", cr_name:"Maroua Mezhoud", back:"Back", skip:"Skip to content",
   co_t:"About the paintings",
   co_p:"The paintings are written by hand in ink on ornamental paper, in the Diwani and Thuluth scripts. Each one is a single piece that is never repeated.",
   co_l1:"Handwritten in ink on ornamental paper", co_l2:"Verses, poetry, names and dedications", co_l3:"Scripts: Diwani and Thuluth", co_l4:"One unique piece",
@@ -189,6 +189,13 @@ var EN = {
   lr_eyebrow:"Learn Arabic calligraphy",
   lr_h2:"Choose a <span class=\"ruq\">letter</span> to begin",
   lr_p:"We start with Alif, Baa and Hah, and the other letters will be added over time.",
+  hub_h2:"Begin your <span class=\"ruq\">journey</span> in calligraphy", hub_p:"Three steps in order: get to know the pen, then learn how to hold it, then move on to the letters.",
+  print_note:"<strong>Before you print:</strong> print the sheet on coated (couché) paper of about 90 g/m²; it keeps the ink from bleeding and gives the stroke a crisp, smooth finish while you practise.",
+  lt_c_t:"Learn the letters", lt_c_p:"After the pen and the basics: choose a letter to start learning.", lt_n:"Learn the letters",
+  sc_h2:"Choose a <span class=\"ruq\">script</span> to begin", sc_p:"We start with Naskh; Diwani and Thuluth are coming soon.", sc_soon:"Coming soon",
+  sc_naskh:"Naskh script", sc_naskh_t:"Naskh script", sc_naskh_p:"The clearest and most readable Arabic script, and the foundation of learning.",
+  sc_diwani_t:"Diwani script", sc_diwani_p:"A flowing, curved script with tightly interwoven letters, developed in the Ottoman court.",
+  sc_thuluth_t:"Thuluth script", sc_thuluth_p:"The master of scripts and the most majestic, used for ornamental inscriptions in mosques and Qur'ans.",
   pdf_dl:"Download the file (PDF)",
   pdf_open:"Open in a new tab",
   lg_on:"Connected",
@@ -765,19 +772,6 @@ function buildFab(){
   /* زر واتساب العائم محذوف من كل الصفحات؛ يبقى زر واتساب في قسم «اتصل بنا» فقط */
   var gone = document.getElementById('fab-wa'); if(gone) gone.remove();
   return;
-  var ui = UI[LANG], el = document.getElementById('fab-wa');
-  if(!CONFIG.whatsapp){ if(el) el.remove(); return; }
-  if(!el){
-    el = document.createElement('a'); el.id = 'fab-wa'; el.className = 'fab-wa'; el.target = '_blank'; el.rel = 'noopener';
-    el.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.2 8.2 0 1 1 12 20.200zm4.500-6.100c-.2-.1-1.500-.7-1.700-.8s-.4-.1-.6.100-.7.8-.8 1-.3.200-.5.100a6.700 6.700 0 0 1-3.300-2.900c-.3-.4.300-.4.700-1.300.1-.2 0-.3 0-.5l-.8-1.900c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.800 2.800 0 0 0-.9 2 4.800 4.800 0 0 0 1 2.600 10.800 10.800 0 0 0 4.100 3.600c1.500.6 2.200.7 3 .6a2.600 2.600 0 0 0 1.700-1.200 2.100 2.100 0 0 0 .1-1.200c-.1-.1-.2-.2-.5-.3z"/></svg>';
-    document.body.appendChild(el);
-    var c = document.getElementById('contact');
-    if('IntersectionObserver' in window && c){
-      new IntersectionObserver(function(en){ el.classList.toggle('away', en[0].isIntersecting && !document.body.classList.contains('in-page')); }, { threshold:.35 }).observe(c);
-    }
-  }
-  el.href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(ui.msgHi);
-  el.setAttribute('aria-label', ui.waFab);
 }
 document.getElementById('skip').addEventListener('click', function(e){
   e.preventDefault();

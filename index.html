@@ -162,8 +162,8 @@
     <div class="page-bar"><a class="back" href="#top"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><span data-i18n="n_learn">تعلّم الخط</span></nav></div>
     <div class="section-head reveal in">
       <span class="eyebrow" data-i18n="lr_eyebrow">تعلّم الخط العربي</span>
-      <h2 data-i18n="lr_h2">اختر <span class="ruq">حرفًا</span> لتبدأ</h2>
-      <p data-i18n="lr_p">نبدأ بالألف والباء والحاء، وستُضاف بقية الحروف تباعًا.</p>
+      <h2 data-i18n="hub_h2">ابدأ <span class="ruq">رحلتك</span> مع الخط</h2>
+      <p data-i18n="hub_p">ثلاث خطوات مرتّبة: تعرّف على القلم، ثم تعلّم مسكته، ثم انتقل إلى الحروف.</p>
     </div>
     <div class="pen-hub">
       <a class="card hub-card pen-card reveal in" href="#learn-pen">
@@ -182,6 +182,59 @@
           <span class="open" data-i18n="hb_open">افتح القسم</span>
         </div>
       </a>
+      <a class="card hub-card pen-card reveal in" href="#learn-letters">
+        <span class="grip-ico letters-ico" aria-hidden="true">أب</span>
+        <div>
+          <h3 data-i18n="lt_c_t">تعلّم الحروف</h3>
+          <p data-i18n="lt_c_p">بعد القلم والأساسيات: اختر حرفًا لتبدأ بتعلّمه.</p>
+          <span class="open" data-i18n="hb_open">افتح القسم</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="block page" id="learn-letters">
+  <div class="wrap">
+    <div class="page-bar"><a class="back" href="#learn"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><a href="#learn" data-i18n="n_learn">تعلّم الخط</a><i></i><span data-i18n="lt_n">تعلّم الحروف</span></nav></div>
+    <div class="section-head reveal in">
+      <span class="eyebrow" data-i18n="lr_eyebrow">تعلّم الخط العربي</span>
+      <h2 data-i18n="sc_h2">اختر <span class="ruq">الخط</span> لتبدأ</h2>
+      <p data-i18n="sc_p">نبدأ بخط النسخ، وسيُضاف الديواني والثلث قريبًا.</p>
+    </div>
+    <div class="pen-hub script-hub">
+      <a class="card hub-card pen-card reveal in" href="#learn-naskh">
+        <div>
+          <h3 data-i18n="sc_naskh_t">خط النسخ</h3>
+          <p data-i18n="sc_naskh_p">أوضح الخطوط العربية وأسهلها قراءة، وهو أساس التعلّم.</p>
+          <span class="open" data-i18n="hb_open">افتح القسم</span>
+        </div>
+      </a>
+      <div class="card hub-card pen-card soon-card reveal in" aria-disabled="true">
+        <div>
+          <h3 data-i18n="sc_diwani_t">الخط الديواني</h3>
+          <p data-i18n="sc_diwani_p">خط منحنٍ متداخل الحروف، عُرف في دواوين الدولة العثمانية.</p>
+          <span class="soon-tag" data-i18n="sc_soon">قريبًا</span>
+        </div>
+      </div>
+      <div class="card hub-card pen-card soon-card reveal in" aria-disabled="true">
+        <div>
+          <h3 data-i18n="sc_thuluth_t">خط الثلث</h3>
+          <p data-i18n="sc_thuluth_p">سيّد الخطوط وأجملها، يُكتب به الزخرف في المساجد والمصاحف.</p>
+          <span class="soon-tag" data-i18n="sc_soon">قريبًا</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block page" id="learn-naskh">
+  <div class="wrap">
+    <div class="page-bar"><a class="back" href="#learn-letters"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><a href="#learn" data-i18n="n_learn">تعلّم الخط</a><i></i><a href="#learn-letters" data-i18n="lt_n">تعلّم الحروف</a><i></i><span data-i18n="sc_naskh">خط النسخ</span></nav></div>
+    <div class="section-head reveal in">
+      <span class="eyebrow" data-i18n="lr_eyebrow">تعلّم الخط العربي</span>
+      <h2 data-i18n="lr_h2">اختر <span class="ruq">حرفًا</span> لتبدأ</h2>
+      <p data-i18n="lr_p">نبدأ بالألف والباء والحاء، وستُضاف بقية الحروف تباعًا.</p>
     </div>
     <div class="letter-grid" id="learn-grid"></div>
   </div>
@@ -216,7 +269,7 @@
       <article class="card reveal in"><h3 data-i18n="pen_p1">السن الوحشي</h3><p data-i18n="pen_d1">الزاوية العليا من رأس القلم المائل.</p></article>
       <article class="card reveal in"><h3 data-i18n="pen_p3">السن الإنسي</h3><p data-i18n="pen_d3">الزاوية السفلى من رأس القلم المائل.</p></article>
     </div>
-    <div class="pdf-actions"><a class="btn btn-primary" href="#learn-basics" data-i18n="pen_next">تابع إلى الأساسيات</a></div>
+    <div class="pdf-actions pdf-next"><a class="btn btn-primary" href="#learn-basics" data-i18n="pen_next">تابع إلى الأساسيات</a></div>
   </div>
 </section>
 
@@ -270,7 +323,7 @@
       <article class="card reveal in"><h3 data-i18n="g6_t">أخطاء شائعة</h3><p data-i18n="g6_p">شدّ القلم بقوة، وإمساكه من بعيد جدًا، وتدويره أثناء الكتابة، والضغط على الورقة، وثني المعصم بشدة. إن لاحظت أن يدك تتعب بسرعة فراجع مسكتك.</p></article>
     </div>
     <p class="grip-tip reveal in" data-i18n="grip_tip">تدرّب قبل كل جلسة: امسك القلم وارسم خطوطًا مستقيمة على ورقة بضع دقائق، ثم انتقل إلى الحروف.</p>
-    <div class="pdf-actions"><a class="btn btn-primary" href="#learn-dot" data-i18n="grip_next_dot">الدرس التالي: النقطة</a></div>
+    <div class="pdf-actions pdf-next"><a class="btn btn-primary" href="#learn-dot" data-i18n="grip_next_dot">الدرس التالي: النقطة</a></div>
   </div>
 </section>
 
@@ -299,13 +352,13 @@
       <article class="card reveal in"><h3 data-i18n="dt6_t">أخطاء شائعة</h3><p data-i18n="dt6_p">الضغط الشديد فتتسع النقطة، وتدوير القلم فتتشوّه، ورفعه مع السحب فيظهر لها ذيل.</p></article>
     </div>
     <p class="grip-tip reveal in" data-i18n="dot_tip">أتقن النقطة أولًا، فكل حرف بعدها يُقاس بها.</p>
-    <div class="pdf-actions"><a class="btn btn-primary" href="#learn" data-i18n="grip_next">ابدأ بالحروف</a></div>
+    <div class="pdf-actions pdf-next"><a class="btn btn-primary" href="#learn-letters" data-i18n="grip_next">ابدأ بالحروف</a></div>
   </div>
 </section>
 
 <section class="block page" id="learn-alif">
   <div class="wrap">
-    <div class="page-bar"><a class="back" href="#learn"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><a href="#learn" data-i18n="n_learn">تعلّم الخط</a><i></i><span data-i18n="l_alif">حرف الألف</span></nav></div>
+    <div class="page-bar"><a class="back" href="#learn-naskh"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><a href="#learn" data-i18n="n_learn">تعلّم الخط</a><i></i><a href="#learn-letters" data-i18n="lt_n">تعلّم الحروف</a><i></i><a href="#learn-naskh" data-i18n="sc_naskh">خط النسخ</a><i></i><span data-i18n="l_alif">حرف الألف</span></nav></div>
     <div class="section-head reveal in">
       <span class="eyebrow" data-i18n="l_alif_e">حرف الألف</span>
       <h2 data-i18n="l_alif_h">حرف <span class="ruq">الألف</span></h2>
@@ -338,6 +391,10 @@
       <a class="btn btn-primary" href="assets/learn/alif-single.pdf" download data-i18n="pdf_dl">تحميل الملف (PDF)</a>
       <a class="btn btn-ghost" href="assets/learn/alif-single.pdf" target="_blank" rel="noopener" data-i18n="pdf_open">فتح في صفحة جديدة</a>
     </div>
+    <aside class="print-note reveal in" role="note">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3M7 14h10v7H7z"/></svg>
+      <p data-i18n="print_note"><strong>نصيحة قبل الطباعة:</strong> اطبع الورقة على ورق كوشيه بوزن يقارب 90 غ/م²؛ فهو يمنع تسرّب الحبر ويمنح الخط حدّة ونعومة أثناء التدريب.</p>
+    </aside>
     <div class="pdf-pages">
       <img src="assets/learn/alif-single-1.webp" alt="حرف الألف المفردة، الصفحة 1" width="909" height="1286" loading="lazy">
       <img src="assets/learn/alif-single-2.webp" alt="حرف الألف المفردة، الصفحة 2" width="909" height="1286" loading="lazy">
@@ -422,7 +479,7 @@
 
 <section class="block page" id="learn-baa">
   <div class="wrap">
-    <div class="page-bar"><a class="back" href="#learn"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><a href="#learn" data-i18n="n_learn">تعلّم الخط</a><i></i><span data-i18n="l_baa">حرف الباء</span></nav></div>
+    <div class="page-bar"><a class="back" href="#learn-naskh"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><a href="#learn" data-i18n="n_learn">تعلّم الخط</a><i></i><a href="#learn-letters" data-i18n="lt_n">تعلّم الحروف</a><i></i><a href="#learn-naskh" data-i18n="sc_naskh">خط النسخ</a><i></i><span data-i18n="l_baa">حرف الباء</span></nav></div>
     <div class="section-head reveal in">
       <span class="eyebrow" data-i18n="l_baa_e">حرف الباء</span>
       <h2 data-i18n="l_baa_h">حرف <span class="ruq">الباء</span></h2>
@@ -455,6 +512,10 @@
       <a class="btn btn-primary" href="assets/learn/baa-single.pdf" download data-i18n="pdf_dl">تحميل الملف (PDF)</a>
       <a class="btn btn-ghost" href="assets/learn/baa-single.pdf" target="_blank" rel="noopener" data-i18n="pdf_open">فتح في صفحة جديدة</a>
     </div>
+    <aside class="print-note reveal in" role="note">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3M7 14h10v7H7z"/></svg>
+      <p data-i18n="print_note"><strong>نصيحة قبل الطباعة:</strong> اطبع الورقة على ورق كوشيه بوزن يقارب 90 غ/م²؛ فهو يمنع تسرّب الحبر ويمنح الخط حدّة ونعومة أثناء التدريب.</p>
+    </aside>
     <div class="pdf-pages">
       <img src="assets/learn/baa-single-1.webp" alt="حرف الباء المفردة، الصفحة 1" width="909" height="1286" loading="lazy">
       <img src="assets/learn/baa-single-2.webp" alt="حرف الباء المفردة، الصفحة 2" width="909" height="1286" loading="lazy">
@@ -539,7 +600,7 @@
 
 <section class="block page" id="learn-hah">
   <div class="wrap">
-    <div class="page-bar"><a class="back" href="#learn"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><a href="#learn" data-i18n="n_learn">تعلّم الخط</a><i></i><span data-i18n="l_hah">حرف الحاء</span></nav></div>
+    <div class="page-bar"><a class="back" href="#learn-naskh"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span data-i18n="back">رجوع</span></a><nav class="crumb" aria-label="breadcrumb"><a href="#learn" data-i18n="n_learn">تعلّم الخط</a><i></i><a href="#learn-letters" data-i18n="lt_n">تعلّم الحروف</a><i></i><a href="#learn-naskh" data-i18n="sc_naskh">خط النسخ</a><i></i><span data-i18n="l_hah">حرف الحاء</span></nav></div>
     <div class="section-head reveal in">
       <span class="eyebrow" data-i18n="l_hah_e">حرف الحاء</span>
       <h2 data-i18n="l_hah_h">حرف <span class="ruq">الحاء</span></h2>
@@ -572,6 +633,10 @@
       <a class="btn btn-primary" href="assets/learn/hah-single.pdf" download data-i18n="pdf_dl">تحميل الملف (PDF)</a>
       <a class="btn btn-ghost" href="assets/learn/hah-single.pdf" target="_blank" rel="noopener" data-i18n="pdf_open">فتح في صفحة جديدة</a>
     </div>
+    <aside class="print-note reveal in" role="note">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3M7 14h10v7H7z"/></svg>
+      <p data-i18n="print_note"><strong>نصيحة قبل الطباعة:</strong> اطبع الورقة على ورق كوشيه بوزن يقارب 90 غ/م²؛ فهو يمنع تسرّب الحبر ويمنح الخط حدّة ونعومة أثناء التدريب.</p>
+    </aside>
     <div class="pdf-pages">
       <img src="assets/learn/hah-single-1.webp" alt="حرف الحاء المفردة، الصفحة 1" width="909" height="1286" loading="lazy">
       <img src="assets/learn/hah-single-2.webp" alt="حرف الحاء المفردة، الصفحة 2" width="909" height="1286" loading="lazy">
@@ -697,7 +762,7 @@
       </div>
     </div>
     <div>© <span id="year"></span> رواق مداد · Riwaq Midad</div>
-    <p class="credit"><span data-i18n="cr_pre">فكرة وتصميم وإعداد المواد التعليمية وتوجيه التطوير وإدارة الموقع:</span> <a id="credit-link" href="https://github.com/Maroua-Mezhoud/Maroua-Mezhoud" target="_blank" rel="noopener" data-i18n="cr_name">مروى مزهود</a></p>
+    <p class="credit"><span data-i18n="cr_pre">صُنع من طرف</span> <a id="credit-link" href="https://github.com/Maroua-Mezhoud/Maroua-Mezhoud" target="_blank" rel="noopener" data-i18n="cr_name">مروى مزهود</a></p>
   </div>
 </footer>
 
